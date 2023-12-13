@@ -1,0 +1,22 @@
+import React from "react";
+
+export function DevToolsCard({ titulo, listaImgs }) {
+
+
+
+    return (
+        <div className='devtools-card'>
+            <h1>{titulo}</h1>
+            <div className='devtools-img'>
+                {listaImgs.map((item, index) => (
+                    <img key={index}
+                        src={item}
+                        alt={item}
+                        className={item.includes('react.svg') ? 'rotate' : ''}
+                        style={item.includes('sap.png' ) || item.includes('nodejs.png') ? { height: '70px', } : {}} />
+                ))}
+            </div>
+        </div>
+    );
+}
+

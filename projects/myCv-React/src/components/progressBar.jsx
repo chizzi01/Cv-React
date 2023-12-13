@@ -23,7 +23,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ value }) => ({
 export function CustomizedProgressBars({ title, valueMount }) {
     return (
 
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1, margin: 0, padding:0}}>
             <div className='bar-align'>
                 <div className='title-align'>
                 <p>{title}</p>

@@ -1,35 +1,149 @@
 import './App.css'
-import { SocialLinks } from './components/social-Links'
-import { Avatar } from './components/avatar'
-import { CustomizedProgressBars } from './components/progressBar'
-import { Navbar } from './components/navbar'
-// import { Card } from './components/card'
+import { SocialLinks } from './components/Social-Links'
+import { Avatar } from './components/Avatar'
+import { CustomizedProgressBars } from './components/ProgressBar'
+import { DrawerAppBar } from './components/Navbar'
+import { Aptitudes } from './components/Aptitudes'
+import { Card } from './components/CardExp'
+import { DevToolsCard } from './components/Devtools'
+import { useState, useEffect } from 'react'
+import { useRef } from 'react'
+import Danone from './assets/danone.png'
+import Ejercito from './assets/ejercito.png'
+import Javascript from '../src/assets/js.png'
+import Html from '../src/assets/HTMLCSS.png'
+import Css from '../src/assets/css.png'
+import ReactLog from '../src/assets/react.svg'
+import Nodejs from '../src/assets/nodejs.png'
+import Capacitor from '../src/assets/capacitor.svg'
+import Sap from '../src/assets/sap.png'
+import PowerBi from '../src/assets/powerbi.png'
+import Electron from '../src/assets/electron.png'
+import Figma from '../src/assets/figma.png'
+import Sql from '../src/assets/sql.svg'
+import Mui from '../src/assets/mui.png'
+
+
+
 
 export function App() {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [animatedValueMount1, setAnimatedValueMount1] = useState(0);
+  const [animatedValueMount2, setAnimatedValueMount2] = useState(0);
+  const aptitudesRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const studiesSectionRef = useRef(null);
+
+  const finalValueMount1 = 79;
+  const finalValueMount2 = 100;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (studiesSectionRef.current) {
+        const studiesSectionTop = studiesSectionRef.current.offsetTop;
+        setScrollPosition(Math.min(window.scrollY, studiesSectionTop));
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (scrollPosition === studiesSectionRef.current?.offsetTop) {
+      const interval1 = setInterval(() => {
+        setAnimatedValueMount1((prev) => Math.min(prev + 1, finalValueMount1));
+      }, 10);
+
+      const interval2 = setInterval(() => {
+        setAnimatedValueMount2((prev) => Math.min(prev + 1, finalValueMount2));
+      }, 10);
+
+      return () => {
+        clearInterval(interval1);
+        clearInterval(interval2);
+      };
+    }
+  }, [scrollPosition]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      }
+    );
+
+    if (aptitudesRef.current) {
+      observer.observe(aptitudesRef.current);
+    }
+
+    return () => {
+      if (aptitudesRef.current) {
+        observer.unobserve(aptitudesRef.current);
+      }
+    };
+  }, []);
+
+  const marginLeft = scrollPosition === studiesSectionRef.current?.offsetTop ? '20rem' : '0';
+
   return (
     <div className='App'>
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100,200,300,400,500,600,700,800&display=swap');
       </style>
-      <Navbar />
-      <section className='avatar-section'>
-        <Avatar />
+      <DrawerAppBar />
+      <section id='avatar-section' >
+        <div style={{ transform: `translate(${scrollPosition}px, ${scrollPosition}px)`, marginLeft }}>
+          <Avatar />
+        </div>
         <div className='info-align'>
           <h1>Agustin<br></br>Chizzini Melo</h1>
           <h3> <span className='blue'> Desarrollador Web Jr</span> | <span className='green'>Analista BI </span> y estudiante de Lic. Sistemas</h3>
         </div>
       </section>
-      <section className='estudios-section'>
+      <section id='estudios-section' ref={studiesSectionRef} >
         <h1>Estudios <span className='dark-blue'>_</span></h1>
         <div className='barContainer-align'>
-          <CustomizedProgressBars title="Universitario" valueMount={79} />
-          <CustomizedProgressBars title="Secundario" valueMount={100} />
+          <CustomizedProgressBars title="Universitario" valueMount={animatedValueMount1} />
+          <CustomizedProgressBars title="Secundario" valueMount={animatedValueMount2} />
         </div>
       </section>
-      <section className='aptitudes-section'>
+      <section id='aptitudes-section'>
         <h1>Aptitudes <span className='dark-blue'>_</span></h1>
+        <div ref={aptitudesRef}></div>
+          <Aptitudes isVisible={isVisible} />
+
       </section>
-      <SocialLinks/>
+
+      <section id='experiencia-section'>
+        <h1 className='expContTitulo'>Experiencia <span className='dark-blue'>_</span></h1>
+        <div className='experiencia-align'>
+          <Card fondo={Danone} titulo="Pasante Analista BI" tiempo="Jul 2022 - Actualidad"
+            lista={["Análisis de datos.", "Soporte en migraciones de datos.", "Comparación periódica de registros", "Creación de reportes con Power Bi y Sap Analytics Cloud.", "Desarrollo de apps de escritorio con tecnología Web para el negocio."]} color="#6AC9FF" />
+          <Card fondo={Ejercito} titulo="Desarrollador Web" tiempo="Feb 2021 - Jul 2022"
+            lista={["Mantenimiento de paginas web del ejercito.", "Creación de reportes para los usuarios en Microsoft reporting Services.", "Gestión de base de datos con SQL."]} color="#FCC850" />
+        </div>
+      </section>
+
+      <section id='devtools-section'>
+        <h1 className='expContTitulo'>Herramientas de desarrollo <span className='dark-blue'>_</span></h1>
+        <div className='devtools-container'>
+          <DevToolsCard titulo="Front-End" listaImgs={[ReactLog, Html, Css, Javascript, Figma, Capacitor, Electron, Mui]} />
+          <DevToolsCard titulo="Back-End" listaImgs={[Nodejs, Sql]} />
+          <DevToolsCard titulo="Business Intelligence" listaImgs={[PowerBi, Sap]} />
+
+        </div>
+      </section>
+
+      <SocialLinks />
     </div>
 
 
