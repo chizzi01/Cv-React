@@ -63,6 +63,19 @@ export function App() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [animatedValueMount1, setAnimatedValueMount1] = useState(0);
   const [animatedValueMount2, setAnimatedValueMount2] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+useEffect(() => {
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, []);
   const aptitudesRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const studiesSectionRef = useRef(null);
@@ -88,23 +101,7 @@ export function App() {
       };
     }, []);
   }
-
-  // useEffect(() => {
-  //   if (scrollPosition === studiesSectionRef.current?.offsetTop) {
-  //     const interval1 = setInterval(() => {
-  //       setAnimatedValueMount1((prev) => Math.min(prev + 1, finalValueMount1));
-  //     }, 10);
-
-  //     const interval2 = setInterval(() => {
-  //       setAnimatedValueMount2((prev) => Math.min(prev + 1, finalValueMount2));
-  //     }, 10);
-
-  //     return () => {
-  //       clearInterval(interval1);
-  //       clearInterval(interval2);
-  //     };
-  //   }
-  // }, [scrollPosition]);
+  
 
 
   useEffect(() => {

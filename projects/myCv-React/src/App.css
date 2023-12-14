@@ -75,7 +75,7 @@
 
 
 .avatar-cover {
-  width: 25rem;
+  width: 25rem; 
   height: 25rem;
   border-radius: 50%;
   border: 3px solid #076ECD;
@@ -105,7 +105,7 @@
 }
 
 #avatar-section h1 {
-  font-size: 5rem;
+  font-size: 100px;
   color: #ffffff;
   font-weight: bold;
   text-shadow: 0px 0px 32.1px rgba(255, 255, 255, 0.34);
@@ -782,15 +782,147 @@
   }
 }
 
+/* Estilos para pantallas de tamaño mediano (por ejemplo, notebooks) */
+@media (max-width: 1350px) {
 
+  .social-links {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .items-align img {
+    width: 50px;
+    height: 50px;
+    margin: 0%;
+  }
+
+  #avatar-section {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+    height: 100vh;
+    width: 90%;
+  }
+
+  .avatar-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .info-align {
+    width: 80%;
+  }
+
+  #avatar-section h1 {
+    font-size: 4rem;
+    top: 1.5rem;
+    width: 100%;
+  }
+
+  #avatar-section h3 {
+    font-size: 1rem;
+    top: 2rem;
+    line-height: 1.5rem;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .footer-container h2 {
+    font-size: 1rem;
+  }
+
+  .footer-container p {
+    font-size: 0.7rem;
+  }
+
+  .tecnologiesFooter-container img {
+    width: 30px;
+    height: 30px;
+    margin: 0.5rem;
+  }
+
+}
 
 
 /* Estilos para pantallas de tamaño mediano (por ejemplo, tablets) */
-@media (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+
   .social-links {
-    bottom: 40px;
-    right: 40px;
+    bottom: 10px;
+    right: 10px;
   }
+
+  .items-align img {
+    width: 30px;
+    height: 30px;
+    margin: 0%;
+  }
+
+  #avatar-section {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+    height: 100vh;
+  }
+
+  .avatar-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .info-align {
+    width: 80%;
+  }
+
+  #avatar-section h1 {
+    font-size: 4em;
+    top: 1.5rem;
+  }
+
+  #avatar-section h3 {
+    font-size: 1rem;
+    top: 2rem;
+    line-height: 1.5rem;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .footer-container h2 {
+    font-size: 1rem;
+  }
+
+  .footer-container p {
+    font-size: 0.7rem;
+  }
+
+  .tecnologiesFooter-container img {
+    width: 30px;
+    height: 30px;
+    margin: 0.5rem;
+  }
+
 }
 
 /* Estilos para pantallas de tamaño pequeño (por ejemplo, teléfonos móviles) */
