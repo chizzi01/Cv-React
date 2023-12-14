@@ -28,8 +28,8 @@ export function ControlledSwitches() {
                                 color: '#fff',
                                 '& + .MuiSwitch-track': {
 
-                                    backgroundColor: '#3253FF', // Cambia el color aquí
-                                    borderColor: '#3253FF', // Cambia el color aquí
+                                    backgroundColor: '#FFF', // Cambia el color aquí
+                                    borderColor: '#FFF', // Cambia el color aquí
                                 },
                             },
                         },

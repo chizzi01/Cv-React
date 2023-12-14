@@ -8,6 +8,12 @@ import { Card } from './components/CardExp'
 import { DevToolsCard } from './components/Devtools'
 import { useState, useEffect } from 'react'
 import { useRef } from 'react'
+import { ProyectCard } from './components/Project'
+import { Textfield } from './components/Textfield'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { Footer } from './components/Footer'
+import { ControlledSwitches } from './components/Switch'
+import SendIcon from '@mui/icons-material/Send'
 import Danone from './assets/danone.png'
 import Ejercito from './assets/ejercito.png'
 import Javascript from '../src/assets/js.png'
@@ -22,6 +28,34 @@ import Electron from '../src/assets/electron.png'
 import Figma from '../src/assets/figma.png'
 import Sql from '../src/assets/sql.svg'
 import Mui from '../src/assets/mui.png'
+import Agrimensura from '../src/assets/agrimensura.png'
+import Mizzio from '../src/assets/mizzio.png'
+import Siro from '../src/assets/siro.png'
+import DonPepe from '../src/assets/donpepe.png'
+import Mypass from '../src/assets/mypass.png'
+import Mybolucompras from '../src/assets/mybolucompras.png'
+
+const theme = createTheme({
+  components: {
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          '& fieldset': {
+            borderColor: 'white',
+          },
+          '&:hover fieldset': {
+            borderColor: 'white',
+          },
+          '&.Mui-focused fieldset': {
+            borderColor: 'white',
+          },
+        },
+      },
+    },
+  },
+});
+
+
 
 
 
@@ -119,7 +153,7 @@ export function App() {
       <section id='aptitudes-section'>
         <h1>Aptitudes <span className='dark-blue'>_</span></h1>
         <div ref={aptitudesRef}></div>
-          <Aptitudes isVisible={isVisible} />
+        <Aptitudes isVisible={isVisible} />
 
       </section>
 
@@ -142,6 +176,36 @@ export function App() {
 
         </div>
       </section>
+
+      <section id='proyectos-section'>
+        <h1 className='expContTitulo'>Algunos de mis proyectos <span className='dark-blue'>_</span></h1>
+        <div className='proyectos-container'>
+          <ProyectCard nombre="Mizzio Coding" bio={["Landing page", "Responsive", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Mizzio} web='https://mizzio.com.ar/' />
+          <ProyectCard nombre="GC Agrimensura" bio={["Landing page", "Divertida", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Agrimensura} web='https://gcagrimensura.ar/' />
+          <ProyectCard nombre="Siro Transporte" bio={["Landing page", "Responsive", "Colorida"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} web='http://www.transportesiro.com.ar/' />
+          <ProyectCard nombre="Don Pepe" bio={["Landing page", "Responsive", "Elegante y joven"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={DonPepe} web='https://chizzi01.github.io/DonPepe-Bar/' />
+          <ProyectCard nombre="MyPasswords" bio={["Mobile app", "Gestor de contraseñas", "Sencilla"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
+          <ProyectCard nombre="MyBolucompras" bio={["Desktop app", "Gestor de compras", "Colorida"]} tecnologias={[Electron, Html, Css, Javascript]} fondo={Mybolucompras} web='' />
+        </div>
+      </section>
+      <section id='contacto-section'>
+        <div className='contacto-container'>
+          <h1 className='expContTitulo'>Contacto <span className='dark-blue'>_</span></h1>
+          <div className='contacto-align'>
+            <div className='contactText-container'>
+              <ThemeProvider theme={theme}>
+                <Textfield indicador={'Nombre'} tipo={'text'} />
+                <Textfield indicador={'Mail'} tipo={'email'} />
+                <Textfield indicador={'Asunto'} tipo={'textfield'} />
+              </ThemeProvider>
+            </div>
+            <div className='btnEnviar'>
+              <a href='mailto:aguschizzini@gmail.com'>Enviar <SendIcon /></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <Footer tecnologias={[ReactLog, Html, Css, Javascript]} />
 
       <SocialLinks />
     </div>

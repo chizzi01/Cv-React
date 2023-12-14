@@ -14,10 +14,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import {ControlledSwitches} from './Switch'
+import { ControlledSwitches } from './Switch'
+import { Link } from '@mui/material';
 
 const drawerWidth = 240;
-const navItems = ['<Experiencia />', '<DevTools />', '<Portfolio />', '<Contacto />', <ControlledSwitches/>];
+// const navItems = ['<Experiencia />', '<DevTools />', '<Portfolio />', '<Contacto />', <ControlledSwitches />];
+
 
 export function DrawerAppBar(props) {
   const { window } = props;
@@ -33,27 +35,36 @@ export function DrawerAppBar(props) {
         ACM
       </Typography>
       <Divider />
-      <List >
-        {navItems.map((item) => (
-          <ListItem  key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center',paddingRight:"20px"}}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+      <List>
+        <a href="#experiencia-section">Experiencia</a>
+        <a href="#devtools-section">DevTools</a>
+        <a href="#portfolio-section">Portfolio</a>
+        <a href="#contacto-section">Contacto</a>
+
+
+
       </List>
     </Box>
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
+  const IniText = '<Inicio />'
+  const ExpText = '<Experiencia />'
+  const DevText = '<DevTools />'
+  const PortText = '<Portfolio />'
+  const ContText = '<Contacto />'
+
+
+
   return (
+
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component="nav"
-      sx={{ 
-        background: 'linear-gradient(90deg, #0F0F0F 0.02%, rgba(0, 71, 255, 0.51) 99.99%)' 
-    }}>
+        sx={{
+          background: 'linear-gradient(90deg, #0F0F0F 0.02%, rgba(0, 71, 255, 0.51) 99.99%)'
+        }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -71,12 +82,14 @@ export function DrawerAppBar(props) {
           >
             ACM
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
-              </Button>
-            ))}
+          <Box className="navTexts" sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Button><a href="#avatar-section" >{IniText}</a></Button>
+          <Button><a href="#experiencia-section" >{ExpText}</a></Button>
+          <Button><a href="#devtools-section" >{DevText}</a></Button>
+          <Button><a href="#proyectos-section" >{PortText}</a></Button>
+          <Button><a href="#contacto-section" >{ContText}</a></Button>
+          <Button><ControlledSwitches /></Button>
+
           </Box>
         </Toolbar>
       </AppBar>
