@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://chizzi01.github.io/Cv-React/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
