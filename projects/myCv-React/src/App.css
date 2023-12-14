@@ -1070,6 +1070,11 @@
     font-size: 1rem;
   }
 
+  .textProyect-side ul {
+    padding-left: 1.5em;
+    text-indent: -1.3em;
+  }
+
 
   .imgProyect-side {
     width: 100%;
@@ -1088,10 +1093,14 @@
   }
 
   .btnProyect-container a {
-    width: 50%;
     font-size: 0.8rem;
-
   }
+
+  .tecProyect-container img {
+    width: 30px;
+    margin: 0.5rem;
+  }
+
 
   #contacto-section {
     height: max-content;
@@ -1132,5 +1141,11 @@
     margin-top: 1rem;
 
   }
+
+  .btnEnviar a {
+    padding: 1rem;
+    
+  }
+
 
 }
