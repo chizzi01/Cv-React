@@ -80,33 +80,73 @@ export function App() {
           setScrollPosition(Math.min(window.scrollY, studiesSectionTop));
         }
       };
-  
+
       window.addEventListener('scroll', handleScroll);
-  
+
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
     }, []);
-  
-    useEffect(() => {
-      if (scrollPosition === studiesSectionRef.current?.offsetTop) {
-        const interval1 = setInterval(() => {
-          setAnimatedValueMount1((prev) => Math.min(prev + 1, finalValueMount1));
-        }, 10);
-  
-        const interval2 = setInterval(() => {
-          setAnimatedValueMount2((prev) => Math.min(prev + 1, finalValueMount2));
-        }, 10);
-  
-        return () => {
-          clearInterval(interval1);
-          clearInterval(interval2);
-        };
-      }
-    }, [scrollPosition]);
   }
 
+  // useEffect(() => {
+  //   if (scrollPosition === studiesSectionRef.current?.offsetTop) {
+  //     const interval1 = setInterval(() => {
+  //       setAnimatedValueMount1((prev) => Math.min(prev + 1, finalValueMount1));
+  //     }, 10);
+
+  //     const interval2 = setInterval(() => {
+  //       setAnimatedValueMount2((prev) => Math.min(prev + 1, finalValueMount2));
+  //     }, 10);
+
+  //     return () => {
+  //       clearInterval(interval1);
+  //       clearInterval(interval2);
+  //     };
+  //   }
+  // }, [scrollPosition]);
+
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Si el elemento está en la vista, inicia las animaciones
+        if (entries[0].isIntersecting) {
+          const interval1 = setInterval(() => {
+            setAnimatedValueMount1((prev) => Math.min(prev + 1, finalValueMount1));
+          }, 10);
   
+          const interval2 = setInterval(() => {
+            setAnimatedValueMount2((prev) => Math.min(prev + 1, finalValueMount2));
+          }, 10);
+  
+          return () => {
+            clearInterval(interval1);
+            clearInterval(interval2);
+          };
+        }
+      },
+      {
+        // Define el umbral y la raíz para el observer
+        root: null,
+        threshold: 0.1,
+      }
+    );
+  
+    // Observa el elemento de la sección de estudios
+    if (studiesSectionRef.current) {
+      observer.observe(studiesSectionRef.current);
+    }
+  
+    // Limpia el observer cuando el componente se desmonta
+    return () => {
+      if (studiesSectionRef.current) {
+        observer.unobserve(studiesSectionRef.current);
+      }
+    };
+  }, []);
+
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -133,6 +173,8 @@ export function App() {
 
   const marginLeft = scrollPosition === studiesSectionRef.current?.offsetTop ? '20rem' : '0';
 
+  const valueWidthMount = isMobile ? 300 : 500;
+
 
   return (
     <div className='App'>
@@ -149,14 +191,14 @@ export function App() {
           <h3> <span className='blue'> Desarrollador Web Jr</span> | <span className='green'>Analista BI </span> y estudiante de Lic. Sistemas</h3>
         </div>
       </section>
-       <section id='estudios-section' ref={studiesSectionRef} >
+      <section id='estudios-section' ref={studiesSectionRef} >
         <h1>Estudios <span className='dark-blue'>_</span></h1>
         <div className='barContainer-align'>
-          <CustomizedProgressBars title="Universitario" valueMount={animatedValueMount1} />
-          <CustomizedProgressBars title="Secundario" valueMount={animatedValueMount2} />
+          <CustomizedProgressBars title="Universitario" valueMount={animatedValueMount1} valueWidth={valueWidthMount} />
+          <CustomizedProgressBars title="Secundario" valueMount={animatedValueMount2} valueWidth={valueWidthMount} />
         </div>
       </section>
-      {/*<section id='aptitudes-section'>
+      <section id='aptitudes-section'>
         <h1>Aptitudes <span className='dark-blue'>_</span></h1>
         <div ref={aptitudesRef}></div>
         <Aptitudes isVisible={isVisible} />
@@ -194,6 +236,7 @@ export function App() {
           <ProyectCard nombre="MyBolucompras" bio={["Desktop app", "Gestor de compras", "Colorida"]} tecnologias={[Electron, Html, Css, Javascript]} fondo={Mybolucompras} web='' />
         </div>
       </section>
+      
       <section id='contacto-section'>
         <div className='contacto-container'>
           <h1 className='expContTitulo'>Contacto <span className='dark-blue'>_</span></h1>
@@ -210,7 +253,7 @@ export function App() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section> 
       <Footer tecnologias={[ReactLog, Html, Css, Javascript]} />
 
       <SocialLinks />

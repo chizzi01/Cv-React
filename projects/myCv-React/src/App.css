@@ -6,7 +6,7 @@
   scroll-behavior: smooth;
 }
 
-.navTexts a{
+.navTexts a {
   color: #ffffff;
   text-decoration: none;
   font-size: 0.8rem;
@@ -21,6 +21,23 @@
   transition: 0.5s;
   text-decoration: none;
   animation: flash 1.5s linear infinite alternate;
+}
+
+.navTextsHamburguer {
+  display: flex;
+  flex-direction: column;
+  line-height: 3rem;
+  font-size: 1.5rem;
+}
+
+.navTextsHamburguer a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+  text-shadow: 0px 0px 32.1px rgba(255, 255, 255, 0.34);
+  transition: 0.5s;
+  padding: 1rem;
 }
 
 .social-links img {
@@ -265,7 +282,7 @@
 
 .experiencia-align {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-evenly;
 
@@ -299,6 +316,8 @@
 
 .textExp-align li {
   list-style: none;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
 }
 
 .textExp-align li::before {
@@ -458,7 +477,7 @@
 
 .imgProyect-side {
   width: 50%;
-  height: 100%;
+  /* height: 100%; */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -517,7 +536,7 @@
   margin-top: 2rem;
 }
 
-.btnProyect-container a{
+.btnProyect-container a {
   text-decoration: none;
   color: #ffffff;
   font-size: 1rem;
@@ -559,9 +578,9 @@
   border: 2px solid #FFF;
 }
 
-.contacto-align{
+.contacto-align {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
@@ -573,7 +592,7 @@
   margin: 0%;
 }
 
-.contactText-container{
+.contactText-container {
   justify-content: space-between;
   margin-top: 2rem;
 
@@ -587,7 +606,7 @@
   width: 100%;
 }
 
-.btnEnviar a{
+.btnEnviar a {
   text-decoration: none;
   color: #ffffff;
   font-size: 1rem;
@@ -777,100 +796,341 @@
 /* Estilos para pantallas de tamaño pequeño (por ejemplo, teléfonos móviles) */
 @media (max-width: 768px) {
 
-.social-links {
-  bottom: 10px;
-  right: 10px;
-}
+  .social-links {
+    bottom: 10px;
+    right: 10px;
+  }
 
-.items-align img{
-  width: 30px;
-  height: 30px;
-  margin: 0%;
-}
+  .items-align img {
+    width: 30px;
+    height: 30px;
+    margin: 0%;
+  }
 
-#avatar-section {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-around;
-  height: 100vh;
-}
+  #avatar-section {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+    height: 100vh;
+  }
 
-.avatar-cover{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 15rem;
-  height: 15rem;
-  left: 0rem;
-}
+  .avatar-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15rem;
+    height: 15rem;
+    left: 0rem;
+  }
 
-.info-align {
-  width: 80%;
-}
+  .info-align {
+    width: 80%;
+  }
 
-#avatar-section h1 {
-  font-size: 2.5em;
-  left: 1rem;
-}
+  #avatar-section h1 {
+    font-size: 2.5em;
+    left: 1rem;
+    top: 1.5rem;
+  }
 
-#avatar-section h3 {
-  font-size: 1rem;
-  left: 1rem;
-}
+  #avatar-section h3 {
+    font-size: 1rem;
+    left: 1rem;
+    top: 2rem;
+    line-height: 1.5rem;
+  }
 
-.footer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 
-.footer-container h2 {
-  font-size: 1rem;
-}
+  .footer-container h2 {
+    font-size: 1rem;
+  }
 
-.footer-container p {
-  font-size: 0.7rem;
-}
+  .footer-container p {
+    font-size: 0.7rem;
+  }
 
-.tecnologiesFooter-container img {
-  width: 30px;
-  height: 30px;
-  margin: 0.5rem;
-}
+  .tecnologiesFooter-container img {
+    width: 30px;
+    height: 30px;
+    margin: 0.5rem;
+  }
 
 
-#estudios-section h1 {
-  font-size: 2rem;
-  margin-left: 1rem;
-}
+  #estudios-section h1 {
+    font-size: 2rem;
+    margin-left: 2rem;
+  }
 
-.barContainer-align {
-  display: flex;
-  flex-direction: column;
-  margin-left: 0rem;
+  .barContainer-align {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0rem;
+    height: 50%;
+  }
 
-}
+  .bar-align {
+    margin-left: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0%;
+  }
 
-.bar-align {
-  margin-left: 1rem;
-}
+  .bar-align p {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
 
-.bar-align p {
-  font-size: 1.5rem;
-  margin-right: 0.5rem;
+  }
 
-}
+  .progressBar {
+    max-width: 300px;
+  }
 
-.progressBar{
-  width: 100px;
+  .title-align {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin: 1rem;
+  }
+
+  .percent-align p {
+    font-size: 1rem;
+    margin-left: 0rem;
+  }
+
+
+  #aptitudes-section h1 {
+    font-size: 2rem;
+    margin-left: 1rem;
+  }
+
+  .aptitudes-container {
+    width: 100%;
+  }
+
+  .aptitudes-container li {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+
+  }
+
+  .aptitudes-container ul {
+    list-style: none;
+    color: #ffffff;
+  }
+
+  .line1-align {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0%;
+  }
+
+  .line2-align {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0%;
+
+  }
+
+
+  .line3-align {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0%;
+  }
+
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-80%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(80%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .cardExp {
+    margin: 0%;
+    width: 100px;
+    height: 100px;
+  }
+
+  #experiencia-section {
+    height: max-content;
+
+  }
+
+  .exp-container {
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 1rem;
+  }
+
+  .experiencia-align {
+    height: 100vh;
+    justify-content: space-between;
+  }
+
+  .textExp-align {
+    margin-left: 0rem;
+    margin-top: 0rem;
+    width: 200px;
+  }
+
+  .textExp-align .titulo {
+    font-size: 1.5rem;
+  }
+
+  .textExp-align .tiempo {
+    font-size: 1rem;
+  }
+
+  .textExp-align ul {
+    margin-top: 0rem;
+    line-height: 1.2rem;
+    font-size: 0.8rem;
+  }
+
+  .expContTitulo {
+    font-size: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .devtools-card {
+    width: 20rem;
+    height: 25rem;
+    margin-left: 0rem;
+    margin-top: 2rem;
+  }
+
+  .devtools-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .devtools-img img {
+    width: 50px;
+    margin: 0.5rem;
+  }
+
+  #devtools-section .expContTitulo {
+    font-size: 2rem;
+    margin-top: 3rem;
+  }
+
+  .devtools-card h1 {
+    font-size: 1.5rem;
+    margin-top: 0rem;
+  }
+
+  .proyectos-container {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cardProyect-container {
+    width: 90%;
+    height: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .textProyect-side {
+    padding: 1rem;
+  }
+
+  .textProyect-side h3 {
+    font-size: 1rem;
+  }
+
+
+  .imgProyect-side {
+    width: 100%;
+  }
+
+  .tecProyect-container {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .btnProyect-container {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .btnProyect-container a {
+    width: 50%;
+    font-size: 0.8rem;
+
+  }
+
+  #contacto-section {
+    height: max-content;
+
+  }
+
+  .contacto-container {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+  }
+
+  .contacto-align {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .footer-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    line-height: 1rem;
   
-  
-}
+  }
 
+  .footer-text h2 {
+    font-size: 0.8rem;
+  }
 
+  .tecnologiesFooter-container {
+    margin-top: 1rem;
 
+  }
 
 }

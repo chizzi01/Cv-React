@@ -3,9 +3,9 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 
-const BorderLinearProgress = styled(LinearProgress)(({ value }) => ({
+const BorderLinearProgress = styled(LinearProgress)(({ value, valuewidthprog }) => ({
     height: 30,
-    width: 500,
+    width: valuewidthprog,
     borderRadius: 5,
     boxShadow: '0 0 32.1 0 #6C8DFF',
     [`&.${linearProgressClasses.colorPrimary}`]: {
@@ -20,7 +20,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ value }) => ({
 
 
 
-export function CustomizedProgressBars({ title, valueMount }) {
+export function CustomizedProgressBars({ title, valueMount, valueWidth }) {
     return (
 
         <Box sx={{ flexGrow: 1, margin: 0, padding:0}}>
@@ -29,7 +29,7 @@ export function CustomizedProgressBars({ title, valueMount }) {
                 <p>{title}</p>
                 </div>
                 <div className='progressBar'>
-                    <BorderLinearProgress variant="determinate" value={valueMount} />
+                    <BorderLinearProgress variant="determinate" value={valueMount} valuewidthprog={valueWidth} />
                 </div>
                 <div className='percent-align'>
                 <p>{valueMount}%</p>

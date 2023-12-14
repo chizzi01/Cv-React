@@ -2,7 +2,7 @@ import React from "react";
 
 export function DevToolsCard({ titulo, listaImgs }) {
 
-
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
     return (
         <div className='devtools-card'>
@@ -13,7 +13,7 @@ export function DevToolsCard({ titulo, listaImgs }) {
                         src={item}
                         alt={item}
                         className={item.includes('react.svg') ? 'rotate' : ''}
-                        style={item.includes('sap.png' ) || item.includes('nodejs.png') ? { height: '70px', } : {}} />
+                        style={item.includes('sap.png' ) || item.includes('nodejs.png') ? (isMobile ? {width: '70px'} : { height: '70px', }) : {}} />
                 ))}
             </div>
         </div>

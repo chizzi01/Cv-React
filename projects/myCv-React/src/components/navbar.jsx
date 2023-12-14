@@ -20,6 +20,12 @@ import { Link } from '@mui/material';
 const drawerWidth = 240;
 // const navItems = ['<Experiencia />', '<DevTools />', '<Portfolio />', '<Contacto />', <ControlledSwitches />];
 
+const IniText = '<Inicio />'
+const ExpText = '<Experiencia />'
+const DevText = '<DevTools />'
+const PortText = '<Portfolio />'
+const ContText = '<Contacto />'
+
 
 export function DrawerAppBar(props) {
   const { window } = props;
@@ -30,30 +36,25 @@ export function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', background: 'linear-gradient(90deg, #0F0F0F 0.02%, rgba(0, 71, 255, 0.51) 99.99%)' }}>
+      <Typography variant="h6" sx={{ my: 2, color: '#FFF' }}>
         ACM
       </Typography>
-      <Divider />
-      <List>
-        <a href="#experiencia-section">Experiencia</a>
-        <a href="#devtools-section">DevTools</a>
-        <a href="#portfolio-section">Portfolio</a>
-        <a href="#contacto-section">Contacto</a>
-
-
-
+      <Divider  />
+      <List className="navTextsHamburguer">
+        <a href="#avatar-section">{IniText}</a>
+        <a href="#experiencia-section">{ExpText}</a>
+        <a href="#devtools-section">{DevText}</a>
+        <a href="#portfolio-section">{PortText}</a>
+        <a href="#contacto-section">{ContText}</a>
       </List>
+      <Button><ControlledSwitches /></Button>
     </Box>
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
-  const IniText = '<Inicio />'
-  const ExpText = '<Experiencia />'
-  const DevText = '<DevTools />'
-  const PortText = '<Portfolio />'
-  const ContText = '<Contacto />'
+
 
 
 
@@ -105,6 +106,12 @@ export function DrawerAppBar(props) {
           sx={{
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .css-4t3x6l-MuiPaper-root-MuiDrawer-paper': {
+              backgroundColor: 'transparent',
+            },
+            '&.css-lt5n7y ': {
+              height: '100%',
+            },
           }}
         >
           {drawer}
