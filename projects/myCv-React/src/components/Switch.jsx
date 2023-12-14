@@ -27,8 +27,8 @@ export function ControlledSwitches() {
                             '&.Mui-checked': {
                                 color: '#fff',
                                 '& + .MuiSwitch-track': {
-
                                     backgroundColor: '#FFF', // Cambia el color aquí
+                                    color: '#FFF', // Cambia el color aquí
                                     borderColor: '#FFF', // Cambia el color aquí
                                 },
                             },
@@ -37,6 +37,7 @@ export function ControlledSwitches() {
                         },
                         '& .MuiSwitch-track': {
                             backgroundColor: '#d9d9d9',
+                            color: '#FFF',
                         },
                     },
                 },
@@ -47,13 +48,13 @@ export function ControlledSwitches() {
     return (
         <ThemeProvider theme={theme}>
             <div className='switch'>
-            <p style={{ textShadow: checked ? 'none' : '0 0 5px #FFF' }}>ESP</p>
+            <p style={{ textShadow: checked ? 'none' : '0 0 5px #FFF' , color:'#FFF'}}>ESP</p>
                 <Switch
                     checked={checked}
                     onChange={handleChange}
                     inputProps={{ 'aria-label': 'controlled' }}
                 />
-                <p style={{ textShadow: checked ? '0 0 5px #FFF' : 'none' }}>ENG</p>
+                <p style={{ textShadow: checked ? '0 0 5px #FFF' : 'none' , color:'#FFF'}}>ENG</p>
             </div>
         </ThemeProvider>
     );

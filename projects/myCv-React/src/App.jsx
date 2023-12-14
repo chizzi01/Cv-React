@@ -12,7 +12,6 @@ import { ProyectCard } from './components/Project'
 import { Textfield } from './components/Textfield'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Footer } from './components/Footer'
-import { ControlledSwitches } from './components/Switch'
 import SendIcon from '@mui/icons-material/Send'
 import Danone from './assets/danone.png'
 import Ejercito from './assets/ejercito.png'
@@ -71,37 +70,43 @@ export function App() {
   const finalValueMount1 = 79;
   const finalValueMount2 = 100;
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (studiesSectionRef.current) {
-        const studiesSectionTop = studiesSectionRef.current.offsetTop;
-        setScrollPosition(Math.min(window.scrollY, studiesSectionTop));
-      }
-    };
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (scrollPosition === studiesSectionRef.current?.offsetTop) {
-      const interval1 = setInterval(() => {
-        setAnimatedValueMount1((prev) => Math.min(prev + 1, finalValueMount1));
-      }, 10);
-
-      const interval2 = setInterval(() => {
-        setAnimatedValueMount2((prev) => Math.min(prev + 1, finalValueMount2));
-      }, 10);
-
-      return () => {
-        clearInterval(interval1);
-        clearInterval(interval2);
+  if (!isMobile) {
+    useEffect(() => {
+      const handleScroll = () => {
+        if (studiesSectionRef.current) {
+          const studiesSectionTop = studiesSectionRef.current.offsetTop;
+          setScrollPosition(Math.min(window.scrollY, studiesSectionTop));
+        }
       };
-    }
-  }, [scrollPosition]);
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+  
+    useEffect(() => {
+      if (scrollPosition === studiesSectionRef.current?.offsetTop) {
+        const interval1 = setInterval(() => {
+          setAnimatedValueMount1((prev) => Math.min(prev + 1, finalValueMount1));
+        }, 10);
+  
+        const interval2 = setInterval(() => {
+          setAnimatedValueMount2((prev) => Math.min(prev + 1, finalValueMount2));
+        }, 10);
+  
+        return () => {
+          clearInterval(interval1);
+          clearInterval(interval2);
+        };
+      }
+    }, [scrollPosition]);
+  }
+
+  
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -128,6 +133,7 @@ export function App() {
 
   const marginLeft = scrollPosition === studiesSectionRef.current?.offsetTop ? '20rem' : '0';
 
+
   return (
     <div className='App'>
       <style>
@@ -143,14 +149,14 @@ export function App() {
           <h3> <span className='blue'> Desarrollador Web Jr</span> | <span className='green'>Analista BI </span> y estudiante de Lic. Sistemas</h3>
         </div>
       </section>
-      <section id='estudios-section' ref={studiesSectionRef} >
+       <section id='estudios-section' ref={studiesSectionRef} >
         <h1>Estudios <span className='dark-blue'>_</span></h1>
         <div className='barContainer-align'>
           <CustomizedProgressBars title="Universitario" valueMount={animatedValueMount1} />
           <CustomizedProgressBars title="Secundario" valueMount={animatedValueMount2} />
         </div>
       </section>
-      <section id='aptitudes-section'>
+      {/*<section id='aptitudes-section'>
         <h1>Aptitudes <span className='dark-blue'>_</span></h1>
         <div ref={aptitudesRef}></div>
         <Aptitudes isVisible={isVisible} />
@@ -204,7 +210,7 @@ export function App() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <Footer tecnologias={[ReactLog, Html, Css, Javascript]} />
 
       <SocialLinks />
