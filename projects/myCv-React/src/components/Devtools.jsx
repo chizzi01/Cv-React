@@ -12,11 +12,14 @@ export function DevToolsCard({ titulo, listaImgs }) {
                     <img key={index}
                         src={item}
                         alt={item}
-                        className={item.includes('react.svg') ? 'rotate' : ''}
-                        style={item.includes('sap.png' ) || item.includes('nodejs.png') ? (isMobile ? {width: '70px'} : { height: '70px', }) : {}} />
+                        className={item.includes('react') ? 'rotate' : ''}
+                        style={item.includes('sap' ) || item.includes('nodejs') ? (isMobile ? {width: '70px'} : { height: '70px', }) : {}}
+                         />
                 ))}
             </div>
         </div>
+
     );
+
 }
 

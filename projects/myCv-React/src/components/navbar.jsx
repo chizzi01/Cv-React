@@ -110,11 +110,10 @@ export function DrawerAppBar(props) {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-            '& .css-4t3x6l-MuiPaper-root-MuiDrawer-paper': {
+            '& .MuiDrawer-paper': { 
+              boxSizing: 'border-box', 
+              width: drawerWidth,
               backgroundColor: 'transparent',
-            },
-            '&.css-lt5n7y ': {
               height: '100%',
             },
           }}

@@ -8,10 +8,10 @@ export function Footer({ tecnologias }) {
                     <img key={index}
                         src={item}
                         alt={item}
-                        className={item.includes('react.svg') ? 'rotate' : ''}
+                        className={item.includes('react') ? 'rotate' : ''}
                         style={{
                             width: '40px',
-                            height: item.includes('sap.png') || item.includes('nodejs.png') ? '70px' : ''
+                            height: item.includes('sap') || item.includes('nodejs') ? '70px' : ''
                         }} />
                 ))}
 
