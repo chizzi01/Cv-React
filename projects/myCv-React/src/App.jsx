@@ -65,17 +65,17 @@ export function App() {
   const [animatedValueMount2, setAnimatedValueMount2] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-useEffect(() => {
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
 
-  window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize);
 
-  return () => {
-    window.removeEventListener('resize', handleResize);
-  };
-}, []);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   const aptitudesRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const studiesSectionRef = useRef(null);
@@ -84,13 +84,23 @@ useEffect(() => {
   const finalValueMount2 = 100;
 
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const isNotebook = window.matchMedia("(max-width: 1366px)").matches;
 
   if (!isMobile) {
     useEffect(() => {
       const handleScroll = () => {
         if (studiesSectionRef.current) {
           const studiesSectionTop = studiesSectionRef.current.offsetTop;
-          setScrollPosition(Math.min(window.scrollY, studiesSectionTop));
+          const isNotebook = window.matchMedia("(max-width: 1366px)").matches;
+
+          if (isNotebook) {
+            // Adjust the value passed to setScrollPosition to be smaller for notebooks
+            const adjustedScrollPosition = Math.min(window.scrollY, studiesSectionTop);
+            setScrollPosition(adjustedScrollPosition);
+          } else {
+            setScrollPosition(Math.min(window.scrollY, studiesSectionTop));
+
+          }
         }
       };
 
@@ -101,7 +111,7 @@ useEffect(() => {
       };
     }, []);
   }
-  
+
 
 
   useEffect(() => {
@@ -112,11 +122,11 @@ useEffect(() => {
           const interval1 = setInterval(() => {
             setAnimatedValueMount1((prev) => Math.min(prev + 1, finalValueMount1));
           }, 10);
-  
+
           const interval2 = setInterval(() => {
             setAnimatedValueMount2((prev) => Math.min(prev + 1, finalValueMount2));
           }, 10);
-  
+
           return () => {
             clearInterval(interval1);
             clearInterval(interval2);
@@ -129,12 +139,12 @@ useEffect(() => {
         threshold: 0.1,
       }
     );
-  
+
     // Observa el elemento de la sección de estudios
     if (studiesSectionRef.current) {
       observer.observe(studiesSectionRef.current);
     }
-  
+
     // Limpia el observer cuando el componente se desmonta
     return () => {
       if (studiesSectionRef.current) {
@@ -168,7 +178,12 @@ useEffect(() => {
     };
   }, []);
 
-  const marginLeft = scrollPosition === studiesSectionRef.current?.offsetTop ? '20rem' : '0';
+  const marginLeft = scrollPosition === studiesSectionRef.current?.offsetTop
+    ? '2px' : '0';
+
+
+
+
 
   const valueWidthMount = isMobile ? 300 : 500;
 
@@ -180,7 +195,7 @@ useEffect(() => {
       </style>
       <DrawerAppBar />
       <section id='avatar-section' >
-        <div style={{ transform: `translate(${scrollPosition}px, ${scrollPosition}px)`, marginLeft }}>
+        <div style={{ transform: `translate(${scrollPosition/1.5}px, ${scrollPosition*1.2}px)`, marginLeft }}>
           <Avatar />
         </div>
         <div className='info-align'>
@@ -225,15 +240,15 @@ useEffect(() => {
       <section id='proyectos-section'>
         <h1 className='expContTitulo'>Algunos de mis proyectos <span className='dark-blue'>_</span></h1>
         <div className='proyectos-container'>
-          <ProyectCard nombre="Mizzio Coding" bio={["Landing page", "Responsive", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Mizzio} web='https://mizzio.com.ar/' />
-          <ProyectCard nombre="GC Agrimensura" bio={["Landing page", "Divertida", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Agrimensura} web='https://gcagrimensura.ar/' />
-          <ProyectCard nombre="Siro Transporte" bio={["Landing page", "Responsive", "Colorida"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} web='http://www.transportesiro.com.ar/' />
-          <ProyectCard nombre="Don Pepe" bio={["Landing page", "Responsive", "Elegante y joven"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={DonPepe} web='https://chizzi01.github.io/DonPepe-Bar/' />
-          <ProyectCard nombre="MyPasswords" bio={["Mobile app", "Gestor de contraseñas", "Sencilla"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
-          <ProyectCard nombre="MyBolucompras" bio={["Desktop app", "Gestor de compras", "Colorida"]} tecnologias={[Electron, Html, Css, Javascript]} fondo={Mybolucompras} web='' />
+          <ProyectCard isWeb={true} nombre="Mizzio Coding" bio={["Landing page", "Responsive", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Mizzio} web='https://mizzio.com.ar/' />
+          <ProyectCard isWeb={true} nombre="GC Agrimensura" bio={["Landing page", "Divertida", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Agrimensura} web='https://gcagrimensura.ar/' />
+          <ProyectCard isWeb={true} nombre="Siro Transporte" bio={["Landing page", "Responsive", "Colorida"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} web='http://www.transportesiro.com.ar/' />
+          <ProyectCard isWeb={true} nombre="Don Pepe" bio={["Landing page", "Responsive", "Elegante y joven"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={DonPepe} web='https://chizzi01.github.io/DonPepe-Bar/' />
+          <ProyectCard isWeb={false} nombre="MyPasswords" bio={["Mobile app", "Gestor de contraseñas", "Sencilla"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
+          <ProyectCard isWeb={false} nombre="MyBolucompras" bio={["Desktop app", "Gestor de compras", "Colorida"]} tecnologias={[Electron, Html, Css, Javascript]} fondo={Mybolucompras} web='' />
         </div>
       </section>
-      
+
       <section id='contacto-section'>
         <div className='contacto-container'>
           <h1 className='expContTitulo'>Contacto <span className='dark-blue'>_</span></h1>
@@ -250,7 +265,7 @@ useEffect(() => {
             </div>
           </div>
         </div>
-      </section> 
+      </section>
       <Footer tecnologias={[ReactLog, Html, Css, Javascript]} />
 
       <SocialLinks />

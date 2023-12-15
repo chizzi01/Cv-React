@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export function ProyectCard({ fondo, nombre, bio, tecnologias, web }) {
+export function ProyectCard({ fondo, nombre, bio, tecnologias, web, isWeb }) {
   return (
     <div className='cardProyect-container'>
       <div className='imgProyect-side' style={{backgroundImage: `url(${fondo})`}}></div>
@@ -19,7 +19,9 @@ export function ProyectCard({ fondo, nombre, bio, tecnologias, web }) {
               }} />
           ))}
         </div>
-        <div className='btnProyect-container'>
+        <div className='btnProyect-container' style={{
+          visibility: isWeb ? 'visible' : 'hidden',
+        }}>
           <a href={web} target='_blank'>Ver web</a>
         </div>
       </div>

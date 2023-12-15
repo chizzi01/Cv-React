@@ -75,7 +75,7 @@
 
 
 .avatar-cover {
-  width: 25rem; 
+  width: 25rem;
   height: 25rem;
   border-radius: 50%;
   border: 3px solid #076ECD;
@@ -652,7 +652,7 @@
 
 @keyframes slideInFromLeft {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-80%);
   }
 
   100% {
@@ -662,7 +662,7 @@
 
 @keyframes slideInFromRight {
   0% {
-    transform: translateX(100%);
+    transform: translateX(80%);
   }
 
   100% {
@@ -783,7 +783,7 @@
 }
 
 /* Estilos para pantallas de tamaño mediano (por ejemplo, notebooks) */
-@media (max-width: 1350px) {
+@media (max-width: 2000px) {
 
   .social-links {
     bottom: 10px;
@@ -819,15 +819,81 @@
   }
 
   #avatar-section h1 {
-    font-size: 4rem;
+    font-size: 5rem;
     top: 1.5rem;
-    width: 100%;
+    width: 80%;
   }
 
   #avatar-section h3 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     top: 2rem;
     line-height: 1.5rem;
+    width: 80%;
+  }
+
+  #estudios-section h1 {
+    font-size: 3rem;
+    margin-left: 4rem;
+  }
+
+  .barContainer-align{
+    margin-left: 4rem;
+  }
+
+  #experiencia-section {
+    height: 100%;
+
+  }
+
+  .exp-container {
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .experiencia-align{
+    height: 100vh;
+    width: 100%;
+    flex-flow: row;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .expContTitulo{
+    margin-left: 4rem;
+  }
+
+  .cardExp {
+    margin: 10px;
+    width: 200px;
+    height: 300px;
+  }
+
+  .textExp-align{
+    width: 300px;
+    margin: 30px;
+  }
+
+  .devtools-card {
+    width: 23rem;
+    height: 27rem;
+    margin-left: 4rem;
+    margin-top: 2rem;
+  }
+
+  .devtools-img img {
+    width: 70px;
+    margin: 0.5rem;
+  }
+
+  .contacto-container {
+    width: 80%;
+    height: 100%;
+    padding: 1rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
   }
 
   .footer-container {
@@ -848,7 +914,6 @@
 
   .tecnologiesFooter-container img {
     width: 30px;
-    height: 30px;
     margin: 0.5rem;
   }
 
@@ -1255,14 +1320,14 @@
     width: 100%;
   }
 
-  .footer-text{
+  .footer-text {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     line-height: 1rem;
-  
+
   }
 
   .footer-text h2 {
@@ -1276,7 +1341,7 @@
 
   .btnEnviar a {
     padding: 1rem;
-    
+
   }
 
 

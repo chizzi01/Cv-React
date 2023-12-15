@@ -27,12 +27,20 @@ const PortText = '<Portfolio />'
 const ContText = '<Contacto />'
 
 
+
+// Define el resto de los textos de la misma manera
+
+
 export function DrawerAppBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+  };
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'es' ? 'en' : 'es');
   };
 
   const drawer = (
@@ -48,7 +56,7 @@ export function DrawerAppBar(props) {
         <a href="#portfolio-section">{PortText}</a>
         <a href="#contacto-section">{ContText}</a>
       </List>
-      <Button><ControlledSwitches /></Button>
+      <Button><ControlledSwitches checked={checked} onSwitch={toggleLanguage} /></Button>
     </Box>
   );
 
@@ -89,7 +97,7 @@ export function DrawerAppBar(props) {
           <Button><a href="#devtools-section" >{DevText}</a></Button>
           <Button><a href="#proyectos-section" >{PortText}</a></Button>
           <Button><a href="#contacto-section" >{ContText}</a></Button>
-          <Button><ControlledSwitches /></Button>
+          <Button><ControlledSwitches onSwitch={toggleLanguage}/></Button>
 
           </Box>
         </Toolbar>
