@@ -7,15 +7,12 @@ import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { ControlledSwitches } from './Switch'
-import { Link } from '@mui/material';
+
 
 const drawerWidth = 240;
 // const navItems = ['<Experiencia />', '<DevTools />', '<Portfolio />', '<Contacto />', <ControlledSwitches />];
@@ -56,7 +53,7 @@ export function DrawerAppBar(props) {
         <a href="#portfolio-section">{PortText}</a>
         <a href="#contacto-section">{ContText}</a>
       </List>
-      <Button><ControlledSwitches checked={checked} onSwitch={toggleLanguage} /></Button>
+      <Button><ControlledSwitches onSwitch={toggleLanguage} /></Button>
     </Box>
   );
 
