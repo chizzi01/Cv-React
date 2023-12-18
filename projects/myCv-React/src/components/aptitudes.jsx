@@ -14,7 +14,7 @@ export function Aptitudes({ isVisible }) {
             </div>
             <div className='line2'>
                 <ul className='line2-align'>
-                    <li className={`animation3 ${animationClass}`}>Proactivo</li>
+                    <li className={`animation3  ${animationClass}`}>Proactivo</li>
                     <li className={`animation4 ${animationClass}`}>Responsable ✅</li>
                     <li className={`animation5 ${animationClass}`}>Comprometido</li>
                 </ul>
