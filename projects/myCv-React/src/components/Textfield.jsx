@@ -2,9 +2,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export function Textfield({indicador, tipo, valor}) {
+export function Textfield({indicador, tipo, name, forceUpdate}) {
     const [value, setValue] = useState('');
     const [error, setError] = useState(false);
     const theme = createTheme({
@@ -26,6 +26,13 @@ export function Textfield({indicador, tipo, valor}) {
         },
       },
     });
+    
+    useEffect(() => {
+      // Reset state values here
+      setValue('');
+      setError(false);
+    }, [forceUpdate]);
+    
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -57,6 +64,7 @@ export function Textfield({indicador, tipo, valor}) {
           type={tipo}
           required
           value={value}
+          name={name}
           onChange={handleChange}
           error={error}
           InputProps={{

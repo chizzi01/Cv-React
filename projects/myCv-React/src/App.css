@@ -6,6 +6,23 @@
   scroll-behavior: smooth;
 }
 
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+li {
+  transition: border-bottom 0.3s ease-in-out;
+  border-bottom: 2px solid transparent;
+}
+
+li.active {
+  border-bottom: 2px solid #076ECD;
+}
+
 .navTexts a {
   color: #ffffff;
   text-decoration: none;
@@ -606,7 +623,7 @@
   width: 100%;
 }
 
-.btnEnviar a {
+.btnEnviar button {
   text-decoration: none;
   color: #ffffff;
   font-size: 1rem;
@@ -783,7 +800,7 @@
 }
 
 /* Estilos para pantallas de tamaño mediano (por ejemplo, notebooks) */
-@media (max-width: 2000px) {
+@media (max-width: 1469px) {
 
   .social-links {
     bottom: 10px;
@@ -836,7 +853,7 @@
     margin-left: 4rem;
   }
 
-  .barContainer-align{
+  .barContainer-align {
     margin-left: 4rem;
   }
 
@@ -852,7 +869,7 @@
     margin-top: 20px;
   }
 
-  .experiencia-align{
+  .experiencia-align {
     height: 100vh;
     width: 100%;
     flex-flow: row;
@@ -860,7 +877,7 @@
     justify-content: space-evenly;
   }
 
-  .expContTitulo{
+  .expContTitulo {
     margin-left: 4rem;
   }
 
@@ -870,7 +887,7 @@
     height: 300px;
   }
 
-  .textExp-align{
+  .textExp-align {
     width: 300px;
     margin: 30px;
   }
@@ -952,7 +969,8 @@
   }
 
   .info-align {
-    width: 80%;
+    width: 100%;
+    align-items: center;
   }
 
   #avatar-section h1 {
@@ -990,7 +1008,148 @@
 
 }
 
+
+
+@media screen and (max-width: 1820px) {
+  #experiencia-section {
+    height: 80%;
+
+  }
+
+  .exp-container {
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .experiencia-align {
+    height: 100vh;
+    width: 100%;
+    flex-flow: row;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .expContTitulo {
+    margin-left: 4rem;
+  }
+
+  .cardExp {
+    margin: 10px;
+    width: 200px;
+    height: 300px;
+  }
+
+  .textExp-align {
+    width: 300px;
+    margin: 30px;
+  }
+
+}
+
+@media screen and (max-width: 1189px) {
+  #experiencia-section {
+    /* height: 80%; */
+    align-items: flex-start;
+  }
+
+  .exp-container {
+    justify-content: space-evenly;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+
+  .experiencia-align {
+    height: 100vh;
+    width: 100%;
+    flex-flow: row;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .expContTitulo {
+    margin-left: 3.5rem;
+  }
+
+  .cardExp {
+    margin: 10px;
+    width: 150px;
+    height: 250px;
+  }
+
+  .textExp-align {
+    width: 200px;
+    margin: 10px;
+  }
+
+  .textExp-align ul {
+    font-size: 0.8rem;
+    line-height: normal;
+  }
+
+}
+
+@media screen and (max-width: 1053px) {
+
+  .navTexts a {
+    padding: 5px;
+  }
+
+  .cardExp {
+    align-self: top;
+  }
+
+}
+
+@media screen and (max-width: 865px) {
+
+  .navTexts a {
+    font-size: 0.6rem;
+  }
+
+  .switch {
+    font-size: 0.6rem;
+  }
+
+  .experiencia-align {
+    flex-direction: column;
+  }
+
+  .barContainer-align {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0rem;
+    height: 50%;
+  }
+
+  .bar-align {
+    margin-left: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0%;
+  }
+
+  .bar-align p {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+
+  }
+
+  .devtools-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* .progressBar {
+    max-width: 300px;
+  } */
+
+}
+
 /* Estilos para pantallas de tamaño pequeño (por ejemplo, teléfonos móviles) */
+
 @media (max-width: 768px) {
 
   .social-links {
@@ -1011,6 +1170,7 @@
     align-content: center;
     justify-content: space-around;
     height: 100vh;
+    width: 100%;
   }
 
   .avatar-cover {
@@ -1023,7 +1183,8 @@
   }
 
   .info-align {
-    width: 80%;
+    width: 100%;
+    align-items: center;
   }
 
   #avatar-section h1 {
@@ -1179,7 +1340,8 @@
     display: flex;
     align-self: start;
   }
-/* 
+
+  /* 
   #experiencia-section {
     height: 100%;
   } */
@@ -1236,7 +1398,7 @@
   }
 
   .devtools-img img {
-    width: 50px;
+    /* width: 50px; */
     margin: 0.5rem;
   }
 
@@ -1248,6 +1410,12 @@
   .devtools-card h1 {
     font-size: 1.5rem;
     margin-top: 0rem;
+  }
+
+  #proyectos-section {
+    margin-top: 10rem;
+    width: 100%;
+    height: 100%;
   }
 
   .proyectos-container {

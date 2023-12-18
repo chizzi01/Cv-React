@@ -28,9 +28,10 @@ const ContText = '<Contacto />'
 // Define el resto de los textos de la misma manera
 
 
-export function DrawerAppBar(props) {
+export function DrawerAppBar(props, currentSection) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+ 
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -51,7 +52,7 @@ export function DrawerAppBar(props) {
         <a href="#experiencia-section">{ExpText}</a>
         <a href="#devtools-section">{DevText}</a>
         <a href="#portfolio-section">{PortText}</a>
-        <a href="#contacto-section">{ContText}</a>
+        <a style={{backgroundColor:"#6C8DFF"}} href="#contacto-section">{ContText}</a>
       </List>
       <Button><ControlledSwitches onSwitch={toggleLanguage} /></Button>
     </Box>
@@ -89,11 +90,11 @@ export function DrawerAppBar(props) {
             ACM
           </Typography>
           <Box className="navTexts" sx={{ display: { xs: 'none', sm: 'block' } }}>
-          <Button><a href="#avatar-section" >{IniText}</a></Button>
-          <Button><a href="#experiencia-section" >{ExpText}</a></Button>
-          <Button><a href="#devtools-section" >{DevText}</a></Button>
-          <Button><a href="#proyectos-section" >{PortText}</a></Button>
-          <Button><a href="#contacto-section" >{ContText}</a></Button>
+          <Button><a className={currentSection === 'avatar-section' ? 'active' : ''} href="#avatar-section" >{IniText}</a></Button>
+          <Button><a className={currentSection === 'experiencia-section' ? 'active' : ''} href="#experiencia-section" >{ExpText}</a></Button>
+          <Button><a className={currentSection === 'devtools-section' ? 'active' : ''} href="#devtools-section" >{DevText}</a></Button>
+          <Button><a className={currentSection === 'proyectos-section' ? 'active' : ''} href="#proyectos-section" >{PortText}</a></Button>
+          <Button><a className={currentSection === 'contacto-section' ? 'active' : ''} style={{backgroundColor:"rgb(108 141 255 / 47%)", borderRadius:"12px"}} href="#contacto-section" >{ContText}</a></Button>
           <Button><ControlledSwitches onSwitch={toggleLanguage}/></Button>
 
           </Box>

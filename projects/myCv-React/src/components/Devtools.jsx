@@ -13,8 +13,13 @@ export function DevToolsCard({ titulo, listaImgs }) {
                         src={item}
                         alt={item}
                         className={item.includes('react') ? 'rotate' : ''}
-                        style={item.includes('sap' ) || item.includes('nodejs') ? (isMobile ? {width: '70px'} : { height: '70px', }) : {}}
-                         />
+                        style={
+                            item.includes('sql') 
+                            ? {width: '110px'} 
+                            : (item.includes('sap') || item.includes('nodejs')) 
+                            ? (isMobile ? {width: '70px'} : {}) 
+                            : {}
+                        }                         />
                 ))}
             </div>
         </div>

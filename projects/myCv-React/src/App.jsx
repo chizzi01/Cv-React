@@ -13,6 +13,7 @@ import { Textfield } from './components/Textfield'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Footer } from './components/Footer'
 import SendIcon from '@mui/icons-material/Send'
+import CheckIcon from '@mui/icons-material/Check'
 import Danone from './assets/danone.png'
 import Ejercito from './assets/ejercito.png'
 import Javascript from '../src/assets/js.png'
@@ -25,7 +26,7 @@ import Sap from '../src/assets/sap.png'
 import PowerBi from '../src/assets/powerbi.png'
 import Electron from '../src/assets/electron.png'
 import Figma from '../src/assets/figma.png'
-import Sql from '../src/assets/sql.svg'
+import Sql from '../src/assets/sql.png'
 import Mui from '../src/assets/mui.png'
 import Agrimensura from '../src/assets/agrimensura.png'
 import Mizzio from '../src/assets/mizzio.png'
@@ -33,6 +34,8 @@ import Siro from '../src/assets/siro.png'
 import DonPepe from '../src/assets/donpepe.png'
 import Mypass from '../src/assets/mypass.png'
 import Mybolucompras from '../src/assets/mybolucompras.png'
+import Json from '../src/assets/json.png'
+import Mongo from '../src/assets/mongo.png'
 
 const theme = createTheme({
   components: {
@@ -60,10 +63,14 @@ const theme = createTheme({
 
 
 export function App() {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  // const [scrollPosition, setScrollPosition] = useState(0);
   const [animatedValueMount1, setAnimatedValueMount1] = useState(0);
   const [animatedValueMount2, setAnimatedValueMount2] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [key, setKey] = useState(0);
+  const [isSending, setIsSending] = useState(false);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -84,33 +91,33 @@ export function App() {
   const finalValueMount2 = 100;
 
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  const isNotebook = window.matchMedia("(max-width: 1366px)").matches;
+  // const isNotebook = window.matchMedia("(max-width: 1366px)").matches;
 
-  if (!isMobile) {
-    useEffect(() => {
-      const handleScroll = () => {
-        if (studiesSectionRef.current) {
-          const studiesSectionTop = studiesSectionRef.current.offsetTop;
-          const isNotebook = window.matchMedia("(max-width: 1366px)").matches;
+  // if (!isMobile) {
+  //   useEffect(() => {
+  //     const handleScroll = () => {
+  //       if (studiesSectionRef.current) {
+  //         const studiesSectionTop = studiesSectionRef.current.offsetTop;
+  //         const isNotebook = window.matchMedia("(min-width: 1366px)").matches;
 
-          if (isNotebook) {
-            // Adjust the value passed to setScrollPosition to be smaller for notebooks
-            const adjustedScrollPosition = Math.min(window.scrollY, studiesSectionTop);
-            setScrollPosition(adjustedScrollPosition);
-          } else {
-            setScrollPosition(Math.min(window.scrollY, studiesSectionTop));
+  //         if (isNotebook) {
+  //           // Adjust the value passed to setScrollPosition to be smaller for notebooks
+  //           const adjustedScrollPosition = Math.min(window.scrollY, studiesSectionTop);
+  //           setScrollPosition(adjustedScrollPosition);
+  //         } else {
+  //           setScrollPosition(Math.min(window.scrollY, studiesSectionTop));
 
-          }
-        }
-      };
+  //         }
+  //       }
+  //     };
 
-      window.addEventListener('scroll', handleScroll);
+  //     window.addEventListener('scroll', handleScroll);
 
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }, []);
-  }
+  //     return () => {
+  //       window.removeEventListener('scroll', handleScroll);
+  //     };
+  //   }, []);
+  // }
 
 
 
@@ -178,8 +185,8 @@ export function App() {
     };
   }, []);
 
-  const marginLeft = scrollPosition === studiesSectionRef.current?.offsetTop
-    ? '2px' : '0';
+  // const marginLeft = scrollPosition === studiesSectionRef.current?.offsetTop
+  //   ? '2px' : '0';
 
 
 
@@ -195,7 +202,9 @@ export function App() {
       </style>
       <DrawerAppBar />
       <section id='avatar-section' >
-        <div style={{ transform: `translate(${scrollPosition/1.5}px, ${scrollPosition*1.2}px)`, marginLeft }}>
+        <div
+        // style={{ transform: `translate(${scrollPosition/1.5}px, ${scrollPosition*1.2}px)`, marginLeft }}
+        >
           <Avatar />
         </div>
         <div className='info-align'>
@@ -231,7 +240,7 @@ export function App() {
         <h1 className='expContTitulo'>Herramientas de desarrollo <span className='dark-blue'>_</span></h1>
         <div className='devtools-container'>
           <DevToolsCard titulo="Front-End" listaImgs={[ReactLog, Html, Css, Javascript, Figma, Capacitor, Electron, Mui]} />
-          <DevToolsCard titulo="Back-End" listaImgs={[Nodejs, Sql]} />
+          <DevToolsCard titulo="Back-End" listaImgs={[Nodejs, Sql, Json, Mongo]} />
           <DevToolsCard titulo="Business Intelligence" listaImgs={[PowerBi, Sap]} />
 
         </div>
@@ -244,26 +253,53 @@ export function App() {
           <ProyectCard isWeb={true} nombre="GC Agrimensura" bio={["Landing page", "Divertida", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Agrimensura} web='https://gcagrimensura.ar/' />
           <ProyectCard isWeb={true} nombre="Siro Transporte" bio={["Landing page", "Responsive", "Colorida"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} web='http://www.transportesiro.com.ar/' />
           <ProyectCard isWeb={true} nombre="Don Pepe" bio={["Landing page", "Responsive", "Elegante y joven"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={DonPepe} web='https://chizzi01.github.io/DonPepe-Bar/' />
-          <ProyectCard isWeb={false} nombre="MyPasswords" bio={["Mobile app", "Gestor de contraseñas", "Sencilla"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
-          <ProyectCard isWeb={false} nombre="MyBolucompras" bio={["Desktop app", "Gestor de compras", "Colorida"]} tecnologias={[Electron, Html, Css, Javascript]} fondo={Mybolucompras} web='' />
+          <ProyectCard isWeb={false} nombre="MyPasswords" bio={["Mobile app", "Gestor de contraseñas", "Sencilla"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript, Json]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
+          <ProyectCard isWeb={false} nombre="MyBolucompras" bio={["Desktop app", "Gestor de compras", "Colorida"]} tecnologias={[Electron, Html, Css, Javascript, Json]} fondo={Mybolucompras} web='' />
         </div>
       </section>
 
       <section id='contacto-section'>
-        <div className='contacto-container'>
+        <div className='contacto-container' style={isSubmitted ? { backgroundColor: '#3456ff' } : {}}>
           <h1 className='expContTitulo'>Contacto <span className='dark-blue'>_</span></h1>
-          <div className='contacto-align'>
-            <div className='contactText-container'>
-              <ThemeProvider theme={theme}>
-                <Textfield indicador={'Nombre'} tipo={'text'} />
-                <Textfield indicador={'Mail'} tipo={'email'} />
-                <Textfield indicador={'Asunto'} tipo={'textfield'} />
-              </ThemeProvider>
+          <form action="https://formsubmit.co/aguschizzini@gmail.com" method="POST" onSubmit={async (e) => {
+            e.preventDefault();
+            setIsSending(true);
+            const formData = new FormData(e.target);
+            const response = await fetch(e.target.action, {
+              method: 'POST',
+              body: formData,
+              headers: {
+                'Accept': 'application/json'
+              }
+            });
+            if (response.ok) {
+              setIsSubmitted(true);
+              e.target.reset();
+              // Change key to force TextField components to reload
+              setKey(prevKey => prevKey + 1);
+            } else {
+              // There was an error submitting the form
+              // You can display an error message here
+            }
+            setIsSending(false);
+          }}>
+            <input type="hidden" name="_next" value="" />
+            <input type="hidden" name="_subject" value="Nuevo contacto!" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <div className='contacto-align'>
+              <div className='contactText-container'>
+                <ThemeProvider theme={theme}>
+                  <Textfield forceUpdate={key} indicador={'Nombre'} tipo={'text'} name={"Nombre"} />
+                  <Textfield forceUpdate={key} indicador={'Mail'} tipo={'email'} name={"Mail"} />
+                  <Textfield forceUpdate={key} indicador={'Asunto'} tipo={'textfield'} name={"Asunto"} />
+                </ThemeProvider>
+              </div>
+              <div className='btnEnviar'>
+              {isSending ? <button type='submit' disabled>Enviando... </button> : isSubmitted ? <CheckIcon style={{width:'200px'}} /> : <button type='submit'>Enviar <SendIcon /> </button>}
+              </div>
             </div>
-            <div className='btnEnviar'>
-              <a href='mailto:aguschizzini@gmail.com'>Enviar <SendIcon /></a>
-            </div>
-          </div>
+          </form>
         </div>
       </section>
       <Footer tecnologias={[ReactLog, Html, Css, Javascript]} />
