@@ -83,43 +83,17 @@ export function App() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
   const aptitudesRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [expVisible, setExpVisible] = useState(false);
   const studiesSectionRef = useRef(null);
+  const expRef = useRef(null);
 
   const finalValueMount1 = 79;
   const finalValueMount2 = 100;
 
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  // const isNotebook = window.matchMedia("(max-width: 1366px)").matches;
-
-  // if (!isMobile) {
-  //   useEffect(() => {
-  //     const handleScroll = () => {
-  //       if (studiesSectionRef.current) {
-  //         const studiesSectionTop = studiesSectionRef.current.offsetTop;
-  //         const isNotebook = window.matchMedia("(min-width: 1366px)").matches;
-
-  //         if (isNotebook) {
-  //           // Adjust the value passed to setScrollPosition to be smaller for notebooks
-  //           const adjustedScrollPosition = Math.min(window.scrollY, studiesSectionTop);
-  //           setScrollPosition(adjustedScrollPosition);
-  //         } else {
-  //           setScrollPosition(Math.min(window.scrollY, studiesSectionTop));
-
-  //         }
-  //       }
-  //     };
-
-  //     window.addEventListener('scroll', handleScroll);
-
-  //     return () => {
-  //       window.removeEventListener('scroll', handleScroll);
-  //     };
-  //   }, []);
-  // }
-
-
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -185,8 +159,28 @@ export function App() {
     };
   }, []);
 
-  // const marginLeft = scrollPosition === studiesSectionRef.current?.offsetTop
-  //   ? '2px' : '0';
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setExpVisible(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      }
+    );
+
+    if (expRef.current) {
+      observer.observe(expRef.current);
+    }
+
+    return () => {
+      if (expRef.current) {
+        observer.unobserve(expRef.current);
+      }
+    };
+  }, []);
 
 
 
@@ -219,19 +213,18 @@ export function App() {
           <CustomizedProgressBars title="Secundario" valueMount={animatedValueMount2} valueWidth={valueWidthMount} />
         </div>
       </section>
-      <section id='aptitudes-section'>
+      <section id='aptitudes-section' ref={aptitudesRef}>
         <h1>Aptitudes <span className='dark-blue'>_</span></h1>
-        <div ref={aptitudesRef}></div>
         <Aptitudes isVisible={isVisible} />
 
       </section>
 
       <section id='experiencia-section'>
         <h1 className='expContTitulo'>Experiencia <span className='dark-blue'>_</span></h1>
-        <div className='experiencia-align'>
-          <Card fondo={Danone} titulo="Pasante Analista BI" tiempo="Jul 2022 - Actualidad"
+        <div className='experiencia-align' ref={expRef}>
+          <Card isVisible={expVisible} fondo={Danone} titulo="Pasante Analista BI" tiempo="Jul 2022 - Actualidad"
             lista={["Análisis de datos.", "Soporte en migraciones de datos.", "Comparación periódica de registros", "Creación de reportes con Power Bi y Sap Analytics Cloud.", "Desarrollo de apps de escritorio con tecnología Web para el negocio."]} color="#6AC9FF" />
-          <Card fondo={Ejercito} titulo="Desarrollador Web" tiempo="Feb 2021 - Jul 2022"
+          <Card isVisible={expVisible} fondo={Ejercito} titulo="Desarrollador Web" tiempo="Feb 2021 - Jul 2022"
             lista={["Mantenimiento de paginas web del ejercito.", "Creación de reportes para los usuarios en Microsoft reporting Services.", "Gestión de base de datos con SQL."]} color="#FCC850" />
         </div>
       </section>

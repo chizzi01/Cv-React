@@ -23,6 +23,22 @@ li.active {
   border-bottom: 2px solid #076ECD;
 }
 
+.cardExp.animate {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.titulo.animate{
+  animation: slideInFromRight 0.5s ease-in-out;
+}
+
+.tiempo.animate{
+  animation: slideInFromRight 1s ease-in-out;
+}
+
+.lista.animate{
+  animation: slideInFromRight 1.5s ease-in-out;
+}
+
 .navTexts a {
   color: #ffffff;
   text-decoration: none;
@@ -770,7 +786,7 @@ li.active {
 
 @keyframes slideInFromRight {
   0% {
-    transform: translateX(80%);
+    transform: translateX(50%);
   }
 
   100% {
@@ -829,6 +845,17 @@ li.active {
 
   100% {
     transform: rotateY(0deg);
+  }
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 

@@ -1,4 +1,3 @@
-import { colors } from '@mui/material';
 import React from 'react';
 
 export function Aptitudes({ isVisible }) {
