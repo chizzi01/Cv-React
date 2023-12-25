@@ -4,17 +4,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 export function ControlledSwitches() {
     const [checked, setChecked] = React.useState(false);
-    const [language, setLanguage] = React.useState('ESP');
-    const [language2, setLanguage2] = React.useState('ENG');
 
     const handleChange = (event) => {
         setChecked(event.target.checked);
         if (checked === false) {
-            setLanguage('ENG');
-            setLanguage2('ESP');
-        } else {
-            setLanguage('ESP');
-            setLanguage2('ENG');
+            localStorage.setItem('language', 'en')
+        }
+        else {
+            localStorage.setItem('language', 'es')
         }
     };
 

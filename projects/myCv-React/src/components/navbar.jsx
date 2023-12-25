@@ -17,11 +17,11 @@ import { ControlledSwitches } from './Switch'
 const drawerWidth = 240;
 // const navItems = ['<Experiencia />', '<DevTools />', '<Portfolio />', '<Contacto />', <ControlledSwitches />];
 
-const IniText = '<Inicio />'
-const ExpText = '<Experiencia />'
-const DevText = '<DevTools />'
-const PortText = '<Portfolio />'
-const ContText = '<Contacto />'
+const IniText = localStorage.getItem('language') === 'es' ? '<Inicio />' : '<Home />'  // Define el texto de la sección de Inicio
+const ExpText = localStorage.getItem('language') === 'es' ? '<Experiencia />' : '<Experience />' // Define el texto de la sección de Experiencia
+const DevText = localStorage.getItem('language') === 'es' ? '<DevTools />' : '<DevTools />' // Define el texto de la sección de DevTools
+const PortText = localStorage.getItem('language') === 'es' ? '<Portfolio />' : '<Portfolio />' // Define el texto de la sección de Portfolio
+const ContText = localStorage.getItem('language') === 'es' ? '<Contacto />' : '<Contact />'
 
 
 
@@ -40,7 +40,8 @@ export function DrawerAppBar({window, currentSection}) {
   };
 
   const toggleLanguage = () => {
-    setLanguage(language === 'es' ? 'en' : 'es');
+    localStorage.setItem('language') === 'es' ? localStorage.setItem('language', 'en') : localStorage.setItem('language', 'es')
+    window.location.reload()
   };
 
   const drawer = (
