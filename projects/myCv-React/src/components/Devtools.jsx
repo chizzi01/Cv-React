@@ -1,8 +1,10 @@
 import React from "react";
 
-export function DevToolsCard({ titulo, listaImgs }) {
+export function DevToolsCard({ titulo, listaImgs, isVisible }) {
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    const animationClass = isVisible ? 'displayDevtools' : '';
 
     return (
         <div className='devtools-card'>
@@ -12,14 +14,18 @@ export function DevToolsCard({ titulo, listaImgs }) {
                     <img key={index}
                         src={item}
                         alt={item}
-                        className={item.includes('react') ? 'rotate' : ''}
+                        className={item.includes('react') ? 'rotate' : animationClass}
                         style={
-                            item.includes('sql') 
-                            ? {width: '110px'} 
-                            : (item.includes('sap') || item.includes('nodejs')) 
-                            ? (isMobile ? {width: '70px'} : {}) 
-                            : {}
-                        }                         />
+                            {
+                                animationDelay: `${index * 0.1}s`,
+                                ...item.includes('sql')
+                                    ? { width: '110px' }
+                                    : (item.includes('sap') || item.includes('nodejs'))
+                                        ? (isMobile ? { width: '70px' } : {})
+                                        : {}
+                            }
+                        }
+                    />
                 ))}
             </div>
         </div>

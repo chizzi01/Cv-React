@@ -70,6 +70,21 @@ export function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [key, setKey] = useState(0);
   const [isSending, setIsSending] = useState(false);
+  const aptitudesRef = useRef(null);
+  const expRef = useRef(null);
+  const homeRef = useRef(null);
+  const devtools = useRef(null);
+  const portfolio = useRef(null);
+  const contacto = useRef(null);
+  const studiesSectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [expVisible, setExpVisible] = useState(false);
+  const [homeVisible, setHomeVisible] = useState(false);
+  const [devtoolsVisible, setDevtoolsVisible] = useState(false);
+  const [portfolioVisible, setPortfolioVisible] = useState(false);
+  const [contactoVisible, setContactoVisible] = useState(false);
+  const [seccionActual, setSeccionActual] = useState('avatar-section')
+
 
 
   useEffect(() => {
@@ -84,11 +99,7 @@ export function App() {
     };
   }, []);
 
-  const aptitudesRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [expVisible, setExpVisible] = useState(false);
-  const studiesSectionRef = useRef(null);
-  const expRef = useRef(null);
+
 
   const finalValueMount1 = 79;
   const finalValueMount2 = 100;
@@ -182,11 +193,122 @@ export function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setHomeVisible(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      }
+    );
 
+    if (homeRef.current) {
+      observer.observe(homeRef.current);
+    }
 
+    return () => {
+      if (homeRef.current) {
+        observer.unobserve(homeRef.current);
+      }
+    };
+  }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setDevtoolsVisible(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      }
+    );
 
+    if (devtools.current) {
+      observer.observe(devtools.current);
+    }
+
+    return () => {
+      if (devtools.current) {
+        observer.unobserve(devtools.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setPortfolioVisible(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      }
+    );
+
+    if (portfolio.current) {
+      observer.observe(portfolio.current);
+    }
+
+    return () => {
+      if (portfolio.current) {
+        observer.unobserve(portfolio.current);
+      }
+
+    };
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setContactoVisible(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      }
+    );
+
+    if (contacto.current) {
+      observer.observe(contacto.current);
+    }
+
+    return () => {
+      if (contacto.current) {
+        observer.unobserve(contacto.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (homeVisible) {
+      setSeccionActual('avatar-section')
+    }
+    if (expVisible) {
+      setSeccionActual('experiencia-section')
+    }
+    if (devtoolsVisible) {
+      setSeccionActual('devtools-section')
+    }
+    if (portfolioVisible) {
+      setSeccionActual('proyectos-section')
+    }
+    if (contactoVisible) {
+      setSeccionActual('contacto-section')
+    }
+  }, [ homeVisible, expVisible, devtoolsVisible, portfolioVisible, contactoVisible])
+  
+
+  // console.log(seccionActual)
   const valueWidthMount = isMobile ? 300 : 500;
+
+
 
 
   return (
@@ -194,10 +316,11 @@ export function App() {
       <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100,200,300,400,500,600,700,800&display=swap');
       </style>
-      <DrawerAppBar />
+      <DrawerAppBar currentSection={seccionActual} />
       <section id='avatar-section' >
         <div
-        // style={{ transform: `translate(${scrollPosition/1.5}px, ${scrollPosition*1.2}px)`, marginLeft }}
+          isVisible={homeVisible}
+          ref={homeRef}
         >
           <Avatar />
         </div>
@@ -231,17 +354,17 @@ export function App() {
 
       <section id='devtools-section'>
         <h1 className='expContTitulo'>Herramientas de desarrollo <span className='dark-blue'>_</span></h1>
-        <div className='devtools-container'>
-          <DevToolsCard titulo="Front-End" listaImgs={[ReactLog, Html, Css, Javascript, Figma, Capacitor, Electron, Mui]} />
-          <DevToolsCard titulo="Back-End" listaImgs={[Nodejs, Sql, Json, Mongo]} />
-          <DevToolsCard titulo="Business Intelligence" listaImgs={[PowerBi, Sap]} />
+        <div className='devtools-container'  ref={devtools}>
+          <DevToolsCard titulo="Front-End" isVisible={devtoolsVisible} listaImgs={[ReactLog, Html, Css, Javascript, Figma, Capacitor, Electron, Mui]} />
+          <DevToolsCard titulo="Back-End" isVisible={devtoolsVisible} listaImgs={[Nodejs, Sql, Json, Mongo]} />
+          <DevToolsCard titulo="Business Intelligence" isVisible={devtoolsVisible} listaImgs={[PowerBi, Sap]} />
 
         </div>
       </section>
 
       <section id='proyectos-section'>
         <h1 className='expContTitulo'>Algunos de mis proyectos <span className='dark-blue'>_</span></h1>
-        <div className='proyectos-container'>
+        <div className='proyectos-container' isVisible={portfolioVisible} ref={portfolio}>
           <ProyectCard isWeb={true} nombre="Mizzio Coding" bio={["Landing page", "Responsive", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Mizzio} web='https://mizzio.com.ar/' />
           <ProyectCard isWeb={true} nombre="GC Agrimensura" bio={["Landing page", "Divertida", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Agrimensura} web='https://gcagrimensura.ar/' />
           <ProyectCard isWeb={true} nombre="Siro Transporte" bio={["Landing page", "Responsive", "Colorida"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} web='http://www.transportesiro.com.ar/' />
@@ -252,7 +375,7 @@ export function App() {
       </section>
 
       <section id='contacto-section'>
-        <div className='contacto-container' style={isSubmitted ? { backgroundColor: '#3456ff' } : {}}>
+        <div className='contacto-container' isVisible={contactoVisible} ref={contacto} style={isSubmitted ? { backgroundColor: '#3456ff' } : {}}>
           <h1 className='expContTitulo'>Contacto <span className='dark-blue'>_</span></h1>
           <form action="https://formsubmit.co/aguschizzini@gmail.com" method="POST" onSubmit={async (e) => {
             e.preventDefault();
@@ -289,7 +412,7 @@ export function App() {
                 </ThemeProvider>
               </div>
               <div className='btnEnviar'>
-              {isSending ? <button type='submit' disabled>Enviando... </button> : isSubmitted ? <CheckIcon style={{width:'200px'}} /> : <button type='submit'>Enviar <SendIcon /> </button>}
+                {isSending ? <button type='submit' disabled>Enviando... </button> : isSubmitted ? <CheckIcon style={{ width: '100px',height:'100px', backgroundColor:'#001931', borderRadius:'60px', color:'white' }} /> : <button type='submit'>Enviar <SendIcon style={{ padding: '3px' }} /> </button>}
               </div>
             </div>
           </form>

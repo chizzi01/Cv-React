@@ -28,9 +28,11 @@ const ContText = '<Contacto />'
 // Define el resto de los textos de la misma manera
 
 
-export function DrawerAppBar(props, currentSection) {
-  const { window } = props;
+export function DrawerAppBar({window, currentSection}) {
+  // const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  console.log(currentSection)
  
 
   const handleDrawerToggle = () => {
