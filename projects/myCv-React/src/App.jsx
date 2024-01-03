@@ -308,6 +308,10 @@ export function App() {
   // console.log(seccionActual)
   const valueWidthMount = isMobile ? 300 : 500;
 
+  if (!localStorage.getItem('language')) {
+    localStorage.setItem('language', 'es');
+  }
+
 
   if (localStorage.getItem('language') === 'es') {
     return (
@@ -425,124 +429,124 @@ export function App() {
     )
 
   }
- else {
-  return (
-    <div className='App'>
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100,200,300,400,500,600,700,800&display=swap');
-      </style>
-      <DrawerAppBar currentSection={seccionActual} />
-      <section id='avatar-section' >
-        <div
-          isVisible={homeVisible}
-          ref={homeRef}
-        >
-          <Avatar />
-        </div>
-        <div className='info-align'>
-          <h1>Agustin<br></br>Chizzini Melo</h1>
-          <h3> <span className='blue'> Jr Web Developer</span> | <span className='green'>BI Analyst </span> and Systems Engineering student</h3>
-        </div>
-      </section>
-      <section id='estudios-section' ref={studiesSectionRef} >
-        <h1>Studies <span className='dark-blue'>_</span></h1>
-        <div className='barContainer-align'>
-          <CustomizedProgressBars title="University" valueMount={animatedValueMount1} valueWidth={valueWidthMount} />
-          <CustomizedProgressBars title="High School" valueMount={animatedValueMount2} valueWidth={valueWidthMount} />
-        </div>
-      </section>
-      <section id='aptitudes-section' ref={aptitudesRef}>
-        <h1>Aptitudes <span className='dark-blue'>_</span></h1>
-        <Aptitudes isVisible={isVisible} language={languageState} />
+  else {
+    return (
+      <div className='App'>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100,200,300,400,500,600,700,800&display=swap');
+        </style>
+        <DrawerAppBar currentSection={seccionActual} />
+        <section id='avatar-section' >
+          <div
+            isVisible={homeVisible}
+            ref={homeRef}
+          >
+            <Avatar />
+          </div>
+          <div className='info-align'>
+            <h1>Agustin<br></br>Chizzini Melo</h1>
+            <h3> <span className='blue'> Jr Web Developer</span> | <span className='green'>BI Analyst </span> and Systems Engineering student</h3>
+          </div>
+        </section>
+        <section id='estudios-section' ref={studiesSectionRef} >
+          <h1>Studies <span className='dark-blue'>_</span></h1>
+          <div className='barContainer-align'>
+            <CustomizedProgressBars title="University" valueMount={animatedValueMount1} valueWidth={valueWidthMount} />
+            <CustomizedProgressBars title="High School" valueMount={animatedValueMount2} valueWidth={valueWidthMount} />
+          </div>
+        </section>
+        <section id='aptitudes-section' ref={aptitudesRef}>
+          <h1>Aptitudes <span className='dark-blue'>_</span></h1>
+          <Aptitudes isVisible={isVisible}  />
 
-      </section>
+        </section>
 
-      <section id='experiencia-section'>
-        <h1 className='expContTitulo'>Experience <span className='dark-blue'>_</span></h1>
-        <div className='experiencia-align' ref={expRef}>
-          <Card isVisible={expVisible} fondo={Danone} titulo="BI Analyst Intern" tiempo="Jul 2022 - Actualidad"
-            lista={["Data analysis.", "Support in data migrations.", "Periodic comparison of records", "Creation of reports with Power Bi and Sap Analytics Cloud.", "Development of desktop apps with Web technology for the business."]} color="#6AC9FF" />
-          <Card isVisible={expVisible} fondo={Ejercito} titulo="Web Developer" tiempo="Feb 2021 - Jul 2022"
-            lista={["Maintenance of army web pages.", "Creation of reports for users in Microsoft reporting Services.", "Database management with SQL."]} color="#FCC850" />
-        </div>
-      </section>
+        <section id='experiencia-section'>
+          <h1 className='expContTitulo'>Experience <span className='dark-blue'>_</span></h1>
+          <div className='experiencia-align' ref={expRef}>
+            <Card isVisible={expVisible} fondo={Danone} titulo="BI Analyst Intern" tiempo="Jul 2022 - Actualidad"
+              lista={["Data analysis.", "Support in data migrations.", "Periodic comparison of records", "Creation of reports with Power Bi and Sap Analytics Cloud.", "Development of desktop apps with Web technology for the business."]} color="#6AC9FF" />
+            <Card isVisible={expVisible} fondo={Ejercito} titulo="Web Developer" tiempo="Feb 2021 - Jul 2022"
+              lista={["Maintenance of army web pages.", "Creation of reports for users in Microsoft reporting Services.", "Database management with SQL."]} color="#FCC850" />
+          </div>
+        </section>
 
-      <section id='devtools-section'>
-        <h1 className='expContTitulo'>Development tools <span className='dark-blue'>_</span></h1>
-        <div className='devtools-container' ref={devtools}>
-          <DevToolsCard titulo="Front-End" isVisible={devtoolsVisible} listaImgs={[ReactLog, Html, Css, Javascript, Figma, Capacitor, Electron, Mui]} />
-          <DevToolsCard titulo="Back-End" isVisible={devtoolsVisible} listaImgs={[Nodejs, Sql, Json, Mongo]} />
-          <DevToolsCard titulo="Business Intelligence" isVisible={devtoolsVisible} listaImgs={[PowerBi, Sap]} />
+        <section id='devtools-section'>
+          <h1 className='expContTitulo'>Development tools <span className='dark-blue'>_</span></h1>
+          <div className='devtools-container' ref={devtools}>
+            <DevToolsCard titulo="Front-End" isVisible={devtoolsVisible} listaImgs={[ReactLog, Html, Css, Javascript, Figma, Capacitor, Electron, Mui]} />
+            <DevToolsCard titulo="Back-End" isVisible={devtoolsVisible} listaImgs={[Nodejs, Sql, Json, Mongo]} />
+            <DevToolsCard titulo="Business Intelligence" isVisible={devtoolsVisible} listaImgs={[PowerBi, Sap]} />
 
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section id='proyectos-section'>
-        <h1 className='expContTitulo'>Some of my projects <span className='dark-blue'>_</span></h1>
-        <div className='proyectos-container' isVisible={portfolioVisible} ref={portfolio}>
-          <ProyectCard isWeb={true} nombre="Mizzio Coding" bio={["Landing page", "Responsive", "Minimalist"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Mizzio} web='https://mizzio.com.ar/' />
-          <ProyectCard isWeb={true} nombre="GC Agrimensura" bio={["Landing page", "Fun", "Minimalist"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Agrimensura} web='https://gcagrimensura.ar/' />
-          <ProyectCard isWeb={true} nombre="Siro Transporte" bio={["Landing page", "Responsive", "Colorful"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} web='http://www.transportesiro.com.ar/' />
-          <ProyectCard isWeb={true} nombre="Don Pepe" bio={["Landing page", "Responsive", "Elegant and young"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={DonPepe} web='https://chizzi01.github.io/DonPepe-Bar/' />
-          <ProyectCard isWeb={false} nombre="MyPasswords" bio={["Mobile app", "Password manager", "Simple"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript, Json]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
-          <ProyectCard isWeb={false} nombre="MyBolucompras" bio={["Desktop app", "Shopping manager", "Colorful"]} tecnologias={[Electron, Html, Css, Javascript, Json]} fondo={Mybolucompras} web='' />
-        </div>
-      </section>
+        <section id='proyectos-section'>
+          <h1 className='expContTitulo'>Some of my projects <span className='dark-blue'>_</span></h1>
+          <div className='proyectos-container' isVisible={portfolioVisible} ref={portfolio}>
+            <ProyectCard isWeb={true} nombre="Mizzio Coding" bio={["Landing page", "Responsive", "Minimalist"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Mizzio} web='https://mizzio.com.ar/' />
+            <ProyectCard isWeb={true} nombre="GC Agrimensura" bio={["Landing page", "Fun", "Minimalist"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Agrimensura} web='https://gcagrimensura.ar/' />
+            <ProyectCard isWeb={true} nombre="Siro Transporte" bio={["Landing page", "Responsive", "Colorful"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} web='http://www.transportesiro.com.ar/' />
+            <ProyectCard isWeb={true} nombre="Don Pepe" bio={["Landing page", "Responsive", "Elegant and young"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={DonPepe} web='https://chizzi01.github.io/DonPepe-Bar/' />
+            <ProyectCard isWeb={false} nombre="MyPasswords" bio={["Mobile app", "Password manager", "Simple"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript, Json]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
+            <ProyectCard isWeb={false} nombre="MyBolucompras" bio={["Desktop app", "Shopping manager", "Colorful"]} tecnologias={[Electron, Html, Css, Javascript, Json]} fondo={Mybolucompras} web='' />
+          </div>
+        </section>
 
-      <section id='contacto-section'>
-        <div className='contacto-container' isVisible={contactoVisible} ref={contacto} style={isSubmitted ? { backgroundColor: '#3456ff' } : {}}>
-          <h1 className='expContTitulo'>Contact <span className='dark-blue'>_</span></h1>
-          <form action="https:// formsubmit.co / process" method="POST" onSubmit={async (e) => {
-            e.preventDefault();
-            setIsSending(true);
-            const formData = new FormData(e.target);
-            const response = await fetch(e.target.action, {
-              method: 'POST',
-              body: formData,
-              headers: {
-                'Accept': 'application/json'
+        <section id='contacto-section'>
+          <div className='contacto-container' isVisible={contactoVisible} ref={contacto} style={isSubmitted ? { backgroundColor: '#3456ff' } : {}}>
+            <h1 className='expContTitulo'>Contact <span className='dark-blue'>_</span></h1>
+            <form action="https:// formsubmit.co / process" method="POST" onSubmit={async (e) => {
+              e.preventDefault();
+              setIsSending(true);
+              const formData = new FormData(e.target);
+              const response = await fetch(e.target.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                  'Accept': 'application/json'
+                }
+              });
+              if (response.ok) {
+                setIsSubmitted(true);
+                e.target.reset();
+                // Change key to force TextField components to reload
+                setKey(prevKey => prevKey + 1);
+              } else {
+                // There was an error submitting the form
+                // You can display an error message here
               }
-            });
-            if (response.ok) {
-              setIsSubmitted(true);
-              e.target.reset();
-              // Change key to force TextField components to reload
-              setKey(prevKey => prevKey + 1);
-            } else {
-              // There was an error submitting the form
-              // You can display an error message here
+              setIsSending(false);
             }
-            setIsSending(false);
-          }
-          }>
-            <input type="hidden" name="_next" value="" />
-            <input type="hidden" name="_subject" value="New contact!" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <div className='contacto-align'>
-              <div className='contactText-container'>
-                <ThemeProvider theme={theme}>
-                  <Textfield forceUpdate={key} indicador={'Name'} tipo={'text'} name={"Nombre"} />
-                  <Textfield forceUpdate={key} indicador={'Mail'} tipo={'email'} name={"Mail"} />
-                  <Textfield forceUpdate={key} indicador={'Subject'} tipo={'textfield'} name={"Asunto"} />
-                </ThemeProvider>
+            }>
+              <input type="hidden" name="_next" value="" />
+              <input type="hidden" name="_subject" value="New contact!" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <div className='contacto-align'>
+                <div className='contactText-container'>
+                  <ThemeProvider theme={theme}>
+                    <Textfield forceUpdate={key} indicador={'Name'} tipo={'text'} name={"Nombre"} />
+                    <Textfield forceUpdate={key} indicador={'Mail'} tipo={'email'} name={"Mail"} />
+                    <Textfield forceUpdate={key} indicador={'Subject'} tipo={'textfield'} name={"Asunto"} />
+                  </ThemeProvider>
+                </div>
+                <div className='btnEnviar'>
+                  {isSending ? <button type='submit' disabled>Sending... </button> : isSubmitted ? <CheckIcon style={{ width: '100px', height: '100px', backgroundColor: '#001931', borderRadius: '60px', color: 'white' }} /> : <button type='submit'>Send <SendIcon style={{ padding: '3px' }} /> </button>}
+                </div>
               </div>
-              <div className='btnEnviar'>
-                {isSending ? <button type='submit' disabled>Sending... </button> : isSubmitted ? <CheckIcon style={{ width: '100px', height: '100px', backgroundColor: '#001931', borderRadius: '60px', color: 'white' }} /> : <button type='submit'>Send <SendIcon style={{ padding: '3px' }} /> </button>}
-              </div>
-            </div>
-          </form>
-        </div>
-      </section>
-      <Footer tecnologias={[ReactLog, Html, Css, Javascript]} />
+            </form>
+          </div>
+        </section>
+        <Footer tecnologias={[ReactLog, Html, Css, Javascript]} />
 
-      <SocialLinks />
-    </div>
+        <SocialLinks />
+      </div>
 
 
 
-  )
+    )
 
-}
+  }
 }
 
