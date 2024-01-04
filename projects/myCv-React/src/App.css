@@ -6,6 +6,26 @@
   scroll-behavior: smooth;
 }
 
+
+.info-align p {
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 0px 0px 32.1px rgba(255, 255, 255, 0.34);
+  position: relative;
+  left: 10rem;
+  line-height: normal;
+  letter-spacing: normal;
+  top: 3rem;
+  width: 70%;
+}
+
+.gradient-text {
+  background: -webkit-linear-gradient(180deg, rgba(0,212,255,1) 0%, rgba(255,255,255,1) 38%, rgba(255,255,255,1) 43%, rgba(254,255,119,1) 52%, rgba(255,255,255,1) 60%, rgba(255,255,255,1) 65%, rgba(0,212,255,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 form{
   display: flex;
   flex-direction: column;
@@ -780,7 +800,7 @@ li.active {
 
 @keyframes slideInFromLeft {
   0% {
-    transform: translateX(-80%);
+    transform: translateX(-20%);
   }
 
   100% {
@@ -790,7 +810,7 @@ li.active {
 
 @keyframes slideInFromRight {
   0% {
-    transform: translateX(50%);
+    transform: translateX(20%);
   }
 
   100% {
@@ -956,6 +976,7 @@ li.active {
   .info-align {
     width: 80%;
   }
+
 
   #avatar-section h1 {
     font-size: 5rem;
@@ -1274,6 +1295,14 @@ li.active {
 
 @media (max-width: 768px) {
 
+  .info-align p {
+    font-size: 1rem;
+    left: 3.5rem;
+    top: 3rem;
+    line-height: 1.5rem;
+    align-self: start;
+  }
+
   .social-links {
     bottom: 10px;
     right: 10px;
@@ -1437,7 +1466,7 @@ li.active {
 
   @keyframes slideInFromLeft {
     0% {
-      transform: translateX(-80%);
+      transform: translateX(-10%);
     }
 
     100% {
@@ -1447,7 +1476,7 @@ li.active {
 
   @keyframes slideInFromRight {
     0% {
-      transform: translateX(80%);
+      transform: translateX(10%);
     }
 
     100% {

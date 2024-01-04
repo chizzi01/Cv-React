@@ -57,7 +57,7 @@ export function DrawerAppBar({window, currentSection}) {
         <a href="#portfolio-section">{PortText}</a>
         <a style={{backgroundColor:"#6C8DFF"}} href="#contacto-section">{ContText}</a>
       </List>
-      <Button><ControlledSwitches onSwitch={toggleLanguage} /></Button>
+      {/* <Button><ControlledSwitches onSwitch={toggleLanguage} /></Button> */}
     </Box>
   );
 
@@ -98,7 +98,7 @@ export function DrawerAppBar({window, currentSection}) {
           <Button><a className={currentSection === 'devtools-section' ? 'active' : ''} href="#devtools-section" >{DevText}</a></Button>
           <Button><a className={currentSection === 'proyectos-section' ? 'active' : ''} href="#proyectos-section" >{PortText}</a></Button>
           <Button><a className={currentSection === 'contacto-section' ? 'active' : ''} style={{backgroundColor:"rgb(108 141 255 / 47%)", borderRadius:"12px"}} href="#contacto-section" >{ContText}</a></Button>
-          <Button><ControlledSwitches onSwitch={toggleLanguage}/></Button>
+          {/* <Button><ControlledSwitches onSwitch={toggleLanguage}/></Button> */}
 
           </Box>
         </Toolbar>
