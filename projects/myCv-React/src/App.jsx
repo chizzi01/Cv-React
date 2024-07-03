@@ -36,6 +36,7 @@ import Mypass from '../src/assets/mypass.png'
 import Mybolucompras from '../src/assets/mybolucompras.png'
 import Json from '../src/assets/json.png'
 import Mongo from '../src/assets/mongo.png'
+import gds from '../src/assets/gdsnetlogo.jpg'
 
 const theme = createTheme({
   components: {
@@ -346,7 +347,9 @@ export function App() {
         <section id='experiencia-section'>
           <h1 className='expContTitulo'>Experiencia <span className='dark-blue'>_</span></h1>
           <div className='experiencia-align' ref={expRef}>
-            <Card isVisible={expVisible} fondo={Danone} titulo="Pasante Analista BI" tiempo="Jul 2022 - Actualidad"
+            <Card isVisible={expVisible} fondo={gds} titulo="Analista programador" tiempo="Feb 2024 - Actualidad"
+              lista={["Análisis de datos.", "Soporte y control de datos.", "Creacion de tableros en MicroStrategy."]} color="#00b9c4" />
+            <Card isVisible={expVisible} fondo={Danone} titulo="Pasante Analista BI" tiempo="Jul 2022 - Ene 2024"
               lista={["Análisis de datos.", "Soporte en migraciones de datos.", "Comparación periódica de registros", "Creación de reportes con Power Bi y Sap Analytics Cloud.", "Desarrollo de apps de escritorio con tecnología Web para el negocio."]} color="#6AC9FF" />
             <Card isVisible={expVisible} fondo={Ejercito} titulo="Desarrollador Web" tiempo="Feb 2021 - Jul 2022"
               lista={["Mantenimiento de paginas web del ejercito.", "Creación de reportes para los usuarios en Microsoft reporting Services.", "Gestión de base de datos con SQL."]} color="#FCC850" />

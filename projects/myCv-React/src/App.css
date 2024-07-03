@@ -21,12 +21,12 @@
 }
 
 .gradient-text {
-  background: -webkit-linear-gradient(180deg, rgba(0,212,255,1) 0%, rgba(255,255,255,1) 38%, rgba(255,255,255,1) 43%, rgba(254,255,119,1) 52%, rgba(255,255,255,1) 60%, rgba(255,255,255,1) 65%, rgba(0,212,255,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(0, 212, 255, 1) 0%, rgba(255, 255, 255, 1) 38%, rgba(255, 255, 255, 1) 43%, rgba(254, 255, 119, 1) 52%, rgba(255, 255, 255, 1) 60%, rgba(255, 255, 255, 1) 65%, rgba(0, 212, 255, 1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,15 +47,15 @@ li.active {
   animation: fadeIn 1s ease-in-out;
 }
 
-.titulo.animate{
+.titulo.animate {
   animation: slideInFromRight 0.5s ease-in-out;
 }
 
-.tiempo.animate{
+.tiempo.animate {
   animation: slideInFromRight 1s ease-in-out;
 }
 
-.lista.animate{
+.lista.animate {
   animation: slideInFromRight 1.5s ease-in-out;
 }
 
@@ -79,8 +79,10 @@ li.active {
 .navTextsHamburguer {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   line-height: 3rem;
   font-size: 1.5rem;
+  height: 90%;
 }
 
 .navTextsHamburguer a {
@@ -338,7 +340,6 @@ li.active {
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-evenly;
-
 }
 
 .cardExp {
@@ -489,68 +490,72 @@ li.active {
 }
 
 :root {
-	--d: 2500ms;
-	--angle: 90deg;
-	--gradX: 100%;
-	--gradY: 50%;
-	--c1: rgba(168, 239, 255, 1);
-	--c2: rgba(168, 239, 255, 0.1);
+  --d: 2500ms;
+  --angle: 90deg;
+  --gradX: 100%;
+  --gradY: 50%;
+  --c1: rgba(168, 239, 255, 1);
+  --c2: rgba(168, 239, 255, 0.1);
 }
 
 .wrapper {
-	min-width: min(40rem, 100%);
+  min-width: min(40rem, 100%);
 }
 
 .box {
-	font-size: 3vw;
-	margin: max(1rem, 3vw);
-	border: 0.35rem solid;
-	padding: 3vw;
-	border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
-	animation: borderRotate var(--d) linear infinite forwards;
+  font-size: 3vw;
+  margin: max(1rem, 3vw);
+  border: 0.35rem solid;
+  padding: 3vw;
+  border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+  animation: borderRotate var(--d) linear infinite forwards;
 }
 
 .box:nth-child(2) {
-	border-image: radial-gradient(ellipse at var(--gradX) var(--gradY), var(--c1), var(--c1) 10%, var(--c2) 40%) 30;
-	animation: borderRadial var(--d) linear infinite forwards;
+  border-image: radial-gradient(ellipse at var(--gradX) var(--gradY), var(--c1), var(--c1) 10%, var(--c2) 40%) 30;
+  animation: borderRadial var(--d) linear infinite forwards;
 }
 
 @keyframes borderRotate {
-	100% {
-		--angle: 420deg;
-	}
+  100% {
+    --angle: 420deg;
+  }
 }
 
 @keyframes borderRadial {
-	20% {
-		--gradX: 100%;
-		--gradY: 50%;
-	}
-	40% {
-		--gradX: 100%;
-		--gradY: 100%;
-	}
-	60% {
-		--gradX: 50%;
-		--gradY: 100%;
-	}
-	80% {
-		--gradX: 0%;
-		--gradY: 50%;
-	}
-	100% {
-		--gradX: 50%;
-		--gradY: 0%;
-	}
+  20% {
+    --gradX: 100%;
+    --gradY: 50%;
+  }
+
+  40% {
+    --gradX: 100%;
+    --gradY: 100%;
+  }
+
+  60% {
+    --gradX: 50%;
+    --gradY: 100%;
+  }
+
+  80% {
+    --gradX: 0%;
+    --gradY: 50%;
+  }
+
+  100% {
+    --gradX: 50%;
+    --gradY: 0%;
+  }
 }
 
-.displayDevtools{
+.displayDevtools {
   opacity: 0;
   animation-fill-mode: backwards;
   animation: fadeIn 1s ease-in forwards;
 }
 
-.active::after{
+.active::after {
   content: '';
   display: block;
   width: 100%;
@@ -563,7 +568,7 @@ li.active {
   animation: slideInFromLeft 1s ease-in-out;
 }
 
-.lineborder.animate{
+.lineborder.animate {
   border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
   animation: borderRotate var(--d) linear infinite forwards;
 }
@@ -714,7 +719,7 @@ li.active {
 
 .contacto-container {
   width: 50%;
-  height: 50%;
+  max-height: 80%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1161,16 +1166,18 @@ li.active {
 
   .exp-container {
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 20px;
+    max-width: 500px;
   }
 
   .experiencia-align {
     height: 100vh;
     width: 100%;
     flex-flow: row;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-evenly;
+    align-items: flex-start;
   }
 
   .expContTitulo {
@@ -1663,6 +1670,7 @@ li.active {
     padding: 1rem;
 
   }
+
 
 
 }

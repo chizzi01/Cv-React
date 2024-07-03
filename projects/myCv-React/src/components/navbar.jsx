@@ -45,7 +45,7 @@ export function DrawerAppBar({window, currentSection}) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', background: 'linear-gradient(90deg, #0F0F0F 0.02%, rgba(0, 71, 255, 0.51) 99.99%)' }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', background: 'linear-gradient(90deg, #0F0F0F 0.02%, rgba(0, 71, 255, 0.51) 99.99%)', height:"100%" }}>
       <Typography variant="h6" sx={{ my: 2, color: '#FFF' }}>
         ACM
       </Typography>
