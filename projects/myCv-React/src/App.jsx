@@ -102,7 +102,7 @@ export function App() {
 
 
 
-  const finalValueMount1 = 79;
+  const finalValueMount1 = 90;
   const finalValueMount2 = 100;
 
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
