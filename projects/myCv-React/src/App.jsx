@@ -361,7 +361,7 @@ export function App() {
           <div className='devtools-container' ref={devtools}>
             <DevToolsCard titulo="Front-End" isVisible={devtoolsVisible} listaImgs={[ReactLog, Html, Css, Javascript, Figma, Capacitor, Electron, Mui]} />
             <DevToolsCard titulo="Back-End" isVisible={devtoolsVisible} listaImgs={[Nodejs, Sql, Json, Mongo]} />
-            <DevToolsCard titulo="Business Intelligence" isVisible={devtoolsVisible} listaImgs={[PowerBi, Sap]} />
+            <DevToolsCard titulo="Business Intelligence" isVisible={devtoolsVisible} listaImgs={[PowerBi]} />
 
           </div>
         </section>
