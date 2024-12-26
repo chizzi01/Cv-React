@@ -22,7 +22,6 @@ import Css from '../src/assets/css.png'
 import ReactLog from '../src/assets/react.svg'
 import Nodejs from '../src/assets/nodejs.png'
 import Capacitor from '../src/assets/capacitor.svg'
-import Sap from '../src/assets/sap.png'
 import PowerBi from '../src/assets/powerbi.png'
 import Electron from '../src/assets/electron.png'
 import Figma from '../src/assets/figma.png'
@@ -30,6 +29,7 @@ import Sql from '../src/assets/sql.png'
 import Mui from '../src/assets/mui.png'
 import Agrimensura from '../src/assets/agrimensura.png'
 import Mizzio from '../src/assets/mizzio.png'
+import Schreiber from '../src/assets/schreiber.png'
 import Siro from '../src/assets/siro.png'
 import DonPepe from '../src/assets/donpepe.png'
 import Mypass from '../src/assets/mypass.png'
@@ -102,7 +102,7 @@ export function App() {
 
 
 
-  const finalValueMount1 = 90;
+  const finalValueMount1 = 100;
   const finalValueMount2 = 100;
 
   const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -327,7 +327,7 @@ export function App() {
           </div>
           <div className='info-align'>
             <h1>Agustin<br></br>Chizzini Melo</h1>
-            <h3> <span className='blue'> Desarrollador Web Jr</span> | <span className='green'>Analista BI </span> y estudiante de Lic. Sistemas</h3>
+            <h3> <span className='blue'>Lic. Sistemas</span> | <span className='green'>Analista BI </span> y Desarrollador Web Jr</h3>
             <p>📍 Buenos Aires - <span className='gradient-text'> Argentina</span> </p> 
           </div>
         </section>
@@ -369,12 +369,19 @@ export function App() {
         <section id='proyectos-section'>
           <h1 className='expContTitulo'>Algunos de mis proyectos <span className='dark-blue'>_</span></h1>
           <div className='proyectos-container' isVisible={portfolioVisible} ref={portfolio}>
-            <ProyectCard isWeb={true} nombre="Mizzio Coding" bio={["Landing page", "Responsive", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Mizzio} web='https://mizzio.com.ar/' />
-            <ProyectCard isWeb={true} nombre="GC Agrimensura" bio={["Landing page", "Divertida", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Agrimensura} web='https://gcagrimensura.ar/' />
-            <ProyectCard isWeb={true} nombre="Siro Transporte" bio={["Landing page", "Responsive", "Colorida"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} web='http://www.transportesiro.com.ar/' />
+          <ProyectCard isWeb={true} nombre="Estudios Schreiber" bio={["Landing page", "Responsive", "Minimalista"]} tecnologias={[ReactLog, Html, Css, Javascript, Figma]} fondo={Schreiber} web=
+            'https://estudioschreiber.ar/'
+             />
+            <ProyectCard isWeb={true} nombre="Mizzio Coding" bio={["Landing page", "Responsive", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Mizzio} web='#'
+            // 'https://mizzio.com.ar/'
+             />
+            <ProyectCard isWeb={true} nombre="GC Agrimensura" bio={["Landing page", "Informativa", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Agrimensura} web='#'
+            // 'https://gcagrimensura.ar/' 
+            />
+            <ProyectCard isWeb={true} nombre="Siro Transporte" bio={["Landing page", "Responsive", "Informativa"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} web='http://www.transportesiro.com.ar/' />
             <ProyectCard isWeb={true} nombre="Don Pepe" bio={["Landing page", "Responsive", "Elegante y joven"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={DonPepe} web='https://chizzi01.github.io/DonPepe-Bar/' />
             <ProyectCard isWeb={false} nombre="MyPasswords" bio={["Mobile app", "Gestor de contraseñas", "Sencilla"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript, Json]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
-            <ProyectCard isWeb={false} nombre="MyBolucompras" bio={["Desktop app", "Gestor de compras", "Colorida"]} tecnologias={[Electron, Html, Css, Javascript, Json]} fondo={Mybolucompras} web='' />
+            <ProyectCard isWeb={false} nombre="MyBolucompras" bio={["Desktop app", "Gestor de compras", "Moderno"]} tecnologias={[Electron, Html, Css, Javascript, Json]} fondo={Mybolucompras} web='' />
           </div>
         </section>
 
