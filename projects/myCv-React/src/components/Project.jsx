@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { getImgAlt } from '../utils';
 
-export function ProyectCard({ fondo, nombre, bio, tecnologias, web, isWeb }) {
+export function ProyectCard({ fondo, nombre, bio, tecnologias, web, isWeb, linkLabel = 'Ver proyecto' }) {
   return (
     <div className='cardProyect-container'>
       <div className='imgProyect-side' style={{backgroundImage: `url(${fondo})`}}></div>
@@ -11,19 +12,19 @@ export function ProyectCard({ fondo, nombre, bio, tecnologias, web, isWeb }) {
           {tecnologias.map((item, index) => (
             <img key={index}
               src={item}
-              alt={item}
+              alt={getImgAlt(item)}
               className={item.includes('react') ? 'rotate' : ''}
-              style={{ 
+              style={{
                 width: '40px',
-                height: item.includes('sap') || item.includes('nodejs') ? '70px' : '' 
+                height: item.includes('sap') || item.includes('nodejs') ? '70px' : ''
               }} />
           ))}
         </div>
-        <div className='btnProyect-container' style={{
-          visibility: isWeb ? 'visible' : 'hidden',
-        }}>
-          <a href={web} target='_blank'>Ver web</a>
-        </div>
+        {isWeb && (
+          <div className='btnProyect-container'>
+            <a href={web} target='_blank' rel="noopener noreferrer">{linkLabel}</a>
+          </div>
+        )}
       </div>
     </div>
   );

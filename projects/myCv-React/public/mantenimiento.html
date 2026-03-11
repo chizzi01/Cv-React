@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>En mantenimiento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #060d1a;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(50, 83, 255, 0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 90%, rgba(108, 141, 255, 0.12) 0%, transparent 60%);
+      color: #fff;
+      padding: 2rem;
+    }
+
+    .card {
+      background: rgba(0, 25, 49, 0.6);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 3rem 3.5rem;
+      text-align: center;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+      animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
+    }
+
+    .icon {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 1.5rem;
+      animation: spin 6s linear infinite;
+      transform-origin: center;
+      line-height: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(108, 141, 255, 0.15);
+      border: 1px solid rgba(108, 141, 255, 0.35);
+      border-radius: 40px;
+      padding: 0.3rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6C8DFF;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-name {
+      color: #6C8DFF;
+    }
+
+    p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.7;
+      margin-top: 0.75rem;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 2rem 0;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #6C8DFF;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      text-decoration: none;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.7rem 1.6rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(108, 141, 255, 0.12);
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: rgba(108, 141, 255, 0.28);
+      border-color: #6C8DFF;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes spin {
+      0%   { transform: rotate(0deg); }
+      15%  { transform: rotate(20deg); }
+      30%  { transform: rotate(-15deg); }
+      45%  { transform: rotate(20deg); }
+      60%  { transform: rotate(-10deg); }
+      75%  { transform: rotate(10deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(0.85); }
+      50%       { opacity: 1;   transform: scale(1.2);  }
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <span class="icon">🔧</span>
+    <div class="badge">En mantenimiento</div>
+    <h1>
+      <span id="project-label"></span>
+      <span id="project-name" class="project-name"></span>
+    </h1>
+    <p>Estamos trabajando en mejoras para este sitio.<br>Volvé más tarde, ¡va a valer la pena!</p>
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <a class="btn" onclick="history.length > 1 ? history.back() : window.close()" href="javascript:void(0)">
+      ← Volver al portfolio
+    </a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('p');
+    const label = document.getElementById('project-label');
+    const nameEl = document.getElementById('project-name');
+
+    if (name) {
+      label.textContent = 'Próximamente: ';
+      nameEl.textContent = name;
+    } else {
+      label.textContent = 'Sitio en mantenimiento';
+    }
+  </script>
+</body>
+</html>

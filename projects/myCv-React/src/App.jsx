@@ -1,4 +1,5 @@
 import './App.css'
+import { maintenanceUrl } from './utils'
 import { SocialLinks } from './components/Social-Links'
 import { Avatar } from './components/Avatar'
 import { CustomizedProgressBars } from './components/ProgressBar'
@@ -78,6 +79,8 @@ export function App() {
   const portfolio = useRef(null);
   const contacto = useRef(null);
   const studiesSectionRef = useRef(null);
+  const cursorDotRef = useRef(null);
+  const cursorRingRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [expVisible, setExpVisible] = useState(false);
   const [homeVisible, setHomeVisible] = useState(false);
@@ -306,6 +309,78 @@ export function App() {
   }, [homeVisible, expVisible, devtoolsVisible, portfolioVisible, contactoVisible])
 
 
+  // Mouse spotlight — updates --mx / --my CSS vars on <html>
+  useEffect(() => {
+    const handler = (e) => {
+      document.documentElement.style.setProperty('--mx', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--my', `${e.clientY}px`);
+    };
+    window.addEventListener('mousemove', handler);
+    return () => window.removeEventListener('mousemove', handler);
+  }, []);
+
+  // Custom cursor with lerp ring
+  useEffect(() => {
+    const dot = cursorDotRef.current;
+    const ring = cursorRingRef.current;
+    if (!dot || !ring) return;
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    let rx = mx, ry = my;
+    let rafId;
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const onMove = (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+    };
+    const tick = () => {
+      rx = lerp(rx, mx, 0.1);
+      ry = lerp(ry, my, 0.1);
+      ring.style.transform = `translate(${rx - 20}px, ${ry - 20}px)`;
+      rafId = requestAnimationFrame(tick);
+    };
+    const onEnter = () => ring.classList.add('ring-hover');
+    const onLeave = () => ring.classList.remove('ring-hover');
+    document.querySelectorAll('a, button, [role="button"]').forEach(el => {
+      el.addEventListener('mouseenter', onEnter);
+      el.addEventListener('mouseleave', onLeave);
+    });
+    window.addEventListener('mousemove', onMove);
+    rafId = requestAnimationFrame(tick);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
+  // 3D card tilt on hover
+  useEffect(() => {
+    const cards = document.querySelectorAll('.cardProyect-container, .devtools-card');
+    const handlers = [];
+    cards.forEach(card => {
+      const onMove = (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `perspective(900px) rotateX(${(-y * 10).toFixed(1)}deg) rotateY(${(x * 10).toFixed(1)}deg)`;
+      };
+      const onLeave = () => {
+        card.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s, border-color 0.3s';
+        card.style.transform = '';
+        setTimeout(() => { card.style.transition = ''; }, 650);
+      };
+      card.addEventListener('mousemove', onMove);
+      card.addEventListener('mouseleave', onLeave);
+      handlers.push({ card, onMove, onLeave });
+    });
+    return () => {
+      handlers.forEach(({ card, onMove, onLeave }) => {
+        card.removeEventListener('mousemove', onMove);
+        card.removeEventListener('mouseleave', onLeave);
+      });
+    };
+  }, []);
+
   const valueWidthMount = isMobile ? 300 : 500;
 
   if (!localStorage.getItem('language')) {
@@ -317,6 +392,16 @@ export function App() {
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100,200,300,400,500,600,700,800&display=swap');
         </style>
+        {/* Background effects */}
+        <div className="mouse-glow" aria-hidden="true" />
+        <div className="bg-orbs" aria-hidden="true">
+          <div className="orb orb-1" />
+          <div className="orb orb-2" />
+          <div className="orb orb-3" />
+        </div>
+        {/* Custom cursor (hidden on touch/coarse pointer devices via CSS) */}
+        <div className="cursor-dot" ref={cursorDotRef} aria-hidden="true" />
+        <div className="cursor-ring" ref={cursorRingRef} aria-hidden="true" />
         <DrawerAppBar currentSection={seccionActual} />
         <section id='avatar-section' >
           <div
@@ -327,19 +412,24 @@ export function App() {
           </div>
           <div className='info-align'>
             <h1>Agustin<br></br>Chizzini Melo</h1>
-            <h3> <span className='blue'>Lic. Sistemas</span> | <span className='green'>Analista BI </span> y Desarrollador Web Jr</h3>
-            <p>📍 Buenos Aires - <span className='gradient-text'> Argentina</span> </p> 
+            <h3><span className='blue'>Desarrollador Web</span> · <span className='green'>Analista de Datos</span> · Lic. Sistemas</h3>
+            <p>📍 Buenos Aires, <span className='gradient-text'>Argentina</span></p>
           </div>
+          <a href="#estudios-section" className="scroll-indicator" aria-label="Ir a la siguiente sección">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
         </section>
         <section id='estudios-section' ref={studiesSectionRef} >
-          <h1>Estudios <span className='dark-blue'>_</span></h1>
+          <h1>Formación <span className='dark-blue'>_</span></h1>
           <div className='barContainer-align'>
             <CustomizedProgressBars title="Universitario" valueMount={animatedValueMount1} valueWidth={valueWidthMount} />
             <CustomizedProgressBars title="Secundario" valueMount={animatedValueMount2} valueWidth={valueWidthMount} />
           </div>
         </section>
         <section id='aptitudes-section' ref={aptitudesRef}>
-          <h1>Aptitudes <span className='dark-blue'>_</span></h1>
+          <h1>Habilidades <span className='dark-blue'>_</span></h1>
           <Aptitudes isVisible={isVisible} />
 
         </section>
@@ -347,17 +437,17 @@ export function App() {
         <section id='experiencia-section'>
           <h1 className='expContTitulo'>Experiencia <span className='dark-blue'>_</span></h1>
           <div className='experiencia-align' ref={expRef}>
-            <Card isVisible={expVisible} fondo={gds} titulo="Analista programador" tiempo="Feb 2024 - Actualidad"
-              lista={["Análisis de datos.", "Soporte y control de datos.", "Creacion de tableros en MicroStrategy."]} color="#00b9c4" />
-            <Card isVisible={expVisible} fondo={Danone} titulo="Pasante Analista BI" tiempo="Jul 2022 - Ene 2024"
-              lista={["Análisis de datos.", "Soporte en migraciones de datos.", "Comparación periódica de registros", "Creación de reportes con Power Bi y Sap Analytics Cloud.", "Desarrollo de apps de escritorio con tecnología Web para el negocio."]} color="#6AC9FF" />
+            <Card isVisible={expVisible} fondo={gds} titulo="Analista & Desarrollador" tiempo="Feb 2024 - Actualidad"
+              lista={["Desarrollo de dashboards analíticos en MicroStrategy.", "Desarrollo de aplicaciones web internas con React.", "Control de calidad y monitoreo de flujos de datos."]} color="#00b9c4" />
+            <Card isVisible={expVisible} fondo={Danone} titulo="Analista BI" tiempo="Jul 2022 - Ene 2024"
+              lista={["Diseño y publicación de reportes en Power BI y SAP Analytics Cloud.", "Soporte en migraciones y conciliación periódica de datos.", "Desarrollo de aplicaciones de escritorio con Electron para el negocio."]} color="#6AC9FF" />
             <Card isVisible={expVisible} fondo={Ejercito} titulo="Desarrollador Web" tiempo="Feb 2021 - Jul 2022"
-              lista={["Mantenimiento de paginas web del ejercito.", "Creación de reportes para los usuarios en Microsoft reporting Services.", "Gestión de base de datos con SQL."]} color="#FCC850" />
+              lista={["Desarrollo y mantenimiento de sitios web institucionales.", "Generación de reportes operativos con Microsoft Reporting Services.", "Administración y optimización de bases de datos SQL."]} color="#FCC850" />
           </div>
         </section>
 
         <section id='devtools-section'>
-          <h1 className='expContTitulo'>Herramientas de desarrollo <span className='dark-blue'>_</span></h1>
+          <h1 className='expContTitulo'>Stack Tecnológico <span className='dark-blue'>_</span></h1>
           <div className='devtools-container' ref={devtools}>
             <DevToolsCard titulo="Front-End" isVisible={devtoolsVisible} listaImgs={[ReactLog, Html, Css, Javascript, Figma, Capacitor, Electron, Mui]} />
             <DevToolsCard titulo="Back-End" isVisible={devtoolsVisible} listaImgs={[Nodejs, Sql, Json, Mongo]} />
@@ -367,27 +457,19 @@ export function App() {
         </section>
 
         <section id='proyectos-section'>
-          <h1 className='expContTitulo'>Algunos de mis proyectos <span className='dark-blue'>_</span></h1>
+          <h1 className='expContTitulo'>Portfolio <span className='dark-blue'>_</span></h1>
           <div className='proyectos-container' isVisible={portfolioVisible} ref={portfolio}>
-          <ProyectCard isWeb={true} nombre="Estudios Schreiber" bio={["Landing page", "Responsive", "Minimalista"]} tecnologias={[ReactLog, Html, Css, Javascript, Figma]} fondo={Schreiber} web=
-            'https://estudioschreiber.ar/'
-             />
-            <ProyectCard isWeb={true} nombre="Mizzio Coding" bio={["Landing page", "Responsive", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Mizzio} web='#'
-            // 'https://mizzio.com.ar/'
-             />
-            <ProyectCard isWeb={true} nombre="GC Agrimensura" bio={["Landing page", "Informativa", "Minimalista"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Agrimensura} web='#'
-            // 'https://gcagrimensura.ar/' 
-            />
-            <ProyectCard isWeb={true} nombre="Siro Transporte" bio={["Landing page", "Responsive", "Informativa"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} web='http://www.transportesiro.com.ar/' />
-            <ProyectCard isWeb={true} nombre="Don Pepe" bio={["Landing page", "Responsive", "Elegante y joven"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={DonPepe} web='https://chizzi01.github.io/DonPepe-Bar/' />
-            <ProyectCard isWeb={false} nombre="MyPasswords" bio={["Mobile app", "Gestor de contraseñas", "Sencilla"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript, Json]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
-            <ProyectCard isWeb={false} nombre="MyBolucompras" bio={["Desktop app", "Gestor de compras", "Moderno"]} tecnologias={[Electron, Html, Css, Javascript, Json]} fondo={Mybolucompras} web='' />
+          <ProyectCard isWeb={true} nombre="Estudios Schreiber" bio={["Estudio jurídico", "React + Vite", "Diseño profesional"]} tecnologias={[ReactLog, Html, Css, Javascript, Figma]} fondo={Schreiber} web='https://estudioschreiber.ar/' />
+            <ProyectCard isWeb={true} nombre="Siro Transporte" bio={["Empresa de transporte", "SEO-friendly", "100% Responsive"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} web={maintenanceUrl('Siro Transporte')} />
+            <ProyectCard isWeb={true} nombre="Don Pepe Bar" bio={["Gastronomía & nocturno", "Diseño moderno", "Animaciones CSS"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={DonPepe} web='https://chizzi01.github.io/DonPepe-Bar/' />
+            <ProyectCard isWeb={false} nombre="MyPasswords" bio={["App móvil nativa", "Gestor offline de contraseñas", "React + Capacitor"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript, Json]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
+            <ProyectCard isWeb={true} linkLabel="Descargar" nombre="MyBolucompras" bio={["App de escritorio", "Control de gastos personal", "Actualizaciones automaticas","Electron + JS"]} tecnologias={[ReactLog,Electron, Html, Css, Javascript, Json]} fondo={Mybolucompras} web='https://github.com/chizzi01/MyBolucompras/releases/tag/v0.0.36' />
           </div>
         </section>
 
         <section id='contacto-section'>
           <div className='contacto-container' isVisible={contactoVisible} ref={contacto} style={isSubmitted ? { backgroundColor: '#3456ff' } : {}}>
-            <h1 className='expContTitulo'>Contacto <span className='dark-blue'>_</span></h1>
+            <h1 className='expContTitulo'>Hablemos <span className='dark-blue'>_</span></h1>
             <form action="https://formsubmit.co/aguschizzini@gmail.com" method="POST" onSubmit={async (e) => {
               e.preventDefault();
               setIsSending(true);
@@ -411,15 +493,15 @@ export function App() {
               setIsSending(false);
             }}>
               <input type="hidden" name="_next" value="" />
-              <input type="hidden" name="_subject" value="Nuevo contacto!" />
+              <input type="hidden" name="_subject" value="Nuevo mensaje desde portfolio" />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
               <div className='contacto-align'>
                 <div className='contactText-container'>
                   <ThemeProvider theme={theme}>
                     <Textfield forceUpdate={key} indicador={'Nombre'} tipo={'text'} name={"Nombre"} />
-                    <Textfield forceUpdate={key} indicador={'Mail'} tipo={'email'} name={"Mail"} />
-                    <Textfield forceUpdate={key} indicador={'Asunto'} tipo={'textfield'} name={"Asunto"} />
+                    <Textfield forceUpdate={key} indicador={'Email'} tipo={'email'} name={"Email"} />
+                    <Textfield forceUpdate={key} indicador={'Mensaje'} tipo={'textfield'} name={"Mensaje"} />
                   </ThemeProvider>
                 </div>
                 <div className='btnEnviar'>

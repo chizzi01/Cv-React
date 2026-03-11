@@ -1,4 +1,5 @@
 import React from "react";
+import { getImgAlt } from '../utils';
 
 export function DevToolsCard({ titulo, listaImgs, isVisible }) {
 
@@ -13,7 +14,7 @@ export function DevToolsCard({ titulo, listaImgs, isVisible }) {
                 {listaImgs.map((item, index) => (
                     <img key={index}
                         src={item}
-                        alt={item}
+                        alt={getImgAlt(item)}
                         className={item.includes('react') ? 'rotate' : animationClass}
                         style={
                             {

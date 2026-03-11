@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getImgAlt } from '../utils';
 
 export function Footer({ tecnologias }) {
     return (
@@ -7,7 +8,7 @@ export function Footer({ tecnologias }) {
                 {tecnologias.map((item, index) => (
                     <img key={index}
                         src={item}
-                        alt={item}
+                        alt={getImgAlt(item)}
                         className={item.includes('react') ? 'rotate' : ''}
                         style={{
                             width: '40px',
@@ -18,7 +19,7 @@ export function Footer({ tecnologias }) {
             </div>
             <div className='footer-text'>
                 <h2><span style={{ color: '#6CEDFF' }}>Creada y diseñada por_ </span> Agustin Chizzini Melo</h2>
-                <p>© 2025 - Todos los derechos reservados</p>
+                <p>© 2026 - Todos los derechos reservados</p>
             </div>
         </footer>
     );

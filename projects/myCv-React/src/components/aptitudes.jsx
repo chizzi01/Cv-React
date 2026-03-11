@@ -3,13 +3,13 @@ import React from 'react';
 export function Aptitudes({ isVisible }) {
     const language = localStorage.getItem('language');
 
-    const TrabajoEnEquipo = language === 'es' ? 'Trabajo en equipo 🤝' : 'Teamwork 🤝';
-    const Autodidacta = language === 'es' ? 'Autodidacta 📘' : 'Self-taught 📘';
-    const Proactivo = language === 'es' ? 'Proactivo' : 'Proactive';
-    const Responsable = language === 'es' ? 'Responsable ✅' : 'Responsible ✅';
-    const Comprometido = language === 'es' ? 'Comprometido' : 'Committed';
-    const Adaptativo = language === 'es' ? 'Adaptativo 🔌' : 'Adaptive 🔌';
-    const SolucionadorDeProblemas = language === 'en' ? 'Solucionador de problemas ⚠' : 'Problem solver ⚠';
+    const TrabajoEnEquipo = language === 'es' ? 'Trabajo en equipo 🤝' : 'Team player 🤝';
+    const Autodidacta = language === 'es' ? 'Aprendizaje continuo 📘' : 'Continuous learning 📘';
+    const Proactivo = language === 'es' ? 'Iniciativa propia 🚀' : 'Self-starter 🚀';
+    const Responsable = language === 'es' ? 'Orientado a resultados ✅' : 'Results-driven ✅';
+    const Comprometido = language === 'es' ? 'Compromiso con la calidad' : 'Quality-focused';
+    const Adaptativo = language === 'es' ? 'Adaptable al cambio 🔌' : 'Adaptable 🔌';
+    const SolucionadorDeProblemas = language === 'es' ? 'Resolución de problemas ⚠️' : 'Problem solver ⚠️';
 
 
     const animationClass = isVisible ? 'animate' : '';
@@ -17,7 +17,7 @@ export function Aptitudes({ isVisible }) {
         <div className='aptitudes-container' >
             <div className='line1'>
             <ul className='line1-align'>
-                    <li className='rgb'>Creativo ✨</li>
+                    <li className='rgb'>Pensamiento creativo ✨</li>
                     <li className={`animation1 ${animationClass}`}>{TrabajoEnEquipo}</li>
                     <li className={`animation2 ${animationClass}`}>{Autodidacta}</li>
                 </ul>
@@ -32,7 +32,7 @@ export function Aptitudes({ isVisible }) {
             <div className='line3'>
                 <ul className='line3-align'>
                     <li className={`animation6 ${animationClass}`}>{Adaptativo}</li>
-                    <li className={`animation7 ${animationClass}`}>Solucionador de <span style={{color:"#FF4141"}}>problemas ⚠ </span></li>
+                    <li className={`animation7 ${animationClass}`}>{SolucionadorDeProblemas}</li>
                 </ul>
             </div>
         </div>

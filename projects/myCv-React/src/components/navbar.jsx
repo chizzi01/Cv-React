@@ -17,11 +17,11 @@ import { ControlledSwitches } from './Switch'
 const drawerWidth = 240;
 // const navItems = ['<Experiencia />', '<DevTools />', '<Portfolio />', '<Contacto />', <ControlledSwitches />];
 
-const IniText = localStorage.getItem('language') === 'es' ? '<Inicio />' : '<Home />'  // Define el texto de la sección de Inicio
-const ExpText = localStorage.getItem('language') === 'es' ? '<Experiencia />' : '<Experience />' // Define el texto de la sección de Experiencia
-const DevText = localStorage.getItem('language') === 'es' ? '<DevTools />' : '<DevTools />' // Define el texto de la sección de DevTools
-const PortText = localStorage.getItem('language') === 'es' ? '<Portfolio />' : '<Portfolio />' // Define el texto de la sección de Portfolio
-const ContText = localStorage.getItem('language') === 'es' ? '<Contacto />' : '<Contact />'
+const IniText  = localStorage.getItem('language') === 'es' ? '<Inicio />'      : '<Home />';
+const ExpText  = localStorage.getItem('language') === 'es' ? '<Experiencia />' : '<Experience />';
+const DevText  = '<Stack />';
+const PortText = '<Portfolio />';
+const ContText = localStorage.getItem('language') === 'es' ? '<Hablemos />'    : '<Contact />';
 
 
 
@@ -32,8 +32,6 @@ export function DrawerAppBar({window, currentSection}) {
   // const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  console.log(currentSection)
- 
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
