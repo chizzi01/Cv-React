@@ -53,14 +53,9 @@ export function Textfield({indicador, tipo, name, forceUpdate}) {
   
     return (
       <ThemeProvider theme={theme}>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            '& > :not(style)': { m: 1 },
-          }}
-        >
+        <Box sx={{ width: '100%' }}>
           <TextField
+          fullWidth
           type={tipo}
           required
           value={value}
@@ -70,7 +65,6 @@ export function Textfield({indicador, tipo, name, forceUpdate}) {
           InputProps={{
             style: {
               color: error ? '#FF4141' : 'white',
-              width: '300px',
               height: tipo === 'textfield' ? '100px' : 'auto',
             },
           }}
