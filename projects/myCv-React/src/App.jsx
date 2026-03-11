@@ -423,9 +423,51 @@ export function App() {
         </section>
         <section id='estudios-section' ref={studiesSectionRef} >
           <h1>Formación <span className='dark-blue'>_</span></h1>
-          <div className='barContainer-align'>
-            <CustomizedProgressBars title="Universitario" valueMount={animatedValueMount1} valueWidth={valueWidthMount} />
-            <CustomizedProgressBars title="Secundario" valueMount={animatedValueMount2} valueWidth={valueWidthMount} />
+          <div className='estudios-grid'>
+
+            {/* Tarjeta universitaria */}
+            <div className='edu-card'>
+              <div className='edu-card-top'>
+                <div className='edu-icon-wrap'>🎓</div>
+                <div className='edu-info'>
+                  <h3>Licenciatura en Sistemas de Información</h3>
+                  <p className='edu-institution'>Universidad Argentina de la Empresa · UADE</p>
+                </div>
+                <span className='edu-badge edu-badge--done'>Completado</span>
+              </div>
+              <p className='edu-year'>📅 2019 – 2024 &nbsp;·&nbsp; 📍 Buenos Aires</p>
+              <div className='edu-tags'>
+                <span>Ingeniería de Software</span>
+                <span>Bases de Datos</span>
+                <span>Algoritmos</span>
+                <span>Desarrollo de aplicaciones</span>
+                <span>Análisis de Sistemas</span>
+                <span>Gestión de Proyectos</span>
+              </div>
+              <CustomizedProgressBars title="Universitario" valueMount={animatedValueMount1} valueWidth={valueWidthMount} />
+            </div>
+
+            {/* Tarjeta secundaria */}
+            <div className='edu-card'>
+              <div className='edu-card-top'>
+                <div className='edu-icon-wrap'>📖</div>
+                <div className='edu-info'>
+                  <h3>Bachiller en Economía</h3>
+                  <p className='edu-institution'>Leon XIII · Buenos Aires</p>
+                </div>
+                <span className='edu-badge edu-badge--done'>Completado</span>
+              </div>
+              <p className='edu-year'>📅 2013 – 2018 &nbsp;·&nbsp; 📍 Buenos Aires</p>
+              <div className='edu-tags'>
+                <span>Economía</span>
+                <span>Contabilidad</span>
+                <span>Administración de empresas</span>
+                <span>Marketing</span>
+                <span>Inglés</span>
+              </div>
+              <CustomizedProgressBars title="Secundario" valueMount={animatedValueMount2} valueWidth={valueWidthMount} />
+            </div>
+
           </div>
         </section>
         <section id='aptitudes-section' ref={aptitudesRef}>
