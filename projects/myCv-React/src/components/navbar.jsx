@@ -13,10 +13,10 @@ import Typography from '@mui/material/Typography';
 const lang = localStorage.getItem('language');
 
 const navItems = [
-  { label: lang === 'es' ? '<Inicio />'      : '<Home />',       href: '#avatar-section',      id: 'avatar-section'      },
+  { label: lang === 'es' ? '<Inicio />' : '<Home />', href: '#avatar-section', id: 'avatar-section' },
   { label: lang === 'es' ? '<Experiencia />' : '<Experience />', href: '#experiencia-section', id: 'experiencia-section' },
-  { label: '<Stack />',                                           href: '#devtools-section',    id: 'devtools-section'    },
-  { label: '<Portfolio />',                                       href: '#proyectos-section',   id: 'proyectos-section'   },
+  { label: '<Stack />', href: '#devtools-section', id: 'devtools-section' },
+  { label: '<Portfolio />', href: '#proyectos-section', id: 'proyectos-section' },
 ];
 
 const ctaItem = {

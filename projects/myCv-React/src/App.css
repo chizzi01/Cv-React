@@ -2,39 +2,41 @@
    CSS CUSTOM PROPERTIES
    =========================== */
 :root {
-  --blue:      #6C8DFF;
+  --blue: #6C8DFF;
   --blue-dark: #3253FF;
   --blue-glow: rgba(108, 141, 255, 0.35);
-  --green:     #98FF58;
-  --cyan:      #6CEDFF;
-  --navy:      #001931;
-  --white:     #ffffff;
+  --green: #98FF58;
+  --cyan: #6CEDFF;
+  --navy: #001931;
+  --white: #ffffff;
 
   /* Universal horizontal padding — shrinks on smaller screens */
   --pad: clamp(1.5rem, 7vw, 9rem);
 
-  --radius:     16px;
-  --ease:       cubic-bezier(0.4, 0, 0.2, 1);
-  --dur:        0.3s;
-  --dur-slow:   0.6s;
+  --radius: 16px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur: 0.3s;
+  --dur-slow: 0.6s;
 
   /* Mouse position — updated by JS */
   --mx: 50vw;
   --my: 50vh;
 
   /* Border-rotate animation vars */
-  --d:     2500ms;
+  --d: 2500ms;
   --angle: 90deg;
   --gradX: 100%;
   --gradY: 50%;
-  --c1:    rgba(168, 239, 255, 1);
-  --c2:    rgba(168, 239, 255, 0.1);
+  --c1: rgba(168, 239, 255, 1);
+  --c2: rgba(168, 239, 255, 0.1);
 }
 
 /* ===========================
    RESET / GLOBAL
    =========================== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -45,6 +47,15 @@
 .App {
   position: relative;
   z-index: 1;
+  background: linear-gradient(
+    170deg,
+    #0d1130 0%,
+    #090d20 20%,
+    #07091a 45%,
+    #060810 70%,
+    #0a0d1f 100%
+  );
+  min-height: 100vh;
 }
 
 section {
@@ -55,20 +66,26 @@ section {
 /* ===========================
    COLOR UTILITIES
    =========================== */
-.green     { color: var(--green); }
-.blue      { color: var(--blue); }
-.dark-blue { color: var(--blue-dark); }
+.green {
+  color: var(--green);
+}
+
+.blue {
+  color: var(--blue);
+}
+
+.dark-blue {
+  color: var(--blue-dark);
+}
 
 .rgb {
   animation: RGB 2.5s ease-in-out infinite alternate;
 }
 
 .gradient-text {
-  background: linear-gradient(
-    180deg,
-    #00d4ff 0%, #fff 35%, #fff 42%,
-    #feff77 50%, #fff 58%, #fff 65%, #00d4ff 100%
-  );
+  background: linear-gradient(180deg,
+      #00d4ff 0%, #fff 35%, #fff 42%,
+      #feff77 50%, #fff 58%, #fff 65%, #00d4ff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -84,11 +101,10 @@ section {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(
-    700px circle at var(--mx) var(--my),
-    rgba(108, 141, 255, 0.07) 0%,
-    transparent 55%
-  );
+  background: radial-gradient(800px circle at var(--mx) var(--my),
+      rgba(108, 141, 255, 0.10) 0%,
+      rgba(50, 83, 255, 0.04) 40%,
+      transparent 65%);
 }
 
 /* Ambient floating orbs */
@@ -103,35 +119,39 @@ section {
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.15;
   will-change: transform;
 }
 
 .orb-1 {
-  width: min(700px, 80vw);
-  height: min(700px, 80vw);
-  background: radial-gradient(circle at center, #3253FF 0%, transparent 70%);
-  top: -15%;
-  left: -10%;
+  width: min(800px, 90vw);
+  height: min(800px, 90vw);
+  background: radial-gradient(circle at 40% 40%, #3253FF 0%, #1a35cc 40%, transparent 70%);
+  filter: blur(100px);
+  opacity: 0.22;
+  top: -20%;
+  left: -15%;
   animation: orbFloat1 22s ease-in-out infinite;
 }
 
 .orb-2 {
-  width: min(500px, 65vw);
-  height: min(500px, 65vw);
-  background: radial-gradient(circle at center, #6CEDFF 0%, transparent 70%);
-  bottom: 5%;
-  right: -8%;
+  width: min(580px, 70vw);
+  height: min(580px, 70vw);
+  background: radial-gradient(circle at 60% 40%, #6CEDFF 0%, #3a9fcf 40%, transparent 70%);
+  filter: blur(90px);
+  opacity: 0.14;
+  bottom: 0%;
+  right: -12%;
   animation: orbFloat2 28s ease-in-out infinite;
 }
 
 .orb-3 {
-  width: min(400px, 55vw);
-  height: min(400px, 55vw);
-  background: radial-gradient(circle at center, #98FF58 0%, transparent 70%);
-  top: 45%;
-  left: 35%;
+  width: min(460px, 60vw);
+  height: min(460px, 60vw);
+  background: radial-gradient(circle at 50% 50%, #7C5CFC 0%, #4a2dc9 40%, transparent 70%);
+  filter: blur(100px);
+  opacity: 0.16;
+  top: 40%;
+  left: 30%;
   animation: orbFloat3 34s ease-in-out infinite;
 }
 
@@ -139,7 +159,9 @@ section {
    CUSTOM CURSOR (fine pointer only)
    =========================== */
 @media (pointer: fine) {
-  * { cursor: none !important; }
+  * {
+    cursor: none !important;
+  }
 
   .cursor-dot {
     position: fixed;
@@ -167,8 +189,8 @@ section {
     z-index: 9998;
     will-change: transform;
     transition:
-      width       0.28s var(--ease),
-      height      0.28s var(--ease),
+      width 0.28s var(--ease),
+      height 0.28s var(--ease),
       border-color 0.28s var(--ease);
   }
 
@@ -457,14 +479,12 @@ form {
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  background: linear-gradient(
-    105deg,
-    #fff 20%,
-    var(--cyan) 35%,
-    var(--blue) 50%,
-    #fff 65%,
-    #fff 100%
-  );
+  background: linear-gradient(105deg,
+      #fff 20%,
+      var(--cyan) 35%,
+      var(--blue) 50%,
+      #fff 65%,
+      #fff 100%);
   background-size: 250% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -514,9 +534,17 @@ form {
   animation: scrollArrow 1.6s ease-in-out infinite;
 }
 
-.scroll-indicator span:nth-child(1) { animation-delay: 0s;   }
-.scroll-indicator span:nth-child(2) { animation-delay: 0.2s; }
-.scroll-indicator span:nth-child(3) { animation-delay: 0.4s; }
+.scroll-indicator span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.scroll-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.scroll-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
 
 /* ===========================
    SECTION HEADINGS (shared)
@@ -548,8 +576,13 @@ form {
 }
 
 @keyframes accentLine {
-  from { width: 0; }
-  to   { width: 100%; }
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
 }
 
 /* ===========================
@@ -770,10 +803,10 @@ form {
   color: var(--white);
   cursor: default;
   transition:
-    background   var(--dur) var(--ease),
+    background var(--dur) var(--ease),
     border-color var(--dur) var(--ease),
-    transform    var(--dur) var(--ease),
-    box-shadow   var(--dur) var(--ease);
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
 }
 
 .aptitudes-container li:hover {
@@ -915,9 +948,9 @@ form {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   padding: 1.75rem 1.5rem;
   transition:
-    transform    var(--dur) var(--ease),
+    transform var(--dur) var(--ease),
     border-color var(--dur) var(--ease),
-    box-shadow   var(--dur) var(--ease);
+    box-shadow var(--dur) var(--ease);
 }
 
 .devtools-card:hover {
@@ -994,8 +1027,8 @@ form {
   -webkit-backdrop-filter: blur(12px);
   overflow: hidden;
   transition:
-    transform    var(--dur) var(--ease),
-    box-shadow   var(--dur) var(--ease),
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
     border-color var(--dur) var(--ease);
 }
 
@@ -1098,9 +1131,9 @@ form {
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.05);
   transition:
-    background    var(--dur) var(--ease),
-    border-color  var(--dur) var(--ease),
-    transform     var(--dur) var(--ease);
+    background var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
 }
 
 .btnProyect-container a::after {
@@ -1162,7 +1195,8 @@ form {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  min-width: 0; /* evita desborde en flex */
+  min-width: 0;
+  /* evita desborde en flex */
 }
 
 .btnEnviar {
@@ -1186,10 +1220,10 @@ form {
   align-items: center;
   cursor: pointer;
   transition:
-    background   var(--dur) var(--ease),
+    background var(--dur) var(--ease),
     border-color var(--dur) var(--ease),
-    transform    var(--dur) var(--ease),
-    box-shadow   var(--dur) var(--ease);
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
 }
 
 .btnEnviar a:hover,
@@ -1294,13 +1328,33 @@ form {
 /* ===========================
    ANIMATION UTILITY CLASSES
    =========================== */
-.animation1.animate { animation: revealLeft  var(--dur-slow)        var(--ease) both; }
-.animation2.animate { animation: revealRight var(--dur-slow) 0.1s   var(--ease) both; }
-.animation3.animate { animation: revealUp    var(--dur-slow) 0.2s   var(--ease) both; }
-.animation4.animate { animation: revealScale var(--dur-slow) 0.3s   var(--ease) both; }
-.animation5.animate { animation: revealUp    var(--dur-slow) 0.4s   var(--ease) both; }
-.animation6.animate { animation: revealScale var(--dur-slow) 0.5s   var(--ease) both; }
-.animation7.animate { animation: revealRight var(--dur-slow) 0.6s   var(--ease) both; }
+.animation1.animate {
+  animation: revealLeft var(--dur-slow) var(--ease) both;
+}
+
+.animation2.animate {
+  animation: revealRight var(--dur-slow) 0.1s var(--ease) both;
+}
+
+.animation3.animate {
+  animation: revealUp var(--dur-slow) 0.2s var(--ease) both;
+}
+
+.animation4.animate {
+  animation: revealScale var(--dur-slow) 0.3s var(--ease) both;
+}
+
+.animation5.animate {
+  animation: revealUp var(--dur-slow) 0.4s var(--ease) both;
+}
+
+.animation6.animate {
+  animation: revealScale var(--dur-slow) 0.5s var(--ease) both;
+}
+
+.animation7.animate {
+  animation: revealRight var(--dur-slow) 0.6s var(--ease) both;
+}
 
 .lineborder.animate {
   border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
@@ -1332,114 +1386,264 @@ form {
    KEYFRAMES
    =========================== */
 @keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(36px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes revealUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes revealLeft {
-  from { opacity: 0; transform: translateX(-22px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes revealRight {
-  from { opacity: 0; transform: translateX(22px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes revealScale {
-  from { opacity: 0; transform: scale(0.82); }
-  to   { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes avatarGlow {
-  from { box-shadow: 0 0 28px  6px rgba(108, 141, 255, 0.22); }
-  to   { box-shadow: 0 0 72px 22px rgba(108, 141, 255, 0.52); }
+  from {
+    box-shadow: 0 0 28px 6px rgba(108, 141, 255, 0.22);
+  }
+
+  to {
+    box-shadow: 0 0 72px 22px rgba(108, 141, 255, 0.52);
+  }
 }
 
 @keyframes scaleInX {
-  from { transform: translateX(-50%) scaleX(0); }
-  to   { transform: translateX(-50%) scaleX(1); }
+  from {
+    transform: translateX(-50%) scaleX(0);
+  }
+
+  to {
+    transform: translateX(-50%) scaleX(1);
+  }
 }
 
 @keyframes slideInFromLeft {
-  from { transform: translateX(-20%); }
-  to   { transform: translateX(0); }
+  from {
+    transform: translateX(-20%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInFromRight {
-  from { transform: translateX(20%); }
-  to   { transform: translateX(0); }
+  from {
+    transform: translateX(20%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes scrollArrow {
-  0%   { opacity: 0; transform: rotate(45deg) translate(-4px, -4px); }
-  50%  { opacity: 1; }
-  100% { opacity: 0; transform: rotate(45deg) translate(4px,  4px); }
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-4px, -4px);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(4px, 4px);
+  }
 }
 
 @keyframes floaty {
-  0%   { transform: translateY(0);    }
-  50%  { transform: translateY(10px); }
-  100% { transform: translateY(0);    }
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 @keyframes RGB {
-  0%   { color: #5fcf1a; }
-  50%  { color: #6C8DFF; }
-  100% { color: #3253FF; }
+  0% {
+    color: #5fcf1a;
+  }
+
+  50% {
+    color: #6C8DFF;
+  }
+
+  100% {
+    color: #3253FF;
+  }
 }
 
 @keyframes rotate {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes borderRotate {
-  100% { --angle: 420deg; }
+  100% {
+    --angle: 420deg;
+  }
 }
 
 @keyframes borderRadial {
-  20%  { --gradX: 100%; --gradY:  50%; }
-  40%  { --gradX: 100%; --gradY: 100%; }
-  60%  { --gradX:  50%; --gradY: 100%; }
-  80%  { --gradX:   0%; --gradY:  50%; }
-  100% { --gradX:  50%; --gradY:   0%; }
+  20% {
+    --gradX: 100%;
+    --gradY: 50%;
+  }
+
+  40% {
+    --gradX: 100%;
+    --gradY: 100%;
+  }
+
+  60% {
+    --gradX: 50%;
+    --gradY: 100%;
+  }
+
+  80% {
+    --gradX: 0%;
+    --gradY: 50%;
+  }
+
+  100% {
+    --gradX: 50%;
+    --gradY: 0%;
+  }
 }
 
 @keyframes nameShimmer {
-  0%   { background-position: 200% center; }
-  100% { background-position: -200% center; }
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
 }
 
 @keyframes orbFloat1 {
-  0%   { transform: translate(0,    0)    scale(1);    }
-  33%  { transform: translate(60px, 40px) scale(1.08); }
-  66%  { transform: translate(-30px, 70px) scale(0.95); }
-  100% { transform: translate(0,    0)    scale(1);    }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(60px, 40px) scale(1.08);
+  }
+
+  66% {
+    transform: translate(-30px, 70px) scale(0.95);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 @keyframes orbFloat2 {
-  0%   { transform: translate(0,    0)     scale(1);    }
-  40%  { transform: translate(-70px, -50px) scale(1.1);  }
-  70%  { transform: translate(40px,  30px) scale(0.92); }
-  100% { transform: translate(0,    0)     scale(1);    }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  40% {
+    transform: translate(-70px, -50px) scale(1.1);
+  }
+
+  70% {
+    transform: translate(40px, 30px) scale(0.92);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 @keyframes orbFloat3 {
-  0%   { transform: translate(0,   0)    scale(1);    }
-  25%  { transform: translate(50px, -60px) scale(1.06); }
-  55%  { transform: translate(-40px, 50px) scale(0.94); }
-  80%  { transform: translate(20px, -20px) scale(1.04); }
-  100% { transform: translate(0,   0)    scale(1);    }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(50px, -60px) scale(1.06);
+  }
+
+  55% {
+    transform: translate(-40px, 50px) scale(0.94);
+  }
+
+  80% {
+    transform: translate(20px, -20px) scale(1.04);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 /* ===========================
@@ -1465,7 +1669,9 @@ form {
 
 /* ── Tablet portrait / large mobile (≤768px) ─── */
 @media (max-width: 768px) {
-  .scroll-indicator { display: none; }
+  .scroll-indicator {
+    display: none;
+  }
 
   /* Hero: stack vertically, centered */
   #avatar-section {
@@ -1476,15 +1682,19 @@ form {
     gap: 1.5rem;
   }
 
-  .info-align { align-items: center; }
+  .info-align {
+    align-items: center;
+  }
 
   .avatar-cover {
-    width:  clamp(10rem, 50vw, 16rem);
+    width: clamp(10rem, 50vw, 16rem);
     height: clamp(10rem, 50vw, 16rem);
   }
 
   /* Estudios */
-  .barContainer-align { width: 100%; }
+  .barContainer-align {
+    width: 100%;
+  }
 
   .bar-align {
     flex-direction: column;
