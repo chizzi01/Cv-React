@@ -3,7 +3,7 @@ import { maintenanceUrl } from './utils'
 import { SocialLinks } from './components/Social-Links'
 import { Avatar } from './components/Avatar'
 import { CustomizedProgressBars } from './components/ProgressBar'
-import { DrawerAppBar } from './components/Navbar'
+import { DrawerAppBar } from './components/navbar'
 import { Aptitudes } from './components/Aptitudes'
 import { Card } from './components/CardExp'
 import { DevToolsCard } from './components/Devtools'
@@ -28,9 +28,6 @@ import Electron from '../src/assets/electron.png'
 import Figma from '../src/assets/figma.png'
 import Sql from '../src/assets/sql.png'
 import Mui from '../src/assets/mui.png'
-import Agrimensura from '../src/assets/agrimensura.png'
-import Mizzio from '../src/assets/mizzio.png'
-import Schreiber from '../src/assets/schreiber.png'
 import SchreiberDesktop from '../src/assets/schreiber-desktop.png'
 import SchreiberMobile from '../src/assets/schreiber-mobile.png'
 import Siro from '../src/assets/siro.png'
@@ -502,7 +499,7 @@ export function App() {
           <h2 className='expContTitulo'>Portfolio <span className='dark-blue'>_</span></h2>
           <div className='proyectos-container' isVisible={portfolioVisible} ref={portfolio}>
             <ProyectCard isWeb={true} mockupType="both" nombre="FITC Training" bio={["Plataforma para coach de fútbol", "React + Vite", "Diseño dinámico y deportivo"]} tecnologias={[ReactLog, Html, Css, Javascript, Figma]} fondoDesktop={FitcDesktop} fondoMobile={FitcMobile} fondo={FitcDesktop} web='https://fitctraining.com/' />
-          <ProyectCard isWeb={true} mockupType="both" nombre="Estudios Schreiber" bio={["Estudio jurídico", "React + Vite", "Diseño profesional"]} tecnologias={[ReactLog, Html, Css, Javascript, Figma]} fondo={Schreiber} fondoDesktop={SchreiberDesktop} fondoMobile={SchreiberMobile} web='https://estudioschreiber.ar/' />
+          <ProyectCard isWeb={true} mockupType="both" nombre="Estudios Schreiber" bio={["Estudio jurídico", "React + Vite", "Diseño profesional"]} tecnologias={[ReactLog, Html, Css, Javascript, Figma]} fondo={SchreiberDesktop} fondoDesktop={SchreiberDesktop} fondoMobile={SchreiberMobile} web='https://estudioschreiber.ar/' />
             <ProyectCard isWeb={true} mockupType="both" nombre="Siro Transporte" bio={["Empresa de transporte", "SEO-friendly", "100% Responsive"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} desktopBgPos="center 20%" web={maintenanceUrl('Siro Transporte')} />
             <ProyectCard isWeb={false} mockupType="mobile" nombre="MyPasswords" bio={["App móvil nativa", "Gestor offline de contraseñas", "React + Capacitor"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript, Json]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
             <ProyectCard isWeb={true} mockupType="desktop" linkLabel="Descargar" nombre="MyBolucompras" bio={["App de escritorio", "Control de gastos personal", "Actualizaciones automaticas","Electron + JS"]} tecnologias={[ReactLog,Electron, Html, Css, Javascript, Json]} fondo={Mybolucompras} web='https://github.com/chizzi01/MyBolucompras/releases/tag/v0.0.36' />
