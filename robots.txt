@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chizzi01.github.io/Cv-React/sitemap.xml
