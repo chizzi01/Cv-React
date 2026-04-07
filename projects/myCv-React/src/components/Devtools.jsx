@@ -9,7 +9,7 @@ export function DevToolsCard({ titulo, listaImgs, isVisible }) {
 
     return (
         <div className='devtools-card'>
-            <h1>{titulo}</h1>
+            <h3>{titulo}</h3>
             <div className='devtools-img'>
                 {listaImgs.map((item, index) => (
                     <img key={index}

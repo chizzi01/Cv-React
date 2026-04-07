@@ -31,8 +31,11 @@ import Mui from '../src/assets/mui.png'
 import Agrimensura from '../src/assets/agrimensura.png'
 import Mizzio from '../src/assets/mizzio.png'
 import Schreiber from '../src/assets/schreiber.png'
+import SchreiberDesktop from '../src/assets/schreiber-desktop.png'
+import SchreiberMobile from '../src/assets/schreiber-mobile.png'
 import Siro from '../src/assets/siro.png'
-import DonPepe from '../src/assets/donpepe.png'
+import FitcDesktop from '../src/assets/fitc-desktop.png'
+import FitcMobile from '../src/assets/fitc-mobile.png'
 import Mypass from '../src/assets/mypass.png'
 import Mybolucompras from '../src/assets/mybolucompras.png'
 import Json from '../src/assets/json.png'
@@ -389,9 +392,6 @@ export function App() {
 
     return (
       <div className='App'>
-        <style>
-          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100,200,300,400,500,600,700,800&display=swap');
-        </style>
         {/* Background effects */}
         <div className="mouse-glow" aria-hidden="true" />
         <div className="bg-orbs" aria-hidden="true">
@@ -412,7 +412,7 @@ export function App() {
           </div>
           <div className='info-align'>
             <h1>Agustin<br></br>Chizzini Melo</h1>
-            <h3><span className='blue'>Desarrollador Web</span> · <span className='green'>Analista de Datos</span> · Lic. Sistemas</h3>
+            <h3><span className='blue'>Desarrollador Full Stack</span> · <span className='green'>Analista de Datos</span> · Lic. en Sistemas</h3>
             <p>📍 Buenos Aires, <span className='gradient-text'>Argentina</span></p>
           </div>
           <a href="#estudios-section" className="scroll-indicator" aria-label="Ir a la siguiente sección">
@@ -422,7 +422,7 @@ export function App() {
           </a>
         </section>
         <section id='estudios-section' ref={studiesSectionRef} >
-          <h1>Formación <span className='dark-blue'>_</span></h1>
+          <h2>Formación <span className='dark-blue'>_</span></h2>
           <div className='estudios-grid'>
 
             {/* Tarjeta universitaria */}
@@ -471,16 +471,16 @@ export function App() {
           </div>
         </section>
         <section id='aptitudes-section' ref={aptitudesRef}>
-          <h1>Habilidades <span className='dark-blue'>_</span></h1>
+          <h2>Habilidades <span className='dark-blue'>_</span></h2>
           <Aptitudes isVisible={isVisible} />
 
         </section>
 
         <section id='experiencia-section'>
-          <h1 className='expContTitulo'>Experiencia <span className='dark-blue'>_</span></h1>
+          <h2 className='expContTitulo'>Experiencia <span className='dark-blue'>_</span></h2>
           <div className='experiencia-align' ref={expRef}>
-            <Card isVisible={expVisible} fondo={gds} titulo="Analista & Desarrollador" tiempo="Feb 2024 - Actualidad"
-              lista={["Desarrollo de dashboards analíticos en MicroStrategy.", "Desarrollo de aplicaciones web internas con React.", "Control de calidad y monitoreo de flujos de datos."]} color="#00b9c4" />
+            <Card isVisible={expVisible} fondo={gds} titulo="Analista y Desarrollador" tiempo="Feb 2024 - Actualidad"
+              lista={["Diseño y desarrollo de aplicaciones web con React.", "Desarrollo de aplicaciones móviles multiplataforma con React Native.", "Desarrollo de plataformas web con C# y ASP.NET.", "Control de calidad y monitoreo de flujos de datos."]} color="#00b9c4" />
             <Card isVisible={expVisible} fondo={Danone} titulo="Analista BI" tiempo="Jul 2022 - Ene 2024"
               lista={["Diseño y publicación de reportes en Power BI y SAP Analytics Cloud.", "Soporte en migraciones y conciliación periódica de datos.", "Desarrollo de aplicaciones de escritorio con Electron para el negocio."]} color="#6AC9FF" />
             <Card isVisible={expVisible} fondo={Ejercito} titulo="Desarrollador Web" tiempo="Feb 2021 - Jul 2022"
@@ -489,7 +489,7 @@ export function App() {
         </section>
 
         <section id='devtools-section'>
-          <h1 className='expContTitulo'>Stack Tecnológico <span className='dark-blue'>_</span></h1>
+          <h2 className='expContTitulo'>Stack Tecnológico <span className='dark-blue'>_</span></h2>
           <div className='devtools-container' ref={devtools}>
             <DevToolsCard titulo="Front-End" isVisible={devtoolsVisible} listaImgs={[ReactLog, Html, Css, Javascript, Figma, Capacitor, Electron, Mui]} />
             <DevToolsCard titulo="Back-End" isVisible={devtoolsVisible} listaImgs={[Nodejs, Sql, Json, Mongo]} />
@@ -499,19 +499,19 @@ export function App() {
         </section>
 
         <section id='proyectos-section'>
-          <h1 className='expContTitulo'>Portfolio <span className='dark-blue'>_</span></h1>
+          <h2 className='expContTitulo'>Portfolio <span className='dark-blue'>_</span></h2>
           <div className='proyectos-container' isVisible={portfolioVisible} ref={portfolio}>
-          <ProyectCard isWeb={true} nombre="Estudios Schreiber" bio={["Estudio jurídico", "React + Vite", "Diseño profesional"]} tecnologias={[ReactLog, Html, Css, Javascript, Figma]} fondo={Schreiber} web='https://estudioschreiber.ar/' />
-            <ProyectCard isWeb={true} nombre="Siro Transporte" bio={["Empresa de transporte", "SEO-friendly", "100% Responsive"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} web={maintenanceUrl('Siro Transporte')} />
-            <ProyectCard isWeb={true} nombre="Don Pepe Bar" bio={["Gastronomía & nocturno", "Diseño moderno", "Animaciones CSS"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={DonPepe} web='https://chizzi01.github.io/DonPepe-Bar/' />
-            <ProyectCard isWeb={false} nombre="MyPasswords" bio={["App móvil nativa", "Gestor offline de contraseñas", "React + Capacitor"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript, Json]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
-            <ProyectCard isWeb={true} linkLabel="Descargar" nombre="MyBolucompras" bio={["App de escritorio", "Control de gastos personal", "Actualizaciones automaticas","Electron + JS"]} tecnologias={[ReactLog,Electron, Html, Css, Javascript, Json]} fondo={Mybolucompras} web='https://github.com/chizzi01/MyBolucompras/releases/tag/v0.0.36' />
+            <ProyectCard isWeb={true} mockupType="both" nombre="FITC Training" bio={["Plataforma para coach de fútbol", "React + Vite", "Diseño dinámico y deportivo"]} tecnologias={[ReactLog, Html, Css, Javascript, Figma]} fondoDesktop={FitcDesktop} fondoMobile={FitcMobile} fondo={FitcDesktop} web='https://fitctraining.com/' />
+          <ProyectCard isWeb={true} mockupType="both" nombre="Estudios Schreiber" bio={["Estudio jurídico", "React + Vite", "Diseño profesional"]} tecnologias={[ReactLog, Html, Css, Javascript, Figma]} fondo={Schreiber} fondoDesktop={SchreiberDesktop} fondoMobile={SchreiberMobile} web='https://estudioschreiber.ar/' />
+            <ProyectCard isWeb={true} mockupType="both" nombre="Siro Transporte" bio={["Empresa de transporte", "SEO-friendly", "100% Responsive"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} desktopBgPos="center 20%" web={maintenanceUrl('Siro Transporte')} />
+            <ProyectCard isWeb={false} mockupType="mobile" nombre="MyPasswords" bio={["App móvil nativa", "Gestor offline de contraseñas", "React + Capacitor"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript, Json]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
+            <ProyectCard isWeb={true} mockupType="desktop" linkLabel="Descargar" nombre="MyBolucompras" bio={["App de escritorio", "Control de gastos personal", "Actualizaciones automaticas","Electron + JS"]} tecnologias={[ReactLog,Electron, Html, Css, Javascript, Json]} fondo={Mybolucompras} web='https://github.com/chizzi01/MyBolucompras/releases/tag/v0.0.36' />
           </div>
         </section>
 
         <section id='contacto-section'>
           <div className='contacto-container' isVisible={contactoVisible} ref={contacto} style={isSubmitted ? { backgroundColor: '#3456ff' } : {}}>
-            <h1 className='expContTitulo'>Hablemos <span className='dark-blue'>_</span></h1>
+            <h2 className='expContTitulo'>Hablemos <span className='dark-blue'>_</span></h2>
             <form action="https://formsubmit.co/aguschizzini@gmail.com" method="POST" onSubmit={async (e) => {
               e.preventDefault();
               setIsSending(true);
