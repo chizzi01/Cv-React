@@ -19,7 +19,7 @@ export function Footer({ tecnologias }) {
             </div>
             <div className='footer-text'>
                 <h2><span style={{ color: '#6CEDFF' }}>Creada y diseñada por_ </span> Agustin Chizzini Melo</h2>
-                <p>© 2026 - Todos los derechos reservados</p>
+                <p>©{new Date().getFullYear()} - Todos los derechos reservados</p>
             </div>
         </footer>
     );
