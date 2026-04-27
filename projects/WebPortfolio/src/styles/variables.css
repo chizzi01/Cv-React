@@ -1,0 +1,34 @@
+:root {
+  --bg-deep:      #050508;
+  --bg-dark:      #0A0A12;
+  --bg-section:   #07070F;
+  --bg-card:      rgba(255, 255, 255, 0.04);
+  --border-glass: rgba(255, 255, 255, 0.10);
+
+  --neon-cyan:    #00FFFF;
+  --neon-purple:  #BF00FF;
+  --neon-pink:    #FF00A8;
+  --neon-green:   #00FF88;
+
+  --neon-cyan-dim:   rgba(0, 255, 255, 0.15);
+  --neon-purple-dim: rgba(191, 0, 255, 0.15);
+  --neon-pink-dim:   rgba(255, 0, 168, 0.15);
+  --neon-green-dim:  rgba(0, 255, 136, 0.15);
+
+  --text-primary: #F0F0FF;
+  --text-muted:   rgba(240, 240, 255, 0.55);
+  --text-dim:     rgba(240, 240, 255, 0.35);
+
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  --section-pad-y: clamp(5rem, 10vh, 9rem);
+  --section-pad-x: clamp(1.5rem, 6vw, 8rem);
+
+  --radius-card: 16px;
+  --radius-btn:  8px;
+  --radius-sm:   8px;
+
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}

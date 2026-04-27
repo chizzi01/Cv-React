@@ -1,0 +1,198 @@
+/* ── Hero shell ─────────────────────────────── */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 70% 40%, rgba(191,0,255,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 75%, rgba(0,255,255,0.07) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(0,255,136,0.04) 0%, transparent 40%),
+    var(--bg-deep);
+}
+
+/* Subtle grid overlay */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Vignette on top of grid */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(5,5,8,0.6) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Content ─────────────────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--section-pad-x);
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-text-col {
+  max-width: min(600px, 52%);
+}
+
+@media (max-width: 1024px) {
+  .hero-text-col {
+    max-width: 100%;
+  }
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--neon-cyan);
+  letter-spacing: 0.14em;
+}
+
+.hero-eyebrow-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 8px var(--neon-cyan);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.hero-title {
+  margin-bottom: 1.25rem;
+}
+
+.hero-title-neon {
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease infinite;
+}
+
+.hero-subtitle {
+  max-width: 46ch;
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+}
+
+/* ── CTAs ─────────────────────────────────────── */
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+/* ── Stats row ────────────────────────────────── */
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.hero-stat-value {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.hero-stat-value span {
+  color: var(--neon-cyan);
+}
+
+.hero-stat-label {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Scroll hint (centered, bottom of section) ── */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scroll-track {
+  width: 1px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-dot {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 8px var(--neon-cyan);
+  animation: scroll-travel 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes scroll-travel {
+  0%   { top: -8px; opacity: 1; }
+  80%  { top: 60px; opacity: 0.8; }
+  81%  { top: -8px; opacity: 0; }
+  100% { top: -8px; opacity: 1; }
+}
+
+.scroll-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-scroll-hint {
+    display: none;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-stats {
+    gap: 1.5rem;
+  }
+}

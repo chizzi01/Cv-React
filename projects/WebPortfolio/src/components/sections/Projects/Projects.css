@@ -1,0 +1,245 @@
+.projects-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 90% 10%, rgba(191,0,255,0.07) 0%, transparent 45%),
+    radial-gradient(ellipse at 5%  90%, rgba(0,255,136,0.06) 0%, transparent 45%),
+    var(--bg-deep);
+}
+
+/* ── Bento grid ──────────────────────────────── */
+.projects-bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 440px 440px 300px;
+  gap: 1rem;
+}
+
+/* Row 1 — featured left */
+.project-card:nth-child(1) { grid-column: 1 / 8;  grid-row: 1; }
+.project-card:nth-child(2) { grid-column: 8 / 13; grid-row: 1; }
+/* Row 2 — dominance flips right */
+.project-card:nth-child(3) { grid-column: 1 / 6;  grid-row: 2; }
+.project-card:nth-child(4) { grid-column: 6 / 13; grid-row: 2; }
+/* Row 3 — full-width cinematic banner */
+.project-card:nth-child(5) { grid-column: 1 / 13; grid-row: 3; }
+
+/* ── Card base ───────────────────────────────── */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  will-change: transform;
+  transition:
+    transform 0.2s ease-out,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* ── Background image ────────────────────────── */
+.project-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover .project-bg {
+  transform: scale(1.06);
+}
+
+/* ── Permanent gradient — name stays readable ── */
+.project-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(5, 5, 8, 0.92) 0%,
+    rgba(5, 5, 8, 0.45) 35%,
+    rgba(5, 5, 8, 0.1)  60%,
+    transparent          80%
+  );
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.project-card:hover .project-gradient {
+  opacity: 0;
+}
+
+/* ── Type badge ──────────────────────────────── */
+.project-type-badge {
+  position: absolute;
+  top: 1.1rem;
+  left: 1.1rem;
+  z-index: 3;
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  background: rgba(5, 5, 8, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  letter-spacing: 0.12em;
+  font-size: 0.63rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+/* ── Index watermark ─────────────────────────── */
+.project-index-num {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  z-index: 3;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.15);
+  transition: color 0.3s ease;
+}
+
+.project-card:hover .project-index-num {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Hover overlay ───────────────────────────── */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  background: linear-gradient(
+    to top,
+    rgba(5, 5, 8, 0.97) 0%,
+    rgba(5, 5, 8, 0.88) 55%,
+    rgba(5, 5, 8, 0.5)  100%
+  );
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  /* leave room for the footer below */
+  padding-bottom: 4.5rem;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.4rem;
+}
+
+.project-tag {
+  font-size: 0.63rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.65rem;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.project-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: gap 0.22s ease, opacity 0.2s ease;
+}
+.project-cta:hover {
+  gap: 0.85rem;
+  opacity: 0.85;
+}
+
+/* ── Always-visible name footer ──────────────── */
+.project-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  padding: 1.1rem 1.5rem 1.3rem;
+  pointer-events: none;
+}
+
+.project-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.9);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card:hover .project-name {
+  transform: translateY(-2px);
+}
+
+/* ── Per-color neon accents ──────────────────── */
+.project-card--cyan  .project-type-badge { color: var(--neon-cyan);   }
+.project-card--purple .project-type-badge { color: var(--neon-purple); }
+.project-card--pink  .project-type-badge { color: var(--neon-pink);   }
+.project-card--green .project-type-badge { color: var(--neon-green);  }
+
+.project-card--cyan  .project-cta { color: var(--neon-cyan);   }
+.project-card--purple .project-cta { color: var(--neon-purple); }
+.project-card--pink  .project-cta { color: var(--neon-pink);   }
+.project-card--green .project-cta { color: var(--neon-green);  }
+
+.project-card--cyan:hover  { border-color: rgba(0, 255, 255, 0.38);   box-shadow: 0 0 40px rgba(0, 255, 255, 0.12),   0 20px 60px rgba(0, 0, 0, 0.5); }
+.project-card--purple:hover { border-color: rgba(191, 0, 255, 0.38);  box-shadow: 0 0 40px rgba(191, 0, 255, 0.12),  0 20px 60px rgba(0, 0, 0, 0.5); }
+.project-card--pink:hover   { border-color: rgba(255, 0, 168, 0.38);  box-shadow: 0 0 40px rgba(255, 0, 168, 0.12),  0 20px 60px rgba(0, 0, 0, 0.5); }
+.project-card--green:hover  { border-color: rgba(0, 255, 136, 0.38);  box-shadow: 0 0 40px rgba(0, 255, 136, 0.12),  0 20px 60px rgba(0, 0, 0, 0.5); }
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 1100px) {
+  .projects-bento {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  .project-card:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+    height: 320px;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-bento {
+    grid-template-columns: 1fr;
+  }
+  .project-card:nth-child(n) {
+    height: 280px;
+  }
+  .project-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .project-gradient {
+    opacity: 0;
+  }
+}

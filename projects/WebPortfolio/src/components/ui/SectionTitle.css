@@ -1,0 +1,48 @@
+.section-title-block {
+  margin-bottom: 3.5rem;
+}
+
+.section-title-block--center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.12em;
+}
+
+.neon-text--cyan   { color: var(--neon-cyan); }
+.neon-text--purple { color: var(--neon-purple); }
+.neon-text--pink   { color: var(--neon-pink); }
+.neon-text--green  { color: var(--neon-green); }
+
+.section-title-block .section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+  max-width: 56ch;
+  margin-bottom: 1.5rem;
+}
+
+.section-title-line {
+  width: 60px;
+  height: 3px;
+  border-radius: 2px;
+  margin-top: 1rem;
+}
+
+.neon-line--cyan   { background: var(--neon-cyan);   box-shadow: 0 0 8px var(--neon-cyan); }
+.neon-line--purple { background: var(--neon-purple);  box-shadow: 0 0 8px var(--neon-purple); }
+.neon-line--pink   { background: var(--neon-pink);    box-shadow: 0 0 8px var(--neon-pink); }
+.neon-line--green  { background: var(--neon-green);   box-shadow: 0 0 8px var(--neon-green); }
+
+.section-title-block--center .section-title-line {
+  margin-left: auto;
+  margin-right: auto;
+}

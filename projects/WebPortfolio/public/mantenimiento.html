@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sitio en mantenimiento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #050508;
+      --cyan:   #00FFFF;
+      --purple: #BF00FF;
+      --pink:   #FF00A8;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse at 70% 30%, rgba(191,0,255,0.09) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 70%, rgba(0,255,255,0.07) 0%, transparent 45%),
+        var(--bg);
+      font-family: 'Space Grotesk', sans-serif;
+      color: #fff;
+      padding: 2rem;
+    }
+
+    /* subtle grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .card {
+      position: relative;
+      text-align: center;
+      max-width: 480px;
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      backdrop-filter: blur(20px);
+    }
+
+    .icon-wrap {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      border: 1.5px solid rgba(0,255,255,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 28px rgba(0,255,255,0.18);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 28px rgba(0,255,255,0.18); }
+      50%       { box-shadow: 0 0 42px rgba(0,255,255,0.32); }
+    }
+
+    .icon-wrap svg {
+      width: 28px;
+      height: 28px;
+      color: var(--cyan);
+    }
+
+    .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .project-name {
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      border-radius: 2px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .back-link:hover { color: var(--cyan); gap: 0.75rem; }
+    .back-link svg { width: 14px; height: 14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+        <path d="M2 17l10 5 10-5"/>
+        <path d="M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+
+    <p class="label">Estado del proyecto</p>
+
+    <h1>
+      <span id="project-name" class="project-name">Este sitio</span><br />
+      está en mantenimiento
+    </h1>
+
+    <div class="divider"></div>
+
+    <p>
+      Estamos realizando mejoras para ofrecer una mejor experiencia.<br />
+      Volvé pronto — ¡el sitio estará disponible en breve!
+    </p>
+
+    <a href="javascript:history.back()" class="back-link">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 7H3M6 3.5L2.5 7 6 10.5"/>
+      </svg>
+      Volver
+    </a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('p');
+    if (name) {
+      document.getElementById('project-name').textContent = name;
+    }
+    document.title = (name ? name + ' — ' : '') + 'En mantenimiento';
+  </script>
+</body>
+</html>

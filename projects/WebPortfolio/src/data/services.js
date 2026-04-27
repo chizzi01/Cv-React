@@ -1,0 +1,35 @@
+export const SERVICES = [
+  {
+    id: 1,
+    icon: '🚀',
+    title: 'Landing Page',
+    description: 'Diseño único y conversional. Carga ultrarrápida, responsive y optimizada para convertir visitantes en clientes.',
+    features: ['Diseño en Figma', 'Responsive 100%', 'Optimización SEO', 'Formulario de contacto'],
+    neonColor: 'cyan',
+    popular: true,
+  },
+  {
+    id: 2,
+    icon: '🛒',
+    title: 'E-Commerce',
+    description: 'Tienda online completa. Catálogo de productos, carrito de compras, pasarela de pagos y panel de administración.',
+    features: ['Catálogo dinámico', 'Pagos seguros', 'Panel admin', 'Stock en tiempo real'],
+    neonColor: 'purple',
+  },
+  {
+    id: 3,
+    icon: '✨',
+    title: 'Portfolio Web',
+    description: 'Tu presencia digital profesional. Destaca tu trabajo con animaciones modernas y un diseño que impresiona.',
+    features: ['Animaciones custom', 'Galería interactiva', 'CV descargable', 'Contacto integrado'],
+    neonColor: 'pink',
+  },
+  {
+    id: 4,
+    icon: '⚡',
+    title: 'App Web',
+    description: 'Aplicaciones web a medida. Desde gestores internos hasta herramientas de productividad para tu negocio.',
+    features: ['Backend incluido', 'Base de datos', 'Autenticación', 'API REST'],
+    neonColor: 'green',
+  },
+]

@@ -1,0 +1,49 @@
+.glass-card {
+  background:    var(--bg-card);
+  border:        1px solid var(--border-glass);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-card);
+  transition:    border-color var(--transition), box-shadow var(--transition);
+}
+
+.glass-card--cyan {
+  border-color: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.05) inset, 0 4px 40px rgba(0, 0, 0, 0.5);
+}
+.glass-card--cyan:hover {
+  border-color: rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.12) inset, 0 8px 50px rgba(0, 0, 0, 0.6);
+}
+
+.glass-card--purple {
+  border-color: rgba(191, 0, 255, 0.2);
+  box-shadow: 0 0 30px rgba(191, 0, 255, 0.05) inset, 0 4px 40px rgba(0, 0, 0, 0.5);
+}
+.glass-card--purple:hover {
+  border-color: rgba(191, 0, 255, 0.5);
+  box-shadow: 0 0 40px rgba(191, 0, 255, 0.12) inset, 0 8px 50px rgba(0, 0, 0, 0.6);
+}
+
+.glass-card--pink {
+  border-color: rgba(255, 0, 168, 0.2);
+  box-shadow: 0 0 30px rgba(255, 0, 168, 0.05) inset, 0 4px 40px rgba(0, 0, 0, 0.5);
+}
+.glass-card--pink:hover {
+  border-color: rgba(255, 0, 168, 0.5);
+  box-shadow: 0 0 40px rgba(255, 0, 168, 0.12) inset, 0 8px 50px rgba(0, 0, 0, 0.6);
+}
+
+.glass-card--green {
+  border-color: rgba(0, 255, 136, 0.2);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.05) inset, 0 4px 40px rgba(0, 0, 0, 0.5);
+}
+.glass-card--green:hover {
+  border-color: rgba(0, 255, 136, 0.5);
+  box-shadow: 0 0 40px rgba(0, 255, 136, 0.12) inset, 0 8px 50px rgba(0, 0, 0, 0.6);
+}
+
+.neon-glow-cyan   { box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+.neon-glow-purple { box-shadow: 0 0 20px rgba(191, 0, 255, 0.5); }
+.neon-glow-pink   { box-shadow: 0 0 20px rgba(255, 0, 168, 0.5); }
+.neon-glow-green  { box-shadow: 0 0 20px rgba(0, 255, 136, 0.5); }
