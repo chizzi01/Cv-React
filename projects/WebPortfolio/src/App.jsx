@@ -5,7 +5,6 @@ import Hero from './components/sections/Hero/Hero'
 import Services from './components/sections/Services/Services'
 import Projects from './components/sections/Projects/Projects'
 import Process from './components/sections/Process/Process'
-import TechStack from './components/sections/TechStack/TechStack'
 import Trust from './components/sections/Trust/Trust'
 import Contact from './components/sections/Contact/Contact'
 import Footer from './components/layout/Footer'
@@ -86,7 +85,6 @@ export default function App() {
         <Services />
         <Projects />
         <Process />
-        <TechStack />
         <Contact />
       </main>
       <Footer />
