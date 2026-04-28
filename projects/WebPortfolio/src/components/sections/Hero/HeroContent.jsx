@@ -46,16 +46,18 @@ export default function HeroContent() {
           Desarrollo Web Personalizado &nbsp;·&nbsp; Buenos Aires
         </motion.span>
 
-        <motion.h1
-          className="hero-title display-xl"
-          initial={{ opacity: 0, y: 36 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.85, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        >
-          Webs que convierten
-          <br />
-          <span className="hero-title-neon">visitantes en clientes</span>
-        </motion.h1>
+        <div style={{ overflow: 'hidden' }}>
+          <motion.h1
+            className="hero-title display-xl"
+            initial={{ y: '110%', opacity: 0 }}
+            animate={{ y: '0%', opacity: 1 }}
+            transition={{ duration: 0.9, delay: 0.28, ease: [0.76, 0, 0.24, 1] }}
+          >
+            Webs que convierten
+            <br />
+            <span className="hero-title-neon">visitantes en clientes</span>
+          </motion.h1>
+        </div>
 
         <motion.p
           className="hero-subtitle body-lg"

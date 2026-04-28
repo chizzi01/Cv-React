@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
-import { fadeUp } from '../../../hooks/useScrollAnimation'
+import { cardReveal3D } from '../../../hooks/useScrollAnimation'
 
-export default function ServiceCard({ icon, title, description, features, neonColor, popular }) {
+export default function ServiceCard({ icon, title, description, features, neonColor, popular, index = 0 }) {
   const handleMouseMove = (e) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect()
     e.currentTarget.style.setProperty('--sx', `${((e.clientX - left) / width) * 100}%`)
@@ -11,9 +11,12 @@ export default function ServiceCard({ icon, title, description, features, neonCo
   return (
     <motion.div
       className={`service-card glass-card glass-card--${neonColor}`}
-      variants={fadeUp}
-      whileHover={{ y: -8, scale: 1.02 }}
-      transition={{ type: 'spring', stiffness: 280, damping: 22 }}
+      variants={cardReveal3D}
+      custom={index}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.2 }}
+      whileHover={{ y: -8, scale: 1.02, transition: { type: 'spring', stiffness: 280, damping: 22 } }}
       onMouseMove={handleMouseMove}
     >
       {popular && <span className="service-badge">Más elegido</span>}

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useScrollAnimation, staggerContainer, fadeUp } from '../../../hooks/useScrollAnimation'
+import { cardReveal3D } from '../../../hooks/useScrollAnimation'
 import SectionTitle from '../../ui/SectionTitle'
 import './Trust.css'
 
@@ -25,8 +25,6 @@ const VALUE_PROPS = [
 ]
 
 export default function Trust() {
-  const { ref, inView } = useScrollAnimation({ threshold: 0.1 })
-
   return (
     <section className="trust-section section-container" id="por-que-yo">
       <div className="section-wrapper">
@@ -36,25 +34,23 @@ export default function Trust() {
           color="cyan"
           center
         />
-        <motion.div
-          ref={ref}
-          className="trust-grid"
-          variants={staggerContainer}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
-          {VALUE_PROPS.map((vp) => (
+        <div className="trust-grid">
+          {VALUE_PROPS.map((vp, i) => (
             <motion.div
               key={vp.title}
               className={`trust-card glass-card glass-card--${vp.neonColor}`}
-              variants={fadeUp}
+              variants={cardReveal3D}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.25 }}
             >
               <div className="trust-icon">{vp.icon}</div>
               <h3 className="trust-title">{vp.title}</h3>
               <p className="trust-desc">{vp.description}</p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

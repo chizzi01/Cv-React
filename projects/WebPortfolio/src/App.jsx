@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import './index.css'
+import Stars from './components/Stars'
 import Navbar from './components/layout/Navbar'
 import Hero from './components/sections/Hero/Hero'
 import Services from './components/sections/Services/Services'
@@ -72,6 +73,7 @@ export default function App() {
 
   return (
     <>
+      <Stars />
       {/* Scroll progress */}
       <div ref={progressRef} className="scroll-progress" aria-hidden="true" />
       {/* Custom cursor (hidden on touch via CSS) */}

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useScrollAnimation, fadeUp } from '../../../hooks/useScrollAnimation'
+import { useScrollAnimation, staggerFast, fadeUp, cardReveal3D } from '../../../hooks/useScrollAnimation'
 import SectionTitle from '../../ui/SectionTitle'
 import NeonButton from '../../ui/NeonButton'
 import './Contact.css'
@@ -42,11 +42,11 @@ export default function Contact() {
         <motion.div
           ref={ref}
           className="contact-inner"
-          variants={fadeUp}
+          variants={staggerFast}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
         >
-          <div className="contact-info">
+          <motion.div className="contact-info" variants={fadeUp}>
             <p className="contact-tagline">
               Contame sobre tu proyecto y <span>construyamos algo increíble</span> juntos.
             </p>
@@ -74,9 +74,9 @@ export default function Contact() {
                 🔗 LinkedIn
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="contact-form-wrapper glass-card glass-card--cyan">
+          <motion.div className="contact-form-wrapper glass-card glass-card--cyan" variants={cardReveal3D}>
             {sent ? (
               <div className="form-success">
                 <div className="form-success-icon">✓</div>
@@ -143,7 +143,7 @@ export default function Contact() {
                 </div>
               </form>
             )}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

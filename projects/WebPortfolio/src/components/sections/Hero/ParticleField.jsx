@@ -10,8 +10,11 @@ export default function ParticleField() {
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3)
     for (let i = 0; i < count; i++) {
+      // eslint-disable-next-line react-hooks/purity
       const theta = Math.random() * Math.PI * 2
+      // eslint-disable-next-line react-hooks/purity
       const phi   = Math.acos(2 * Math.random() - 1)
+      // eslint-disable-next-line react-hooks/purity
       const r     = 8 + Math.random() * 6
       arr[i * 3]     = r * Math.sin(phi) * Math.cos(theta)
       arr[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta)

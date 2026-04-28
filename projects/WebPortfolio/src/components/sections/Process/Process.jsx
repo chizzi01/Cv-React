@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useScrollAnimation, fadeUp, staggerContainer } from '../../../hooks/useScrollAnimation'
+import { useScrollAnimation, dropIn } from '../../../hooks/useScrollAnimation'
 import SectionTitle from '../../ui/SectionTitle'
 import './Process.css'
 
@@ -39,19 +39,16 @@ export default function Process() {
           color="pink"
           center
         />
-        <motion.div
-          ref={ref}
-          className={`process-steps${inView ? ' line-visible' : ''}`}
-          variants={staggerContainer}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-        >
+        <div ref={ref} className={`process-steps${inView ? ' line-visible' : ''}`}>
           {STEPS.map((step, i) => (
             <motion.div
               key={step.number}
               className="process-step"
-              variants={fadeUp}
-              transition={{ delay: i * 0.15 }}
+              variants={dropIn}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.35 }}
             >
               <div className="process-number-wrapper">
                 <span className="process-number">{step.number}</span>
@@ -60,7 +57,7 @@ export default function Process() {
               <p className="process-step-desc">{step.description}</p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -10,23 +10,10 @@
     radial-gradient(ellipse at 70% 40%, rgba(191,0,255,0.09) 0%, transparent 55%),
     radial-gradient(ellipse at 15% 75%, rgba(0,255,255,0.07) 0%, transparent 45%),
     radial-gradient(ellipse at 50% 100%, rgba(0,255,136,0.04) 0%, transparent 40%),
-    var(--bg-deep);
+    rgba(5, 5, 8, 0.72);
 }
 
-/* Subtle grid overlay */
-.hero-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Vignette on top of grid */
+/* Vignette */
 .hero-section::after {
   content: '';
   position: absolute;

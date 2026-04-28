@@ -4,7 +4,7 @@
   background:
     radial-gradient(ellipse at 50% -10%, rgba(255,0,168,0.1) 0%, transparent 55%),
     radial-gradient(ellipse at 50% 110%, rgba(0,255,136,0.08) 0%, transparent 50%),
-    var(--bg-section);
+    rgba(7, 7, 15, 0.72);
 }
 
 .process-steps {
