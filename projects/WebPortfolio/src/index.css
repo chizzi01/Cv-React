@@ -42,7 +42,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .section-container {
-  background-color: var(--bg-section);
+  position: relative;
+  z-index: 1;
+  background-color: rgba(7, 7, 15, 0.78);
 }
 
 /* ── Scroll progress bar ─────────────────────── */

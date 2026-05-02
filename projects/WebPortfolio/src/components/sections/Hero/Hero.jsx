@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import HeroScene from './HeroScene'
 import HeroContent from './HeroContent'
 import DeviceMockups from './DeviceMockups'
 import './Hero.css'
@@ -8,7 +7,6 @@ import './DeviceMockups.css'
 export default function Hero() {
   return (
     <section className="hero-section" id="inicio">
-      <HeroScene />
       <DeviceMockups />
       <HeroContent />
 

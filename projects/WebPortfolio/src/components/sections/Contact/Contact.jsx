@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useScrollAnimation, staggerFast, fadeUp, cardReveal3D } from '../../../hooks/useScrollAnimation'
+import { useScrollAnimation, fadeUp, cardReveal3D } from '../../../hooks/useScrollAnimation'
+
+const staggerFast = {
+  hidden:  { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0 } },
+}
 import SectionTitle from '../../ui/SectionTitle'
 import NeonButton from '../../ui/NeonButton'
 import './Contact.css'
