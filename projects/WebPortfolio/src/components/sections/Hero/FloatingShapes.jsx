@@ -23,7 +23,7 @@ function getScatterT(ss) {
 // ─── Section material targets ─────────────────────────────────────────────────
 function secTarget(sec) {
   switch (sec) {
-    case 0: return { wf: true,  mOp: 1.0, pOp: 0.0, ei: 3.0, metal: 0.00, rough: 1.00, cc: 0.00, ccRough: 1.0, irid: 0.00, envI: 0.0 }
+    case 0: return { wf: true,  mOp: 1.0, pOp: 0.0, ei: 2.0, metal: 0.00, rough: 1.00, cc: 0.00, ccRough: 1.0, irid: 0.00, envI: 0.0 }
     case 1: return { wf: false, mOp: 1.0, pOp: 0.0, ei: 0.5, metal: 1.00, rough: 0.08, cc: 1.00, ccRough: 0.0, irid: 0.25, envI: 3.5 }
     case 2: return { wf: false, mOp: 0.0, pOp: 1.0, ei: 0.0, metal: 0.05, rough: 0.90, cc: 0.00, ccRough: 1.0, irid: 0.00, envI: 0.0 }
     case 3: return { wf: false, mOp: 1.0, pOp: 0.0, ei: 4.0, metal: 0.50, rough: 0.30, cc: 1.00, ccRough: 0.2, irid: 0.00, envI: 1.5 }

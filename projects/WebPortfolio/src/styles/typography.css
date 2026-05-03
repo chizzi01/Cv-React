@@ -13,7 +13,7 @@ p, span, a, li {
 }
 
 .display-xl {
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.05;

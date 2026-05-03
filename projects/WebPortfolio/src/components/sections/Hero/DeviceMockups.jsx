@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import fitcDesktopImg    from '../../../assets/images/fitc-desktop.png'
+import './DeviceMockups.css'
 import schreiberMobileImg from '../../../assets/images/schreiber-mobile.png'
 import fitcMobileImg     from '../../../assets/images/fitc-mobile.png'
 import nearbyMobileImg   from '../../../assets/images/nearby-mobile.png'
@@ -74,7 +74,6 @@ function LaptopMockup({ image, delay = 0 }) {
 export default function DeviceMockups() {
   return (
     <div className="devices-container">
-      <LaptopMockup image={fitcDesktopImg} delay={0.5} />
       <div className="devices-phones">
         <PhoneMockup image={schreiberMobileImg} delay={0.7} rotate={-10} neonColor="purple" />
         <PhoneMockup image={nearbyMobileImg}    delay={0.9} rotate={4}   neonColor="green"  x={-8} />

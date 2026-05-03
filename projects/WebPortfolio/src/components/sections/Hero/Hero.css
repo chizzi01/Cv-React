@@ -1,48 +1,176 @@
-/* ── Hero shell ─────────────────────────────── */
+/* ══════════════════════════════════════════════
+   HERO — scroll-driven laptop zoom-out
+   280vh section → 100vh sticky inner
+   ══════════════════════════════════════════════ */
+
 .hero-section {
   position: relative;
   z-index: 1;
-  height: 100vh;
-  min-height: 700px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+  height: 280vh;
+  /* transparent base — 3D canvas shows through */
   background:
-    radial-gradient(ellipse at 70% 40%, rgba(191,0,255,0.09) 0%, transparent 55%),
-    radial-gradient(ellipse at 15% 75%, rgba(0,255,255,0.07) 0%, transparent 45%),
-    radial-gradient(ellipse at 50% 100%, rgba(0,255,136,0.04) 0%, transparent 40%),
-    rgba(5, 5, 8, 0.72);
+    radial-gradient(ellipse at 50% 30%, rgba(191,0,255,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(0,255,255,0.07) 0%, transparent 45%);
 }
 
-/* Vignette */
-.hero-section::after {
+.hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Edge vignette */
+.hero-sticky::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(5,5,8,0.6) 100%);
-  z-index: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(5,5,8,0.6) 100%);
   pointer-events: none;
+  z-index: 3;
 }
 
-/* ── Content ─────────────────────────────────── */
-.hero-content {
+/* ══════════════════════════════════════════════
+   LAPTOP FRAME
+   ══════════════════════════════════════════════ */
+.hero-laptop {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: center center;
+}
+
+/* ── Lid ─────────────────────────────────────── */
+.hl-lid {
+  width: 560px;
+  /* transparent — 3D canvas shows through screen */
+  background: transparent;
+  border: 1.5px solid rgba(0, 200, 255, 0.30);
+  border-radius: 14px 14px 0 0;
+  padding: 12px 12px 0;
+  box-shadow:
+    0 0 0 1px rgba(0,200,255,0.08),
+    0 0 60px rgba(0,200,255,0.10),
+    0 0 120px rgba(191,0,255,0.07);
+}
+
+.hl-camera {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  margin: 0 auto 8px;
+  box-shadow: 0 0 6px rgba(0,200,255,0.8);
+}
+
+/* Screen — transparent so 3D canvas is visible through it */
+.hl-screen {
+  width: 100%;
+  height: 310px;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+}
+
+/* CRT scanline overlay */
+.hl-scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.04) 2px,
+    rgba(0,0,0,0.04) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Screen reflection gloss */
+.hl-screen-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0,200,255,0.05) 0%,
+    transparent 50%,
+    rgba(191,0,255,0.04) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Bezel bottom strip ──────────────────────── */
+.hl-bezel {
+  width: 560px;
+  height: 8px;
+  background: rgba(10,10,28,0.85);
+  border-left:  1.5px solid rgba(0,200,255,0.20);
+  border-right: 1.5px solid rgba(0,200,255,0.20);
+}
+
+/* ── Hinge ───────────────────────────────────── */
+.hl-hinge {
+  width: 610px;
+  height: 5px;
+  background: linear-gradient(180deg, rgba(20,20,42,0.9) 0%, rgba(10,10,22,0.9) 100%);
+  border-left:  1px solid rgba(255,255,255,0.05);
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ── Base (no keyboard, just trackpad strip) ─── */
+.hl-base {
+  width: 630px;
+  height: 28px;
+  background: linear-gradient(180deg, rgba(12,12,26,0.9) 0%, rgba(7,7,18,0.9) 100%);
+  border: 1.5px solid rgba(0,200,255,0.10);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.hl-trackpad {
+  width: 80px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.02);
+}
+
+/* ══════════════════════════════════════════════
+   HERO CONTENT  (fades in at end of scroll)
+   ══════════════════════════════════════════════ */
+.hero-content-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.hero-content-overlay .hero-content { pointer-events: auto; }
+
+.hero-content {
+  position: relative;
   padding: 0 var(--section-pad-x);
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
 }
 
-.hero-text-col {
-  max-width: min(600px, 52%);
-}
-
-@media (max-width: 1024px) {
-  .hero-text-col {
-    max-width: 100%;
-  }
-}
+.hero-text-col { max-width: min(580px, 50%); }
 
 .hero-eyebrow {
   display: inline-flex;
@@ -55,17 +183,14 @@
 
 .hero-eyebrow-dot {
   display: inline-block;
-  width: 6px;
-  height: 6px;
+  width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--neon-cyan);
   box-shadow: 0 0 8px var(--neon-cyan);
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-.hero-title {
-  margin-bottom: 1.25rem;
-}
+.hero-title { margin-bottom: 1.25rem; }
 
 .hero-title-neon {
   background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
@@ -82,26 +207,10 @@
   line-height: 1.75;
 }
 
-/* ── CTAs ─────────────────────────────────────── */
-.hero-ctas {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-}
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
 
-/* ── Stats row ────────────────────────────────── */
-.hero-stats {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.hero-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
+.hero-stats  { display: flex; gap: 2rem; flex-wrap: wrap; }
+.hero-stat   { display: flex; flex-direction: column; gap: 0.15rem; }
 
 .hero-stat-value {
   font-family: var(--font-display);
@@ -110,10 +219,7 @@
   color: var(--text-primary);
   line-height: 1;
 }
-
-.hero-stat-value span {
-  color: var(--neon-cyan);
-}
+.hero-stat-value span { color: var(--neon-cyan); }
 
 .hero-stat-label {
   font-size: 0.72rem;
@@ -122,13 +228,13 @@
   text-transform: uppercase;
 }
 
-/* ── Scroll hint (centered, bottom of section) ── */
+/* ── Scroll hint ─────────────────────────────── */
 .hero-scroll-hint {
   position: absolute;
   bottom: 2.5rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,9 +242,8 @@
 }
 
 .scroll-track {
-  width: 1px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.1);
+  width: 1px; height: 60px;
+  background: rgba(255,255,255,0.1);
   border-radius: 1px;
   overflow: hidden;
   position: relative;
@@ -146,15 +251,13 @@
 
 .scroll-dot {
   position: absolute;
-  top: -8px;
-  left: 50%;
+  top: -8px; left: 50%;
   transform: translateX(-50%);
-  width: 4px;
-  height: 8px;
+  width: 4px; height: 8px;
   border-radius: 2px;
   background: var(--neon-cyan);
   box-shadow: 0 0 8px var(--neon-cyan);
-  animation: scroll-travel 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: scroll-travel 2s cubic-bezier(0.4,0,0.6,1) infinite;
 }
 
 @keyframes scroll-travel {
@@ -171,64 +274,73 @@
   color: var(--text-dim);
 }
 
-/* ── Responsive ─────────────────────────────── */
-@media (max-width: 768px) {
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .hl-lid    { width: 460px; }
+  .hl-screen { height: 256px; }
+  .hl-bezel  { width: 460px; }
+  .hl-hinge  { width: 504px; }
+  .hl-base   { width: 520px; }
+
+  .hero-title    { font-size: clamp(2.2rem, 3.5vw, 3.4rem); }
+  .hero-subtitle { font-size: clamp(0.9rem, 1.1vw, 1.05rem); margin-bottom: 1.8rem; }
+  .hero-ctas     { margin-bottom: 2rem; }
+}
+
+/* Tablet / mobile — disable animation, show content directly */
+@media (max-width: 1024px) {
   .hero-section {
+    height: auto;
+    min-height: 100svh;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(191,0,255,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 80%, rgba(0,255,255,0.07) 0%, transparent 45%),
+      #050508;
+  }
+
+  .hero-sticky {
+    position: relative;
+    height: auto;
+    min-height: 100svh;
+    flex-direction: column;
+    justify-content: center;
+    padding: calc(64px + 2rem) var(--section-pad-x) 3rem;
     align-items: flex-start;
   }
 
-  .hero-scroll-hint {
-    display: none;
+  .hero-laptop { display: none; }
+
+  .hero-content-overlay {
+    position: relative;
+    inset: auto;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto;
   }
 
-  .hero-content {
-    text-align: center;
-    padding-top: calc(64px + 2.5rem); /* 64px navbar + breathing room */
-  }
+  .hero-text-col  { max-width: 100%; }
+  .hero-scroll-hint { display: none; }
+}
 
-  .hero-eyebrow {
-    justify-content: center;
-    font-size: 0.62rem;
-  }
-
-  .hero-subtitle {
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-ctas {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-stats {
-    gap: 1.5rem;
-    justify-content: center;
-  }
+@media (max-width: 768px) {
+  .hero-content  { text-align: center; }
+  .hero-eyebrow  { justify-content: center; font-size: 0.62rem; }
+  .hero-subtitle { max-width: 100%; margin-left: auto; margin-right: auto; }
+  .hero-ctas     { flex-direction: column; align-items: stretch; }
+  .hero-stats    { gap: 1.5rem; justify-content: center; }
+  .hero-text-col { max-width: 100%; }
 }
 
 @media (max-width: 480px) {
-  .hero-section {
-    min-height: 100svh;
-  }
-
   .hero-stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 0.5rem;
     text-align: center;
   }
-
-  .hero-stat {
-    align-items: center;
-  }
-
-  .hero-stat-value {
-    font-size: 1.15rem;
-  }
-
-  .hero-stat-label {
-    font-size: 0.6rem;
-  }
+  .hero-stat       { align-items: center; }
+  .hero-stat-value { font-size: 1.15rem; }
+  .hero-stat-label { font-size: 0.6rem; }
 }
