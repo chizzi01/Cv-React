@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
+import { Environment } from '@react-three/drei'
 import FloatingShapes from './FloatingShapes'
 import ParticleField from './ParticleField'
 
@@ -41,18 +42,22 @@ export default function HeroScene() {
       dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true }}
     >
-      {/* Ambient + hemisphere for metallic sky/ground tones */}
-      <ambientLight intensity={0.15} />
-      <hemisphereLight args={['#1a0a3a', '#000000', 0.6]} />
+      {/* IBL environment — essential for metallic PBR reflections */}
+      <Environment preset="city" background={false} />
 
-      {/* White key light — critical for metallic highlights */}
-      <pointLight position={[0,  8,  5]} color="#FFFFFF" intensity={5.0} />
-      <pointLight position={[6,  4,  3]} color="#FFFFFF" intensity={2.5} />
+      {/* Hemisphere for metallic sky/ground tone contrast */}
+      <hemisphereLight args={['#1a0833', '#000000', 0.5]} />
 
-      {/* Neon accent lights */}
-      <pointLight position={[5,  5,  5]} color="#00FFFF" intensity={1.2} />
-      <pointLight position={[-5,-3,  3]} color="#BF00FF" intensity={0.9} />
-      <pointLight position={[0, -2,  2]} color="#FF00A8" intensity={0.5} />
+      {/* White key lights — sharp specular highlights on metallic faces */}
+      <pointLight position={[0,   8,  5]} color="#FFFFFF" intensity={12} />
+      <pointLight position={[7,   3,  4]} color="#FFFFFF" intensity={6}  />
+      <pointLight position={[-7,  2,  4]} color="#E0E8FF" intensity={5}  />
+      <pointLight position={[0,  -5,  3]} color="#FFFFFF" intensity={3}  />
+
+      {/* Neon accent lights — colour tint on metallic surfaces */}
+      <pointLight position={[5,   5,  5]} color="#00FFFF" intensity={2}  />
+      <pointLight position={[-5, -3,  3]} color="#BF00FF" intensity={1.5} />
+      <pointLight position={[0,  -2,  2]} color="#FF00A8" intensity={1}  />
 
       <FloatingShapes scrollRef={scrollRef} />
       <ParticleField />
