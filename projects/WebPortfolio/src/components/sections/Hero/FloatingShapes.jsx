@@ -113,7 +113,7 @@ function tickConstellation(constel, scatterT) {
   lGeo.attributes.position.needsUpdate = true
 }
 
-// ─── Torus (purple) ───────────────────────────────────────────────────────────
+// ─── Torus (green) ────────────────────────────────────────────────────────────
 function TorusShape({ scrollRef }) {
   const groupRef  = useRef()
   const meshRef   = useRef()
@@ -160,18 +160,18 @@ function TorusShape({ scrollRef }) {
     <group ref={groupRef}>
       <mesh ref={meshRef}>
         <torusGeometry args={[1.3, 0.28, 18, 70]} />
-        <meshPhysicalMaterial color="#BF00FF" emissive="#BF00FF" emissiveIntensity={2.0}
+        <meshPhysicalMaterial color="#98FF58" emissive="#98FF58" emissiveIntensity={2.0}
           metalness={0} roughness={1} clearcoat={0} clearcoatRoughness={1} iridescence={0}
           envMapIntensity={0} wireframe transparent opacity={0.65} toneMapped={false} />
       </mesh>
       <points ref={gPtsRef} geometry={gGeo}>
-        <pointsMaterial color="#BF00FF" size={0.03} transparent opacity={0} sizeAttenuation />
+        <pointsMaterial color="#98FF58" size={0.03} transparent opacity={0} sizeAttenuation />
       </points>
       <points ref={cPtsRef} geometry={constel.pGeo}>
-        <pointsMaterial color="#BF00FF" size={0.055} transparent opacity={0} sizeAttenuation toneMapped={false} />
+        <pointsMaterial color="#98FF58" size={0.055} transparent opacity={0} sizeAttenuation toneMapped={false} />
       </points>
       <lineSegments ref={cLinesRef} geometry={constel.lGeo}>
-        <lineBasicMaterial color="#BF00FF" transparent opacity={0} toneMapped={false} />
+        <lineBasicMaterial color="#98FF58" transparent opacity={0} toneMapped={false} />
       </lineSegments>
     </group>
   )

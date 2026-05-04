@@ -1,0 +1,56 @@
+.fp-container {
+  position: absolute;
+  right: clamp(2rem, 5vw, 7rem);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.fp-phone {
+  width: 110px;
+  background: #07070f;
+  border-radius: 22px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.fp-inner {
+  padding: 10px 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.fp-island {
+  width: 44px;
+  height: 12px;
+  background: #030305;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.fp-screen-img {
+  width: 100%;
+  height: 170px;
+  border-radius: 4px;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+}
+
+.fp-home-bar {
+  width: 40px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .fp-container { display: none; }
+}

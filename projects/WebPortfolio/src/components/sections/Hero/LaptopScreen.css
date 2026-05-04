@@ -177,11 +177,12 @@
   color: rgba(240,240,255,0.6);
 }
 
-/* ── Mini phone mockups ──────────────────── */
+/* ── Mini phone mockups (30px wide, proporciones del phone de 110px) ── */
 .ls-phones {
   position: absolute;
-  right: 10px;
-  bottom: 14px;
+  top: 50%;
+  left: 62%;
+  transform: translate(-50%, -50%);
   display: flex;
   gap: 6px;
   align-items: flex-end;
@@ -189,34 +190,34 @@
 }
 
 .ls-phone {
-  width: 30px;
-  background: rgba(5, 5, 12, 0.95);
-  border-radius: 5px;
+  width: 44px;
+  background: #07070f;
+  border-radius: 10px;
   border: 0.75px solid;
-  padding: 3px 2px 4px;
+  padding: 5px 3px 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
-.ls-phone--purple { height: 68px; border-color: rgba(191,0,255,0.6); box-shadow: 0 0 8px rgba(191,0,255,0.25); transform: rotate(-8deg); }
-.ls-phone--green  { height: 76px; border-color: rgba(0,255,136,0.6); box-shadow: 0 0 8px rgba(0,255,136,0.25); transform: rotate(3deg); }
-.ls-phone--cyan   { height: 68px; border-color: rgba(0,255,255,0.6); box-shadow: 0 0 8px rgba(0,255,255,0.25); transform: rotate(-4deg); }
+.ls-phone--purple { border-color: rgba(191,0,255,0.6); box-shadow: 0 0 8px rgba(191,0,255,0.25); transform: rotate(-8deg); }
+.ls-phone--green  { border-color: rgba(0,255,136,0.6); box-shadow: 0 0 8px rgba(0,255,136,0.25); transform: rotate(3deg); }
+.ls-phone--cyan   { border-color: rgba(0,255,255,0.6); box-shadow: 0 0 8px rgba(0,255,255,0.25); transform: rotate(-4deg); }
 
 .ls-phone-island {
-  width: 10px;
-  height: 3px;
-  background: rgba(0,0,0,0.9);
-  border-radius: 2px;
+  width: 18px;
+  height: 5px;
+  background: #030305;
+  border-radius: 3px;
   flex-shrink: 0;
 }
 
 .ls-phone-img {
-  flex: 1;
   width: 100%;
-  min-height: 0;
+  height: 68px;
   border-radius: 2px;
   object-fit: cover;
   object-position: top;
@@ -224,9 +225,9 @@
 }
 
 .ls-phone-bar {
-  width: 8px;
-  height: 1.5px;
-  background: rgba(255,255,255,0.25);
+  width: 16px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 1px;
   flex-shrink: 0;
 }

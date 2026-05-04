@@ -1,6 +1,7 @@
 import { useRef, useEffect, useCallback } from 'react'
 import HeroContent from './HeroContent'
 import LaptopScreen from './LaptopScreen'
+import FlyingPhones from './FlyingPhones'
 import './Hero.css'
 
 const easeOutCubic    = t => 1 - Math.pow(1 - t, 3)
@@ -9,11 +10,13 @@ const clamp           = (v, lo, hi) => Math.max(lo, Math.min(hi, v))
 const invlerp         = (v, lo, hi) => clamp((v - lo) / (hi - lo), 0, 1)
 
 export default function Hero() {
-  const sectionRef    = useRef()
-  const laptopRef     = useRef()
-  const contentRef    = useRef()
-  const rafRef        = useRef()
-  const scaleStart    = useRef(4)   // computed on mount
+  const sectionRef      = useRef()
+  const laptopRef       = useRef()
+  const contentRef      = useRef()
+  const rafRef          = useRef()
+  const scaleStart      = useRef(4)   // computed on mount
+  const rawRef          = useRef(0)
+  const sourcePhonesRef = useRef()
 
   const tick = useCallback(() => {
     const section = sectionRef.current
@@ -22,6 +25,7 @@ export default function Hero() {
     const rect   = section.getBoundingClientRect()
     const travel = section.offsetHeight - window.innerHeight
     const raw    = clamp(-rect.top / travel, 0, 1)
+    rawRef.current = raw
     const S0     = scaleStart.current
 
     // Phase 1 (0 → 0.72): zoom out + reveal frame
@@ -52,6 +56,8 @@ export default function Hero() {
       contentRef.current.style.opacity   = contentOp
       contentRef.current.style.transform = `translateY(${contentY}px)`
     }
+    const hint = sectionRef.current?.querySelector('.hero-scroll-hint')
+    if (hint) hint.style.opacity = contentOp
   }, [])
 
   useEffect(() => {
@@ -95,7 +101,7 @@ export default function Hero() {
           <div className="hl-lid">
             <div className="hl-camera" />
             <div className="hl-screen">
-              <LaptopScreen />
+              <LaptopScreen phonesRef={sourcePhonesRef} />
               <div className="hl-scanline" />
               <div className="hl-screen-glow" />
             </div>
@@ -115,8 +121,11 @@ export default function Hero() {
           <HeroContent />
         </div>
 
+        {/* ── Flying phones ───────────────────── */}
+        <FlyingPhones rawRef={rawRef} sourcePhonesRef={sourcePhonesRef} />
+
         {/* ── Scroll hint ─────────────────────── */}
-        <div className="hero-scroll-hint">
+        <div className="hero-scroll-hint" style={{ opacity: 0 }}>
           <div className="scroll-track"><div className="scroll-dot" /></div>
           <span className="scroll-label">scroll</span>
         </div>

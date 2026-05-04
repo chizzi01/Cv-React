@@ -4,7 +4,7 @@ import fitcMobileImg      from '../../../assets/images/fitc-mobile.png'
 import nearbyMobileImg    from '../../../assets/images/nearby-mobile.png'
 import './LaptopScreen.css'
 
-export default function LaptopScreen() {
+export default function LaptopScreen({ phonesRef }) {
   const stars = useMemo(() =>
     Array.from({ length: 28 }, (_, i) => ({
       id: i,
@@ -64,7 +64,7 @@ export default function LaptopScreen() {
         </div>
 
         {/* Mini phone mockups with real screenshots */}
-        <div className="ls-phones">
+        <div className="ls-phones" ref={phonesRef}>
           <div className="ls-phone ls-phone--purple">
             <div className="ls-phone-island" />
             <img src={schreiberMobileImg} alt="" className="ls-phone-img" />

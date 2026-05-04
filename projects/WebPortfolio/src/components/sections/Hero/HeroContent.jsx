@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import NeonButton from '../../ui/NeonButton'
-import DeviceMockups from './DeviceMockups'
 import './Hero.css'
 
 function CountUp({ to, prefix = '', suffix = '' }) {
@@ -36,7 +35,6 @@ const statItem = {
 export default function HeroContent() {
   return (
     <div className="hero-content">
-      <DeviceMockups />
       <div className="hero-text-col">
         <motion.span
           className="hero-eyebrow label-sm"
