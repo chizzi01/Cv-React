@@ -129,7 +129,7 @@
   font-size: 1.1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .navbar-links { display: none; }
   .navbar-cta { display: none; }
   .navbar-hamburger { display: flex; }

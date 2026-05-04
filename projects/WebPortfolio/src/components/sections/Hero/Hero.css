@@ -152,7 +152,10 @@
    ══════════════════════════════════════════════ */
 .hero-content-overlay {
   position: absolute;
-  inset: 0;
+  top: 64px; /* start below the fixed navbar so centering uses the visible area */
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 4;
   display: flex;
   align-items: center;
@@ -284,9 +287,24 @@
   .hl-hinge  { width: 504px; }
   .hl-base   { width: 520px; }
 
+  /* Wider text column so content isn't cramped on medium laptops */
+  .hero-text-col { max-width: min(600px, 55%); }
+
   .hero-title    { font-size: clamp(2.2rem, 3.5vw, 3.4rem); }
   .hero-subtitle { font-size: clamp(0.9rem, 1.1vw, 1.05rem); margin-bottom: 1.8rem; }
   .hero-ctas     { margin-bottom: 2rem; }
+}
+
+/* Narrow laptop band (1025–1260px): reduce laptop further, give text more room */
+@media (min-width: 1025px) and (max-width: 1260px) {
+  .hl-lid    { width: 380px; }
+  .hl-screen { height: 212px; }
+  .hl-bezel  { width: 380px; }
+  .hl-hinge  { width: 416px; }
+  .hl-base   { width: 432px; }
+
+  .hero-text-col { max-width: min(560px, 60%); }
+  .hero-title    { font-size: clamp(2rem, 3.2vw, 3rem); }
 }
 
 /* Tablet / mobile — disable animation, show content directly */
@@ -331,6 +349,23 @@
   .hero-ctas     { flex-direction: column; align-items: stretch; }
   .hero-stats    { gap: 1.5rem; justify-content: center; }
   .hero-text-col { max-width: 100%; }
+}
+
+/* Short screens — prevent hero content being clipped vertically */
+@media (max-height: 700px) and (min-width: 1025px) {
+  .hero-content-overlay { align-items: flex-start; padding-top: 1.5rem; }
+
+  .hero-eyebrow  { margin-bottom: 0.6rem; }
+  .hero-title    { margin-bottom: 0.6rem; font-size: clamp(1.8rem, 2.8vw, 2.8rem) !important; }
+  .hero-subtitle { margin-bottom: 1rem; }
+  .hero-ctas     { margin-bottom: 1rem; }
+  .hero-stats    { gap: 1.25rem; }
+  .hero-stat-value { font-size: 1.15rem; }
+}
+
+@media (max-height: 580px) and (min-width: 1025px) {
+  .hero-stats { display: none; }
+  .hero-subtitle { display: none; }
 }
 
 @media (max-width: 480px) {
