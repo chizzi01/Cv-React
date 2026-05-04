@@ -4,6 +4,8 @@ import { Environment } from '@react-three/drei'
 import FloatingShapes from './FloatingShapes'
 import ParticleField from './ParticleField'
 
+const isMobile = window.matchMedia('(max-width: 768px)').matches
+
 export default function HeroScene() {
   const scrollRef = useRef({ progress: 0, section: 0 })
 
@@ -40,27 +42,22 @@ export default function HeroScene() {
       camera={{ position: [0, 0, 8], fov: 60 }}
       style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}
       dpr={[1, 1.5]}
-      gl={{ antialias: true, alpha: true }}
+      gl={{ antialias: !isMobile, alpha: true }}
+      performance={{ min: 0.5 }}
     >
-      {/* IBL environment — essential for metallic PBR reflections */}
       <Environment preset="city" background={false} />
 
-      {/* Hemisphere for metallic sky/ground tone contrast */}
       <hemisphereLight args={['#1a0833', '#000000', 0.5]} />
 
-      {/* White key lights — sharp specular highlights on metallic faces */}
       <pointLight position={[0,   8,  5]} color="#FFFFFF" intensity={12} />
       <pointLight position={[7,   3,  4]} color="#FFFFFF" intensity={6}  />
       <pointLight position={[-7,  2,  4]} color="#E0E8FF" intensity={5}  />
-      <pointLight position={[0,  -5,  3]} color="#FFFFFF" intensity={3}  />
 
-      {/* Neon accent lights — colour tint on metallic surfaces */}
       <pointLight position={[5,   5,  5]} color="#00FFFF" intensity={2}  />
       <pointLight position={[-5, -3,  3]} color="#BF00FF" intensity={1.5} />
-      <pointLight position={[0,  -2,  2]} color="#FF00A8" intensity={1}  />
 
       <FloatingShapes scrollRef={scrollRef} />
-      <ParticleField />
+      <ParticleField scrollRef={scrollRef} />
     </Canvas>
   )
 }

@@ -4,6 +4,9 @@ import * as THREE from 'three'
 
 const lerp = (a, b, t) => a + (b - a) * t
 
+// Frame-rate independent exponential smoothing factor
+const smooth = (delta, speed) => 1 - Math.exp(-delta * speed)
+
 function pt(p, vals) {
   const n = vals.length - 1
   const i = Math.min(Math.floor(p * n), n - 1)
@@ -132,9 +135,10 @@ function TorusShape({ scrollRef }) {
     return { gGeo, constel }
   }, [])
 
-  useFrame(() => {
-    s.current  = lerp(s.current,  scrollRef.current.progress,        0.04)
-    ss.current = lerp(ss.current, scrollRef.current.section ?? 0,    0.05)
+  useFrame((state, delta) => {
+    const elapsed = state.clock.getElapsedTime()
+    s.current  = lerp(s.current,  scrollRef.current.progress,     smooth(delta, 2.4))
+    ss.current = lerp(ss.current, scrollRef.current.section ?? 0, smooth(delta, 3.0))
     const p = s.current
 
     groupRef.current.position.set(
@@ -142,8 +146,12 @@ function TorusShape({ scrollRef }) {
       pt(p, [ 1.2,  0.5, -0.5,  1.5, -1.5]),
       pt(p, [-3.0, -4.0, -3.5, -4.5, -5.5])
     )
-    meshRef.current.rotation.x = pt(p, [0, 0.6, 1.2, 2.0, 2.8])
-    meshRef.current.rotation.y = pt(p, [0, 1.2, 2.8, 4.2, 6.0])
+    // Scroll-linked rotation + continuous self-rotation for organic motion
+    meshRef.current.rotation.x = pt(p, [0, 0.6, 1.2, 2.0, 2.8]) + elapsed * 0.11
+    meshRef.current.rotation.y = pt(p, [0, 1.2, 2.8, 4.2, 6.0]) + elapsed * 0.07
+
+    // Subtle breathing scale pulse
+    groupRef.current.scale.setScalar(1 + Math.sin(elapsed * 0.9) * 0.04)
 
     applyMaterial(meshRef.current.material, gPtsRef.current.material, ss.current, 0.65, 2.0)
 
@@ -196,9 +204,10 @@ function IcosahedronShape({ scrollRef }) {
     return { gGeo, constel }
   }, [])
 
-  useFrame(() => {
-    s.current  = lerp(s.current,  scrollRef.current.progress,        0.035)
-    ss.current = lerp(ss.current, scrollRef.current.section ?? 0,    0.05)
+  useFrame((state, delta) => {
+    const elapsed = state.clock.getElapsedTime()
+    s.current  = lerp(s.current,  scrollRef.current.progress,     smooth(delta, 2.1))
+    ss.current = lerp(ss.current, scrollRef.current.section ?? 0, smooth(delta, 3.0))
     const p = s.current
 
     groupRef.current.position.set(
@@ -206,8 +215,10 @@ function IcosahedronShape({ scrollRef }) {
       pt(p, [-1.2,  0.5,  1.5, -0.5, -2.0]),
       pt(p, [-4.0, -3.5, -5.0, -4.0, -6.0])
     )
-    meshRef.current.rotation.x = pt(p, [0, 1.0, 2.5, 3.8, 5.5])
-    meshRef.current.rotation.z = pt(p, [0, 0.5, 1.2, 2.0, 2.8])
+    meshRef.current.rotation.x = pt(p, [0, 1.0, 2.5, 3.8, 5.5]) + elapsed * 0.09
+    meshRef.current.rotation.z = pt(p, [0, 0.5, 1.2, 2.0, 2.8]) + elapsed * 0.13
+
+    groupRef.current.scale.setScalar(1 + Math.sin(elapsed * 1.1 + 1.2) * 0.04)
 
     applyMaterial(meshRef.current.material, gPtsRef.current.material, ss.current, 0.58, 1.8)
 
@@ -260,9 +271,10 @@ function OctahedronShape({ scrollRef }) {
     return { gGeo, constel }
   }, [])
 
-  useFrame(() => {
-    s.current  = lerp(s.current,  scrollRef.current.progress,        0.05)
-    ss.current = lerp(ss.current, scrollRef.current.section ?? 0,    0.05)
+  useFrame((state, delta) => {
+    const elapsed = state.clock.getElapsedTime()
+    s.current  = lerp(s.current,  scrollRef.current.progress,     smooth(delta, 3.0))
+    ss.current = lerp(ss.current, scrollRef.current.section ?? 0, smooth(delta, 3.0))
     const p = s.current
 
     groupRef.current.position.set(
@@ -270,8 +282,10 @@ function OctahedronShape({ scrollRef }) {
       pt(p, [ 2.0,  1.0,  0.5,  2.0, -1.0]),
       pt(p, [-5.0, -3.5, -5.0, -4.0, -6.0])
     )
-    meshRef.current.rotation.x = pt(p, [0, 0.9, 2.1, 3.5, 5.0])
-    meshRef.current.rotation.y = pt(p, [0, 1.5, 2.5, 4.0, 5.5])
+    meshRef.current.rotation.x = pt(p, [0, 0.9, 2.1, 3.5, 5.0]) + elapsed * 0.13
+    meshRef.current.rotation.y = pt(p, [0, 1.5, 2.5, 4.0, 5.5]) + elapsed * 0.17
+
+    groupRef.current.scale.setScalar(1 + Math.sin(elapsed * 1.3 + 2.4) * 0.04)
 
     applyMaterial(meshRef.current.material, gPtsRef.current.material, ss.current, 0.70, 2.2)
 
@@ -324,9 +338,10 @@ function DodecahedronShape({ scrollRef }) {
     return { gGeo, constel }
   }, [])
 
-  useFrame(() => {
-    s.current  = lerp(s.current,  scrollRef.current.progress,        0.03)
-    ss.current = lerp(ss.current, scrollRef.current.section ?? 0,    0.05)
+  useFrame((state, delta) => {
+    const elapsed = state.clock.getElapsedTime()
+    s.current  = lerp(s.current,  scrollRef.current.progress,     smooth(delta, 1.8))
+    ss.current = lerp(ss.current, scrollRef.current.section ?? 0, smooth(delta, 3.0))
     const p = s.current
 
     groupRef.current.position.set(
@@ -334,8 +349,10 @@ function DodecahedronShape({ scrollRef }) {
       pt(p, [-2.5, -1.0,  0.5, -1.5, -3.0]),
       pt(p, [-6.0, -4.5, -5.0, -4.5, -6.5])
     )
-    meshRef.current.rotation.y = pt(p, [0, 1.0, 2.2, 3.8, 5.2])
-    meshRef.current.rotation.z = pt(p, [0, 0.4, 0.9, 1.6, 2.4])
+    meshRef.current.rotation.y = pt(p, [0, 1.0, 2.2, 3.8, 5.2]) + elapsed * 0.10
+    meshRef.current.rotation.z = pt(p, [0, 0.4, 0.9, 1.6, 2.4]) + elapsed * 0.08
+
+    groupRef.current.scale.setScalar(1 + Math.sin(elapsed * 0.8 + 0.6) * 0.04)
 
     applyMaterial(meshRef.current.material, gPtsRef.current.material, ss.current, 0.50, 1.6)
 

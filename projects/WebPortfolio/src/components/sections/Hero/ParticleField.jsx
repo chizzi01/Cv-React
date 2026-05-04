@@ -2,7 +2,7 @@ import { useRef, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Points, PointMaterial } from '@react-three/drei'
 
-export default function ParticleField() {
+export default function ParticleField({ scrollRef }) {
   const pointsRef = useRef()
   const isMobile = useMemo(() => window.matchMedia('(max-width: 768px)').matches, [])
   const count = isMobile ? 500 : 1500
@@ -10,11 +10,8 @@ export default function ParticleField() {
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3)
     for (let i = 0; i < count; i++) {
-      // eslint-disable-next-line react-hooks/purity
       const theta = Math.random() * Math.PI * 2
-      // eslint-disable-next-line react-hooks/purity
       const phi   = Math.acos(2 * Math.random() - 1)
-      // eslint-disable-next-line react-hooks/purity
       const r     = 8 + Math.random() * 6
       arr[i * 3]     = r * Math.sin(phi) * Math.cos(theta)
       arr[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta)
@@ -23,10 +20,24 @@ export default function ParticleField() {
     return arr
   }, [count])
 
-  useFrame(() => {
-    if (pointsRef.current) {
-      pointsRef.current.rotation.y += 0.0004
-      pointsRef.current.rotation.x += 0.0001
+  useFrame((state, delta) => {
+    if (!pointsRef.current) return
+    const elapsed = state.clock.getElapsedTime()
+
+    // Frame-rate independent rotation (equivalent to original at 60fps)
+    pointsRef.current.rotation.y += delta * 0.024
+    pointsRef.current.rotation.x += delta * 0.006
+
+    // Slow orbital drift on Y for depth illusion
+    pointsRef.current.position.y = Math.sin(elapsed * 0.15) * 0.3
+
+    // Fade out as user scrolls past the hero section
+    if (scrollRef?.current) {
+      const p = scrollRef.current.progress
+      const opacity = p < 0.12 ? 0.7
+        : p > 0.35 ? 0.12
+        : 0.7 - (p - 0.12) / 0.23 * 0.58
+      pointsRef.current.material.opacity = opacity
     }
   })
 
