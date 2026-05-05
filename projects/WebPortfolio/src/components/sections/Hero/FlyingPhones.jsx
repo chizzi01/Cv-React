@@ -106,8 +106,8 @@ export default function FlyingPhones({ rawRef, sourcePhonesRef }) {
           style={{ opacity: 0 }}
         >
           <div className="fp-inner">
-            <div className="fp-island" />
             <img src={ph.img} alt="" className="fp-screen-img" />
+            <div className="fp-island" />
             <div className="fp-home-bar" />
           </div>
         </div>

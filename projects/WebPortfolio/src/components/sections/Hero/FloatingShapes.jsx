@@ -168,18 +168,18 @@ function TorusShape({ scrollRef }) {
     <group ref={groupRef}>
       <mesh ref={meshRef}>
         <torusGeometry args={[1.3, 0.28, 18, 70]} />
-        <meshPhysicalMaterial color="#98FF58" emissive="#98FF58" emissiveIntensity={2.0}
+        <meshPhysicalMaterial color="#63ff02" emissive="#63ff02" emissiveIntensity={2.0}
           metalness={0} roughness={1} clearcoat={0} clearcoatRoughness={1} iridescence={0}
           envMapIntensity={0} wireframe transparent opacity={0.65} toneMapped={false} />
       </mesh>
       <points ref={gPtsRef} geometry={gGeo}>
-        <pointsMaterial color="#98FF58" size={0.03} transparent opacity={0} sizeAttenuation />
+        <pointsMaterial color="#63ff02" size={0.03} transparent opacity={0} sizeAttenuation />
       </points>
       <points ref={cPtsRef} geometry={constel.pGeo}>
-        <pointsMaterial color="#98FF58" size={0.055} transparent opacity={0} sizeAttenuation toneMapped={false} />
+        <pointsMaterial color="#63ff02" size={0.055} transparent opacity={0} sizeAttenuation toneMapped={false} />
       </points>
       <lineSegments ref={cLinesRef} geometry={constel.lGeo}>
-        <lineBasicMaterial color="#98FF58" transparent opacity={0} toneMapped={false} />
+        <lineBasicMaterial color="#63ff02" transparent opacity={0} toneMapped={false} />
       </lineSegments>
     </group>
   )
@@ -235,18 +235,18 @@ function IcosahedronShape({ scrollRef }) {
     <group ref={groupRef}>
       <mesh ref={meshRef}>
         <icosahedronGeometry args={[1.5, 0]} />
-        <meshPhysicalMaterial color="#00FFFF" emissive="#00FFFF" emissiveIntensity={1.8}
+        <meshPhysicalMaterial color="#001aff" emissive="#001aff" emissiveIntensity={1.8}
           metalness={0} roughness={1} clearcoat={0} clearcoatRoughness={1} iridescence={0}
           envMapIntensity={0} wireframe transparent opacity={0.58} toneMapped={false} />
       </mesh>
       <points ref={gPtsRef} geometry={gGeo}>
-        <pointsMaterial color="#00FFFF" size={0.06} transparent opacity={0} sizeAttenuation />
+        <pointsMaterial color="#0026ff" size={0.06} transparent opacity={0} sizeAttenuation />
       </points>
       <points ref={cPtsRef} geometry={constel.pGeo}>
-        <pointsMaterial color="#00FFFF" size={0.055} transparent opacity={0} sizeAttenuation toneMapped={false} />
+        <pointsMaterial color="#0026ff" size={0.055} transparent opacity={0} sizeAttenuation toneMapped={false} />
       </points>
       <lineSegments ref={cLinesRef} geometry={constel.lGeo}>
-        <lineBasicMaterial color="#00FFFF" transparent opacity={0} toneMapped={false} />
+        <lineBasicMaterial color="#0026ff" transparent opacity={0} toneMapped={false} />
       </lineSegments>
     </group>
   )

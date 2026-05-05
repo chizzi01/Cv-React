@@ -55,9 +55,19 @@ export default function Hero() {
     if (contentRef.current) {
       contentRef.current.style.opacity   = contentOp
       contentRef.current.style.transform = `translateY(${contentY}px)`
+      const inner = contentRef.current.querySelector('.hero-content')
+      if (inner) inner.style.pointerEvents = contentOp > 0.05 ? 'auto' : 'none'
     }
     const hint = sectionRef.current?.querySelector('.hero-scroll-hint')
     if (hint) hint.style.opacity = contentOp
+
+    // Real navbar fades in as laptop zooms out (matches bezel reveal)
+    const navEl = document.querySelector('.navbar')
+    if (navEl) {
+      const navOp = easeOutCubic(invlerp(raw, 0.5, 0.72))
+      navEl.style.opacity = String(navOp)
+      navEl.style.pointerEvents = navOp > 0.05 ? 'auto' : 'none'
+    }
   }, [])
 
   useEffect(() => {

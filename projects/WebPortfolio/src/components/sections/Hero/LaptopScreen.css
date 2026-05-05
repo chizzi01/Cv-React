@@ -35,30 +35,46 @@
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: #fff;
-  opacity: 0.9;
+  color: #00ffff;
+  text-shadow: 0 0 8px rgba(0,255,255,0.4);
+  text-decoration: none;
+}
+
+.ls-logo span {
+  color: #f0f0ff;
 }
 
 .ls-nav-links {
   display: flex;
-  gap: 14px;
+  gap: 10px;
 }
 
-.ls-nav-links span {
-  font-size: 6.5px;
+.ls-nav-links a {
+  font-size: 5.5px;
   color: rgba(240,240,255,0.5);
   letter-spacing: 0.05em;
-  cursor: default;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.ls-nav-links a:hover {
+  color: #f0f0ff;
 }
 
 .ls-nav-cta {
-  font-size: 6.5px;
+  font-size: 6px;
   font-weight: 600;
   color: #00ffff;
-  border: 1px solid rgba(0,255,255,0.45);
+  border: 0.75px solid rgba(0,255,255,0.45);
   border-radius: 3px;
   padding: 2px 7px;
   letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.ls-nav-cta:hover {
+  background: rgba(0,255,255,0.08);
 }
 
 /* ── Hero area ───────────────────────────── */
@@ -142,11 +158,11 @@
 }
 
 .ls-sub {
-  font-size: 6.5px;
+  font-size: 6px;
   line-height: 1.7;
   color: rgba(240,240,255,0.5);
-  max-width: 200px;
-  margin-bottom: 14px;
+  max-width: 210px;
+  margin-bottom: 10px;
 }
 
 /* ── Buttons ─────────────────────────────── */
@@ -162,7 +178,8 @@
   letter-spacing: 0.06em;
   padding: 4px 10px;
   border-radius: 3px;
-  cursor: default;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .ls-btn-solid {
@@ -177,7 +194,36 @@
   color: rgba(240,240,255,0.6);
 }
 
-/* ── Mini phone mockups (30px wide, proporciones del phone de 110px) ── */
+/* ── Stats ───────────────────────────────── */
+.ls-stats {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.ls-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ls-stat-value {
+  font-size: 9px;
+  font-weight: 700;
+  color: #f0f0ff;
+  letter-spacing: -0.02em;
+}
+
+.ls-stat-label {
+  font-size: 4.5px;
+  color: rgba(240,240,255,0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Mini phone mockups ── */
 .ls-phones {
   position: absolute;
   top: 50%;
@@ -191,16 +237,23 @@
 
 .ls-phone {
   width: 44px;
-  background: #07070f;
-  border-radius: 10px;
+  background: #000;
+  border-radius: 11px;
   border: 0.75px solid;
-  padding: 5px 3px 6px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
   overflow: hidden;
   flex-shrink: 0;
+  position: relative;
+}
+
+/* Subtle inner frame */
+.ls-phone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 11px;
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+  z-index: 3;
 }
 
 .ls-phone--purple { border-color: rgba(191,0,255,0.6); box-shadow: 0 0 8px rgba(191,0,255,0.25); transform: rotate(-8deg); }
@@ -208,28 +261,35 @@
 .ls-phone--cyan   { border-color: rgba(0,255,255,0.6); box-shadow: 0 0 8px rgba(0,255,255,0.25); transform: rotate(-4deg); }
 
 .ls-phone-island {
-  width: 18px;
-  height: 5px;
-  background: #030305;
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 4px;
+  background: #000;
   border-radius: 3px;
-  flex-shrink: 0;
+  z-index: 2;
 }
 
 .ls-phone-img {
   width: 100%;
-  height: 68px;
-  border-radius: 2px;
+  height: 92px;
+  display: block;
   object-fit: cover;
   object-position: top;
-  display: block;
 }
 
 .ls-phone-bar {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 16px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.3);
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.35);
   border-radius: 1px;
-  flex-shrink: 0;
+  z-index: 2;
 }
 
 /* ── Scroll hint ─────────────────────────── */

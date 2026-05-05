@@ -19,14 +19,15 @@ export default function LaptopScreen({ phonesRef }) {
 
       {/* ── Navbar ───────────────────────────── */}
       <nav className="ls-nav">
-        <span className="ls-logo">AG</span>
+        <a href="#inicio" className="ls-logo">ACM <span>·dev</span></a>
         <div className="ls-nav-links">
-          <span>Inicio</span>
-          <span>Servicios</span>
-          <span>Proyectos</span>
-          <span>Contacto</span>
+          <a href="#por-que-yo">Por qué yo</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#tecnologias">Tech</a>
         </div>
-        <div className="ls-nav-cta">Hablemos</div>
+        <a href="#contacto" className="ls-nav-cta">Hablemos</a>
       </nav>
 
       {/* ── Hero ─────────────────────────────── */}
@@ -43,7 +44,7 @@ export default function LaptopScreen({ phonesRef }) {
         <div className="ls-content">
           <div className="ls-eyebrow">
             <span className="ls-dot" />
-            Desarrollo Web · Buenos Aires
+            Desarrollo Web Personalizado &nbsp;·&nbsp; Buenos Aires
           </div>
 
           <h1 className="ls-h1">
@@ -53,31 +54,46 @@ export default function LaptopScreen({ phonesRef }) {
           </h1>
 
           <p className="ls-sub">
-            Sitios únicos, rápidos y de alto impacto — landing pages,
-            e-commerce y apps web a medida.
+            Sin una web que convierte, cada visita es una oportunidad perdida.
+            Diseño y desarrollo sitios únicos, rápidos y de alto impacto — landing pages, e-commerce y apps web a medida.
           </p>
 
           <div className="ls-btns">
-            <div className="ls-btn-solid">Ver trabajos</div>
-            <div className="ls-btn-ghost">Contacto</div>
+            <a href="#proyectos" className="ls-btn-solid">Ver mis trabajos</a>
+            <a href="#contacto" className="ls-btn-ghost">Contame tu proyecto</a>
+          </div>
+
+          <div className="ls-stats">
+            <div className="ls-stat">
+              <span className="ls-stat-value">7+</span>
+              <span className="ls-stat-label">Proyectos entregados</span>
+            </div>
+            <div className="ls-stat">
+              <span className="ls-stat-value">3+</span>
+              <span className="ls-stat-label">Años de experiencia</span>
+            </div>
+            <div className="ls-stat">
+              <span className="ls-stat-value">&lt;24h</span>
+              <span className="ls-stat-label">Tiempo de respuesta</span>
+            </div>
           </div>
         </div>
 
         {/* Mini phone mockups with real screenshots */}
         <div className="ls-phones" ref={phonesRef}>
           <div className="ls-phone ls-phone--purple">
-            <div className="ls-phone-island" />
             <img src={schreiberMobileImg} alt="" className="ls-phone-img" />
+            <div className="ls-phone-island" />
             <div className="ls-phone-bar" />
           </div>
           <div className="ls-phone ls-phone--green">
-            <div className="ls-phone-island" />
             <img src={nearbyMobileImg} alt="" className="ls-phone-img" />
+            <div className="ls-phone-island" />
             <div className="ls-phone-bar" />
           </div>
           <div className="ls-phone ls-phone--cyan">
-            <div className="ls-phone-island" />
             <img src={fitcMobileImg} alt="" className="ls-phone-img" />
+            <div className="ls-phone-island" />
             <div className="ls-phone-bar" />
           </div>
         </div>
