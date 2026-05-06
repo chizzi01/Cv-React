@@ -29,7 +29,7 @@ export const PROJECTS = [
     id: 3,
     name: 'Estudios Schreiber',
     type: 'Landing Page',
-    description: 'Sitio profesional para estudio jurídico. Diseño limpio, secciones de servicios y formulario de contacto integrado.',
+    description: 'Sitio profesional para estudio de arquitectura. Diseño limpio, secciones de servicios y formulario de contacto integrado.',
     image: schreiberImg,
     url: 'https://estudioschreiber.ar/',
     tags: ['React', 'Vite', 'CSS', 'Figma'],
