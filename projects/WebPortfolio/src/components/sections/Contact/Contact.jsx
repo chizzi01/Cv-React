@@ -39,8 +39,8 @@ export default function Contact() {
     <section className="contact-section section-container" id="contacto">
       <div className="section-wrapper">
         <SectionTitle
-          eyebrow="¿Listo para empezar?"
-          title="Contacto"
+          eyebrow="Hablemos sin compromiso"
+          title="¿Querés tu web?"
           color="cyan"
         />
 
@@ -53,10 +53,10 @@ export default function Contact() {
         >
           <motion.div className="contact-info" variants={fadeUp}>
             <p className="contact-tagline">
-              Contame sobre tu proyecto y <span>construyamos algo increíble</span> juntos.
+              ¿Tenés un negocio y necesitás una web? <span>Escribime y hablamos</span> sin vueltas.
             </p>
             <p className="contact-info-text">
-              Trabajo con emprendedores, empresas y profesionales que quieren una presencia digital que destaque. Respondo en menos de 24 horas.
+              Trabajé con estudios jurídicos, apps, plataformas deportivas y más. Sea cual sea tu rubro, entiendo lo que necesitás y te digo la verdad sobre lo que conviene hacer. Respondo en menos de 24 horas.
             </p>
             <div className="contact-direct">
               <a href="mailto:aguschizzini@gmail.com" className="contact-direct-link">
@@ -143,7 +143,7 @@ export default function Contact() {
 
                 <div className="form-submit-btn">
                   <NeonButton type="submit" variant="solid" color="cyan">
-                    {loading ? 'Enviando...' : 'Enviar mensaje →'}
+                    {loading ? 'Enviando...' : 'Quiero saber más →'}
                   </NeonButton>
                 </div>
               </form>

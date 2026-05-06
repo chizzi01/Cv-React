@@ -6,23 +6,23 @@ import './Process.css'
 const STEPS = [
   {
     number: '01',
-    title: 'Consulta',
-    description: 'Hablamos sobre tu proyecto, tus objetivos y el público al que querés llegar.',
+    title: 'Nos conocemos',
+    description: 'Hablamos gratis sobre tu negocio y lo que necesitás. Sin compromiso — me contás tu idea y yo te digo cómo podemos hacerla realidad.',
   },
   {
     number: '02',
-    title: 'Diseño',
-    description: 'Creo el diseño visual en Figma. Revisamos juntos hasta que sea exactamente lo que querés.',
+    title: 'Ves el diseño',
+    description: 'Antes de construir nada, ves cómo va a verse tu web. Revisamos juntos y ajustamos lo que sea hasta que te encante.',
   },
   {
     number: '03',
-    title: 'Desarrollo',
-    description: 'Escribo el código con las mejores prácticas: rápido, seguro y mantenible.',
+    title: 'Lo construimos',
+    description: 'Con el diseño aprobado, tu web cobra vida. Rápida, segura y lista para aparecer en Google desde el día uno.',
   },
   {
     number: '04',
-    title: 'Entrega',
-    description: 'Publicamos tu web. Te explico todo y quedo disponible para soporte post-lanzamiento.',
+    title: 'Tu web en vivo',
+    description: 'Publicamos tu sitio y te enseño a usarlo. Y si necesitás algo después del lanzamiento, estoy disponible para ayudarte.',
   },
 ]
 
@@ -33,9 +33,9 @@ export default function Process() {
     <section className="process-section section-container" id="proceso">
       <div className="section-wrapper">
         <SectionTitle
-          eyebrow="Cómo trabajo"
-          title="El proceso"
-          subtitle="Metodología clara y transparente en cada etapa del proyecto."
+          eyebrow="Así funciona"
+          title="De la idea a tu web en 4 pasos"
+          subtitle="Sin tecnicismos ni sorpresas. Sabés qué pasa en cada momento."
           color="pink"
           center
         />

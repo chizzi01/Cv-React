@@ -43,7 +43,7 @@ export default function HeroContent() {
           transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="hero-eyebrow-dot" />
-          Desarrollo Web Personalizado &nbsp;·&nbsp; Buenos Aires
+          Diseño web para negocios que quieren crecer &nbsp;·&nbsp; Buenos Aires
         </motion.span>
 
         <div style={{ overflow: 'hidden' }}>
@@ -66,7 +66,7 @@ export default function HeroContent() {
           transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           Sin una web que convierte, cada visita es una oportunidad perdida.
-          Diseño y desarrollo sitios únicos, rápidos y de alto impacto — landing pages, e-commerce y apps web a medida.
+          Creamos el sitio que tu negocio merece — uno que genera consultas, ventas y confianza desde el primer clic.
         </motion.p>
 
         <motion.div
@@ -76,10 +76,10 @@ export default function HeroContent() {
           transition={{ duration: 0.7, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <NeonButton href="#proyectos" variant="solid" color="cyan">
-            Ver mis trabajos
+            Ver resultados reales
           </NeonButton>
           <NeonButton href="#contacto" variant="ghost" color="cyan">
-            Contame tu proyecto
+            Quiero mi web
           </NeonButton>
         </motion.div>
 
@@ -91,15 +91,15 @@ export default function HeroContent() {
         >
           <motion.div className="hero-stat" variants={statItem}>
             <span className="hero-stat-value"><span><CountUp to={7} suffix="+" /></span></span>
-            <span className="hero-stat-label">Proyectos entregados</span>
+            <span className="hero-stat-label">Negocios con web nueva</span>
           </motion.div>
           <motion.div className="hero-stat" variants={statItem}>
             <span className="hero-stat-value"><span><CountUp to={3} suffix="+" /></span></span>
-            <span className="hero-stat-label">Años de experiencia</span>
+            <span className="hero-stat-label">Años haciendo esto</span>
           </motion.div>
           <motion.div className="hero-stat" variants={statItem}>
             <span className="hero-stat-value">&lt;<span><CountUp to={24} suffix="h" /></span></span>
-            <span className="hero-stat-label">Tiempo de respuesta</span>
+            <span className="hero-stat-label">Te respondo hoy</span>
           </motion.div>
         </motion.div>
       </div>

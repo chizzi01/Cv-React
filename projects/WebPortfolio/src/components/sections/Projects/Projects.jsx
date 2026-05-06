@@ -23,9 +23,9 @@ export default function Projects() {
     <section className="projects-section section-container" id="proyectos">
       <div className="section-wrapper">
         <SectionTitle
-          eyebrow="Mi trabajo"
+          eyebrow="Resultados reales"
           title="Proyectos"
-          subtitle="Sitios reales, para clientes reales. Cada uno diseñado a medida y optimizado para resultados."
+          subtitle="Sitios que ya están online, generando resultados para negocios reales. Cada uno diseñado a medida."
           color="purple"
         />
         <div className="projects-bento" ref={trackRef} onScroll={handleScroll}>
