@@ -9,9 +9,9 @@ export default function TechStack() {
     <section className="techstack-section section-container" id="tecnologias">
       <div className="section-wrapper">
         <SectionTitle
-          eyebrow="Herramientas"
-          title="Tech Stack"
-          subtitle="Las tecnologías que uso para construir productos digitales de alto rendimiento."
+          eyebrow="Tecnología profesional"
+          title="Construido para durar"
+          subtitle="Uso las mismas herramientas que emplean las empresas líderes del mundo. Tu web no es un experimento — es una inversión."
           color="green"
           center
         />

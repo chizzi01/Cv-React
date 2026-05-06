@@ -6,20 +6,20 @@ import './Trust.css'
 const VALUE_PROPS = [
   {
     icon: '🎨',
-    title: 'Diseño único',
-    description: 'Sin templates ni WordPress. Cada web se diseña desde cero en Figma — identidad visual propia, pensada específicamente para tu negocio y audiencia.',
+    title: 'Tu marca, no una plantilla',
+    description: 'Cada sitio se diseña desde cero, pensado específicamente para tu negocio. Sin webs genéricas — tu presencia online va a verse diferente a la competencia desde el primer día.',
     neonColor: 'cyan',
   },
   {
     icon: '⚡',
-    title: 'Entrega en 2–4 semanas',
-    description: 'Tu web lista y publicada en tiempo récord. Sin burocracia: comunicación directa, actualizaciones frecuentes y cumplimiento de plazos garantizado.',
+    title: 'Online en menos de un mes',
+    description: 'Tu web lista en 2 a 4 semanas, no en 3 meses. Trato directo, sin reuniones interminables — sabés qué pasa en cada momento y la fecha de entrega se cumple.',
     neonColor: 'purple',
   },
   {
     icon: '🛡️',
-    title: 'Soporte incluido',
-    description: 'No desaparezco al entregar. Soporte post-lanzamiento incluido — si algo falla después del lanzamiento, lo resuelvo sin costo extra.',
+    title: 'Soporte cuando lo necesitás',
+    description: 'Cuando tu web está lista, yo sigo ahí. Si algo falla o querés cambiar algo después del lanzamiento, lo resolvemos. Sin cobros adicionales ni excusas.',
     neonColor: 'green',
   },
 ]
@@ -29,8 +29,8 @@ export default function Trust() {
     <section className="trust-section section-container" id="por-que-yo">
       <div className="section-wrapper">
         <SectionTitle
-          eyebrow="¿Por qué elegirme?"
-          title="Lo que me diferencia"
+          eyebrow="¿Por qué trabajar conmigo?"
+          title="Tu web, sin complicaciones"
           color="cyan"
           center
         />
