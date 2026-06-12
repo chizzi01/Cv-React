@@ -1435,7 +1435,7 @@ form {
   top: 10px;
   right: 10px;
   width: 84px;
-  height: 208px;
+  height: 170px;
   z-index: 5;
   filter: drop-shadow(-4px 8px 20px rgba(0, 0, 0, 0.5));
 }
@@ -1460,7 +1460,7 @@ form {
 }
 .mockup-wrap--mobile .mockup-mobile {
   width: 130px;
-  height: 264px;
+  height: 210px;
 }
 
 /* ── DESKTOP FRAME ── */
@@ -1590,6 +1590,25 @@ form {
 .cardProyect-btn:hover {
   background: rgba(108, 141, 255, 0.2);
   border-color: var(--blue);
+  transform: translateX(2px);
+}
+
+.cardProyect-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.cardProyect-btn--store {
+  border-color: rgba(50, 187, 80, 0.35);
+  background: rgba(50, 187, 80, 0.08);
+  gap: 0.4rem;
+}
+
+.cardProyect-btn--store:hover {
+  background: rgba(50, 187, 80, 0.2);
+  border-color: #32bb50;
   transform: translateX(2px);
 }
 
@@ -2379,7 +2398,7 @@ form {
   }
 
   .mockup-wrap { height: 230px; }
-  .mockup-wrap--both .mockup-mobile     { width: 70px; height: 174px; top: 8px; right: 8px; }
+  .mockup-wrap--both .mockup-mobile     { width: 70px; height: 140px; top: 8px; right: 8px; }
   .mockup-wrap--desktop .mockup-desktop { height: 200px; }
-  .mockup-wrap--mobile .mockup-mobile   { width: 82px; height: 182px; }
+  .mockup-wrap--mobile .mockup-mobile   { width: 82px; height: 150px; }
 }

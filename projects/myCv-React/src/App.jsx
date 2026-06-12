@@ -35,6 +35,7 @@ import FitcDesktop from '../src/assets/fitc-desktop.png'
 import FitcMobile from '../src/assets/fitc-mobile.png'
 import Mypass from '../src/assets/mypass.png'
 import Mybolucompras from '../src/assets/mybolucompras.png'
+import MybolucomprasMobile from '../src/assets/mybolucompras-mobile.png.jpg'
 import Json from '../src/assets/json.png'
 import Mongo from '../src/assets/mongo.png'
 import gds from '../src/assets/gdsnetlogo.jpg'
@@ -500,9 +501,9 @@ export function App() {
           <div className='proyectos-container' isVisible={portfolioVisible} ref={portfolio}>
             <ProyectCard isWeb={true} mockupType="both" nombre="FITC Training" bio={["Plataforma para coach de fútbol", "React + Vite", "Diseño dinámico y deportivo"]} tecnologias={[ReactLog, Html, Css, Javascript, Figma]} fondoDesktop={FitcDesktop} fondoMobile={FitcMobile} fondo={FitcDesktop} web='https://fitctraining.com/' />
           <ProyectCard isWeb={true} mockupType="both" nombre="Estudios Schreiber" bio={["Estudio de arquitectura", "React + Vite", "Diseño profesional"]} tecnologias={[ReactLog, Html, Css, Javascript, Figma]} fondo={SchreiberDesktop} fondoDesktop={SchreiberDesktop} fondoMobile={SchreiberMobile} web='https://estudioschreiber.ar/' />
-            <ProyectCard isWeb={true} mockupType="both" nombre="Siro Transporte" bio={["Empresa de transporte", "SEO-friendly", "100% Responsive"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} desktopBgPos="center 20%" web={maintenanceUrl('Siro Transporte')} />
-            <ProyectCard isWeb={false} mockupType="mobile" nombre="MyPasswords" bio={["App móvil nativa", "Gestor offline de contraseñas", "React + Capacitor"]} tecnologias={[ReactLog, Capacitor, Html, Css, Javascript, Json]} fondo={Mypass} web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
-            <ProyectCard isWeb={true} mockupType="desktop" linkLabel="Descargar" nombre="MyBolucompras" bio={["App de escritorio", "Control de gastos personal", "Actualizaciones automaticas","Electron + JS"]} tecnologias={[ReactLog,Electron, Html, Css, Javascript, Json]} fondo={Mybolucompras} web='https://github.com/chizzi01/MyBolucompras/releases/tag/v0.0.36' />
+            {/* <ProyectCard isWeb={true} mockupType="both" nombre="Siro Transporte" bio={["Empresa de transporte", "SEO-friendly", "100% Responsive"]} tecnologias={[Html, Css, Javascript, Figma]} fondo={Siro} desktopBgPos="center 20%" web={maintenanceUrl('Siro Transporte')} /> */}
+            <ProyectCard isWeb={false} mockupType="mobile" nombre="Pass Buddy" bio={["App móvil nativa", "Gestor de contraseñas", "React Native"]} tecnologias={[ReactLog, Html, Css, Javascript, Json]} fondo={Mypass} mobileHeight="260px" storeUrl="#" web='https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop' />
+            <ProyectCard isWeb={true} mockupType="both" linkLabel="Descargar" nombre="Budget Buddy" bio={["App de escritorio", "App móvil", "Control de gastos personal", "Actualizaciones automaticas","Electron + JS"]} tecnologias={[ReactLog,Electron, Html, Css, Javascript, Json]} fondo={Mybolucompras} fondoMobile={MybolucomprasMobile} storeUrl="#" web='https://github.com/chizzi01/MyBolucompras/releases/tag/v0.0.36' />
           </div>
         </section>
 

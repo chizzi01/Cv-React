@@ -47,12 +47,12 @@ export const PROJECTS = [
   },
   {
     id: 5,
-    name: 'MyBolucompras',
-    type: 'App Desktop',
-    description: 'App de escritorio con actualizaciones automáticas para control de gastos personales. Construida con Electron.',
+    name: 'Budget Buddy',
+    type: 'App Desktop y Móvil',
+    description: 'App de escritorio y móvil con actualizaciones automáticas para control de gastos personales. Construida con Electron y React Native.',
     image: mybolucomprasImg,
-    url: 'https://github.com/chizzi01/MyBolucompras/releases/tag/v0.0.36',
-    tags: ['Electron', 'HTML', 'CSS', 'JS'],
+    url: 'https://github.com/chizzi01/MyBolucompras/releases',
+    tags: ['Electron', 'React Native', 'HTML', 'CSS', 'JS'],
     neonColor: 'cyan',
   },
 ]
