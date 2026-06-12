@@ -21,8 +21,9 @@
 /* Row 2 — dominance flips right */
 .project-card:nth-child(3) { grid-column: 1 / 6;  grid-row: 2; }
 .project-card:nth-child(4) { grid-column: 6 / 13; grid-row: 2; }
-/* Row 3 — full-width cinematic banner */
-.project-card:nth-child(5) { grid-column: 1 / 13; grid-row: 3; }
+/* Row 3 — split: mobile app left, desktop+mobile right */
+.project-card:nth-child(5) { grid-column: 1 / 6;  grid-row: 3; }
+.project-card:nth-child(6) { grid-column: 6 / 13; grid-row: 3; }
 
 /* ── Card base ───────────────────────────────── */
 .project-card {
@@ -173,6 +174,21 @@
 .project-cta:hover {
   gap: 0.85rem;
   opacity: 0.85;
+}
+
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.project-cta--store {
+  color: #32bb50 !important;
+  gap: 0.4rem;
+}
+
+.project-cta--store:hover {
+  gap: 0.65rem;
 }
 
 /* ── Always-visible name footer ──────────────── */

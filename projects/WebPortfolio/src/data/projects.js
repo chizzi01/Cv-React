@@ -2,6 +2,7 @@ import nearbyImg from '../assets/images/nearby-desktop.png'
 import fitcImg from '../assets/images/fitc-desktop.png'
 import schreiberImg from '../assets/images/schreiber-desktop.png'
 import siroImg from '../assets/images/siro.png'
+import mypassImg from '../assets/images/mypass.png'
 import mybolucomprasImg from '../assets/images/mybolucompras.png'
 
 export const PROJECTS = [
@@ -47,11 +48,23 @@ export const PROJECTS = [
   },
   {
     id: 5,
+    name: 'Pass Buddy',
+    type: 'App Móvil Nativa',
+    description: 'Gestor de contraseñas nativo para Android. Guardá y organizá tus credenciales de forma segura con cifrado local.',
+    image: mypassImg,
+    url: 'https://www.linkedin.com/posts/agustin-chizzini-melo-237224209_buenas-a-todos-paso-a-comentarles-uno-de-activity-7121331172919382016-Cqcw?utm_source=share&utm_medium=member_desktop',
+    storeUrl: '#',
+    tags: ['React Native', 'JS', 'CSS'],
+    neonColor: 'purple',
+  },
+  {
+    id: 6,
     name: 'Budget Buddy',
     type: 'App Desktop y Móvil',
     description: 'App de escritorio y móvil con actualizaciones automáticas para control de gastos personales. Construida con Electron y React Native.',
     image: mybolucomprasImg,
     url: 'https://github.com/chizzi01/MyBolucompras/releases',
+    storeUrl: '#',
     tags: ['Electron', 'React Native', 'HTML', 'CSS', 'JS'],
     neonColor: 'cyan',
   },

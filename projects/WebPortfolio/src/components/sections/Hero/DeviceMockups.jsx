@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import './DeviceMockups.css'
-import schreiberMobileImg from '../../../assets/images/schreiber-mobile.png'
-import fitcMobileImg     from '../../../assets/images/fitc-mobile.png'
-import nearbyMobileImg   from '../../../assets/images/nearby-mobile.png'
+import nearbyMobileImg        from '../../../assets/images/nearby-mobile.png'
+import mypassImg              from '../../../assets/images/mypass.png'
+import mybolucomprasMobileImg from '../../../assets/images/mybolucompras-mobile.jpg'
+import mybolucomprasImg       from '../../../assets/images/mybolucompras.png'
 
 function PhoneMockup({ image, delay = 0, rotate = -8, x = 0, neonColor = 'cyan' }) {
   const colors = {
@@ -74,10 +75,11 @@ function LaptopMockup({ image, delay = 0 }) {
 export default function DeviceMockups() {
   return (
     <div className="devices-container">
+      <LaptopMockup image={mybolucomprasImg} delay={0.4} />
       <div className="devices-phones">
-        <PhoneMockup image={schreiberMobileImg} delay={0.7} rotate={-10} neonColor="purple" />
-        <PhoneMockup image={nearbyMobileImg}    delay={0.9} rotate={4}   neonColor="green"  x={-8} />
-        <PhoneMockup image={fitcMobileImg}      delay={1.1} rotate={-5}  neonColor="cyan"   />
+        <PhoneMockup image={mypassImg}              delay={0.7} rotate={-10} neonColor="purple" />
+        <PhoneMockup image={nearbyMobileImg}        delay={0.9} rotate={4}   neonColor="green"  x={-8} />
+        <PhoneMockup image={mybolucomprasMobileImg} delay={1.1} rotate={-5}  neonColor="cyan"   />
       </div>
     </div>
   )
